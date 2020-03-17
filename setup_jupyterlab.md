@@ -31,13 +31,13 @@ Once the command above has finished installing your GDS stack, you are ready to 
 The command above spins up a container of the `gds` image, version 4.0 and
 ensures it is connected through two main bridges:
 
-    1. Mapping your laptop's file system from where you have launched the
-       command (`${PWD}`) to a folder called `work` on the home directory of
-       the container. When you login to Jupyter (see below), you will see a
-       `work` folder and, if you click into it, you should see the content of
-       your laptops folder in there.
-    1. Mapping port `8888` from the container to your laptop, so you can
-       connect to it through a browser.
+- Mapping your laptop's file system from where you have launched the
+   command (`${PWD}`) to a folder called `work` on the home directory of
+   the container. When you login to Jupyter (see below), you will see a
+   `work` folder and, if you click into it, you should see the content of
+   your laptops folder in there.
+- Mapping port `8888` from the container to your laptop, so you can
+   connect to it through a browser.
 
 It is important to know this command starts a Jupyter server on your machine and keeps it running, so please do not quit the window until you are
 done using Jupyter, otherwise it will crash.
