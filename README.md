@@ -48,7 +48,7 @@ On a Mac.....
 ```
 docker run -d --name rstudio -v $HOME:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial
 ```
-On Windows....
+On Windows.... (change 'alexa' to your account name - look at your directory structure)
 
 ```
 docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial
