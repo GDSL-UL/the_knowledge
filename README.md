@@ -43,9 +43,17 @@ docker pull rocker/geospatial
 ```
 To start the instance (Mac example) - this maps a local drive to a given directory (in this case - /home/rstudio/alex) so you can save your files outside of the instance; and sets up the password (secret) and username (rstudio)
 
+On a Mac.....
+
 ```
 docker run -d --name rstudio -v $HOME:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial
 ```
+On Windows....
+
+```
+docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial
+```
+
 If this runs ok; you access Rstudio server from : http://localhost:8787
 
 ## Useful Docker Commands
