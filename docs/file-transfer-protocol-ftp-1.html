@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Files | The Knowledge</title>
+  <title>Chapter 6 File Transfer Protocol (FTP) | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Files | The Knowledge" />
+  <meta property="og:title" content="Chapter 6 File Transfer Protocol (FTP) | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Files | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 6 File Transfer Protocol (FTP) | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="vpn.html"/>
+<link rel="prev" href="docker.html"/>
+<link rel="next" href="jupyterlab.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -89,17 +89,18 @@
 <li class="chapter" data-level="5.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>5.1</b> Installation</a></li>
 <li class="chapter" data-level="5.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>5.2</b> Useful Docker Commands</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>6</b> JupyterLab</a>
+<li class="chapter" data-level="6" data-path="file-transfer-protocol-ftp-1.html"><a href="file-transfer-protocol-ftp-1.html"><i class="fa fa-check"></i><b>6</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="7" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>7</b> JupyterLab</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>6.1</b> Local install</a></li>
-<li class="chapter" data-level="6.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>6.2</b> Remote install</a></li>
-<li class="chapter" data-level="6.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>6.3</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="7.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
+<li class="chapter" data-level="7.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
+<li class="chapter" data-level="7.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful Python Docker Images</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>7</b> RStudio server</a>
+<li class="chapter" data-level="8" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html"><i class="fa fa-check"></i><b>8</b> Install and run an RStudio server</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="rstudio-server.html"><a href="rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
-<li class="chapter" data-level="7.2" data-path="rstudio-server.html"><a href="rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
-<li class="chapter" data-level="7.3" data-path="rstudio-server.html"><a href="rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful R Docker Images</a></li>
+<li class="chapter" data-level="8.1" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
+<li class="chapter" data-level="8.2" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.3" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful R Docker Images</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -121,54 +122,19 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="files" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Files</h1>
-<p>You need to make sure that:</p>
-<ol style="list-style-type: lower-alpha">
-<li>You have access to all of your files</li>
-<li>Your files are backed up so your setup is not entirely reliant on a single device</li>
-<li>Each device on which your files are copied or from which they are accessed
-is encrypted</li>
-</ol>
-<div id="backupsync" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Backup/sync</h2>
-<p>The simplest and recommended way to do this at Liverpool is to keep all your
-files and data on your university account at OneDrive. This is part of the
-Office 365 Suite available from the university, you can find more info at:</p>
-<blockquote>
-<p><a href="https://www.liverpool.ac.uk/csd/working-from-home/"><code>https://www.liverpool.ac.uk/csd/working-from-home/</code></a></p>
-</blockquote>
-<p>There are Windows and Mac clients that work relatively well (equivalent to
-Dropbox client).</p>
-<p>Once you are set up, copy all your files onto your OneDrive account, which
-will create a copy of them in Microsoft’s secure cloud. The exception is
-where you have data that has requirements to be managed in particular ways - e.g.
-only from a single machine etc; not in the cloud.</p>
-<p>Please, be sure to speak with your PhD supervisor if you access data that
-may pose some challenges when moving from local machines or within the university
-network (remember OneDrive is in the Cloud, not the university servers!).</p>
-</div>
-<div id="encryption" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Encryption</h2>
-<p>[Add guide to encryption: what it is and how to set up on
-Windows/macOS/Linux/iOS/Android]</p>
-</div>
-<div id="file-transfer-protocol-ftp" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> File Transfer Protocol (FTP)</h2>
-<p>If you need to move large and/or many files from a local machine to a remote
-server (e.g. from your laptop to a Linux machine at the lab), you will
-probably want to use something like FTP.</p>
-<p>[Add FTP guide here]</p>
+<div id="file-transfer-protocol-ftp-1" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> File Transfer Protocol (FTP)</h1>
+<p>This document describes how to set up and use FTP to transfer large files over
+to a remote machine.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vpn.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="docker.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="jupyterlab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -199,7 +165,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01_Files.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05_ftp.Rmd",
 "text": "Edit"
 },
 "history": {

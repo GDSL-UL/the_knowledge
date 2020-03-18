@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Files | The Knowledge</title>
+  <title>Chapter 7 RStudio server | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Files | The Knowledge" />
+  <meta property="og:title" content="Chapter 7 RStudio server | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Files | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 7 RStudio server | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="vpn.html"/>
+<link rel="prev" href="jupyterlab.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -121,44 +121,37 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="files" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Files</h1>
-<p>You need to make sure that:</p>
-<ol style="list-style-type: lower-alpha">
-<li>You have access to all of your files</li>
-<li>Your files are backed up so your setup is not entirely reliant on a single device</li>
-<li>Each device on which your files are copied or from which they are accessed
-is encrypted</li>
-</ol>
-<div id="backupsync" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Backup/sync</h2>
-<p>The simplest and recommended way to do this at Liverpool is to keep all your
-files and data on your university account at OneDrive. This is part of the
-Office 365 Suite available from the university, you can find more info at:</p>
+<div id="rstudio-server" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> RStudio server</h1>
+<p>This guide will help you set up a RStudio server running with Docker. The
+benefits of this approach is that it is more reliable and only involves one
+install, as opposed to several independent ones.</p>
+<div id="local-install-1" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Local install</h2>
+<p>If you are an R user; this is a great image to get you up and running with the tidyverse + various geospatial packages + Rstudio server:</p>
 <blockquote>
-<p><a href="https://www.liverpool.ac.uk/csd/working-from-home/"><code>https://www.liverpool.ac.uk/csd/working-from-home/</code></a></p>
+<p><a href="https://hub.docker.com/r/rocker/geospatial"><code>https://hub.docker.com/r/rocker/geospatial</code></a></p>
 </blockquote>
-<p>There are Windows and Mac clients that work relatively well (equivalent to
-Dropbox client).</p>
-<p>Once you are set up, copy all your files onto your OneDrive account, which
-will create a copy of them in Microsoft’s secure cloud. The exception is
-where you have data that has requirements to be managed in particular ways - e.g.
-only from a single machine etc; not in the cloud.</p>
-<p>Please, be sure to speak with your PhD supervisor if you access data that
-may pose some challenges when moving from local machines or within the university
-network (remember OneDrive is in the Cloud, not the university servers!).</p>
+<p>To install…</p>
+<pre><code>docker pull rocker/geospatial</code></pre>
+<p>This will require a good internet connection and will take a while, but you
+only need to run it once.</p>
+<p>Once ready, you can start the instance as follows (Mac example):</p>
+<pre><code>docker run -d --name rstudio -v $HOME:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial</code></pre>
+<p>This maps your local home drive (<code>$HOME</code>) to a given directory in the container (in this case - <code>/home/rstudio/alex</code>).
+Using this approach, you can store files on your laptop’s drive, and access, edit or create new ones from the container (ie. using RStudio).
+The command above also sets up a password (<code>secret</code>) and username (<code>rstudio</code>)
+to use when you login to RStudio.</p>
+<p>On Windows, this is similar (change <code>alexa</code> to your account name - look at your directory structure):</p>
+<pre><code>docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial</code></pre>
+<p>If this runs ok; you access Rstudio server through a browser at: <a href="http://localhost:8787"><code>http://localhost:8787</code></a></p>
 </div>
-<div id="encryption" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Encryption</h2>
-<p>[Add guide to encryption: what it is and how to set up on
-Windows/macOS/Linux/iOS/Android]</p>
+<div id="remote-install-1" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Remote install</h2>
+<p>[Add here specifics to make this work across the wire in a secure way]</p>
 </div>
-<div id="file-transfer-protocol-ftp" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> File Transfer Protocol (FTP)</h2>
-<p>If you need to move large and/or many files from a local machine to a remote
-server (e.g. from your laptop to a Linux machine at the lab), you will
-probably want to use something like FTP.</p>
-<p>[Add FTP guide here]</p>
+<div id="useful-r-docker-images" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Useful R Docker Images</h2>
 
 </div>
 </div>
@@ -167,8 +160,8 @@ probably want to use something like FTP.</p>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vpn.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="jupyterlab.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -199,7 +192,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01_Files.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07_RStudio.Rmd",
 "text": "Edit"
 },
 "history": {

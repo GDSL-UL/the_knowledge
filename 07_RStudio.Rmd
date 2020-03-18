@@ -1,4 +1,4 @@
-# Install and run an RStudio server
+# RStudio server
 
 This guide will help you set up a RStudio server running with Docker. The
 benefits of this approach is that it is more reliable and only involves one
