@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Docker | The Knowledge</title>
+  <meta name="description" content="What every GDSLer should know to work from anywhere" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Docker | The Knowledge" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="What every GDSLer should know to work from anywhere" />
+  <meta name="github-repo" content="gdsl-ul/the_knowledge" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Docker | The Knowledge" />
+  
+  <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
+  
+
+<meta name="author" content="Geographic Data Science Lab" />
+
+
+<meta name="date" content="2020-03-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-science-stack.html"/>
+<link rel="next" href="file-transfer-protocol-ftp.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The Knowledge</a></li>
+<li class="chapter" data-level="2" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>2</b> Files</a></li>
+<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vpn.html"><a href="vpn.html#what-is-a-vpn"><i class="fa fa-check"></i><b>3.1</b> <em>What is a VPN?</em></a></li>
+<li class="chapter" data-level="3.2" data-path="vpn.html"><a href="vpn.html#how-can-i-setup-the-vpn-for-liverpool"><i class="fa fa-check"></i><b>3.2</b> <em>How can I setup the VPN for Liverpool?</em></a></li>
+<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#set-up-a-vpn-connection"><i class="fa fa-check"></i><b>3.3</b> Set up a VPN connection</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>4</b> Data Science Stack</a></li>
+<li class="chapter" data-level="5" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>5</b> Docker</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>5.1</b> Installation</a></li>
+<li class="chapter" data-level="5.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>5.2</b> Useful Docker Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="file-transfer-protocol-ftp.html"><a href="file-transfer-protocol-ftp.html"><i class="fa fa-check"></i><b>6</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="7" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>7</b> JupyterLab</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
+<li class="chapter" data-level="7.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
+<li class="chapter" data-level="7.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful Python Docker Images</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html"><i class="fa fa-check"></i><b>8</b> Install and run an RStudio server</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
+<li class="chapter" data-level="8.2" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.3" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful R Docker Images</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Knowledge</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="docker" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Docker</h1>
+<p>This document describes how to install and use Docker on different platforms.</p>
+<div id="installation" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Installation</h2>
+<p>If you are on Mac, Linux or Windows 10 Pro/Student editions, installing Docker
+is relatively straightforward:</p>
+<ul>
+<li><a href="https://docs.docker.com/docker-for-mac/">Mac</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Linux official instructions</a></li>
+<li><a href="https://docs.docker.com/docker-for-windows/">Windows 10 Pro/Student</a></li>
+</ul>
+<p>It is important to note that, on Mac and Windows, Docker runs under a virtual
+machine so it will not use up all of the resources of your machine
+(conversely, it’ll equate to be working on a more limited machine). This can
+be changed. But if you need more firepower, the idea is that you develop on
+your laptop and scale to a server (e.g. running out of the lab).</p>
+<p>The steps to install Docker include:</p>
+<ul>
+<li>Obtain a copy of Docker and install it:
+<ul>
+<li><code>Windows10 Pro/Enterprise</code>: <a href="https://docs.docker.com/docker-for-windows/install/">Install Docker Desktop for Windows</a></li>
+<li><code>macOS</code>: <a href="https://docs.docker.com/docker-for-mac/">Get started with Docker Desktop for Mac</a></li>
+</ul></li>
+<li>Once Docker is successfully installed, make sure to enable access to your main drive (e.g. <code>C:\\</code>):
+<ul>
+<li><code>Windows10 Pro/Enterprise</code>: Open the preferences for Docker and click the
+“Shared Drives” tab; click on the drive you want to add and then “Apply”</li>
+<li><code>macOS</code>: this feature is automatically enabled</li>
+</ul></li>
+</ul>
+</div>
+<div id="useful-docker-commands" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Useful Docker Commands</h2>
+<p>See what containers are running (this also shows you the ID - this is useful to know then R-studio crashes…)</p>
+<pre><code>docker ps</code></pre>
+<p>Stop and remove a particular container - replace ID; with the specific ID from the above (listed under CONTAINER ID) - if everything has crashed</p>
+<pre><code>docker stop ID
+docker rm -f ID</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-science-stack.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="file-transfer-protocol-ftp.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04_Docker.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gdsl_knowledge.pdf", "gdsl_knowledge.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

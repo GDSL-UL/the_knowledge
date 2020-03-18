@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 VPN | The Knowledge</title>
+  <meta name="description" content="What every GDSLer should know to work from anywhere" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 VPN | The Knowledge" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="What every GDSLer should know to work from anywhere" />
+  <meta name="github-repo" content="gdsl-ul/the_knowledge" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 VPN | The Knowledge" />
+  
+  <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
+  
+
+<meta name="author" content="Geographic Data Science Lab" />
+
+
+<meta name="date" content="2020-03-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="files.html"/>
+<link rel="next" href="data-science-stack.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The Knowledge</a></li>
+<li class="chapter" data-level="2" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>2</b> Files</a></li>
+<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vpn.html"><a href="vpn.html#what-is-a-vpn"><i class="fa fa-check"></i><b>3.1</b> <em>What is a VPN?</em></a></li>
+<li class="chapter" data-level="3.2" data-path="vpn.html"><a href="vpn.html#how-can-i-setup-the-vpn-for-liverpool"><i class="fa fa-check"></i><b>3.2</b> <em>How can I setup the VPN for Liverpool?</em></a></li>
+<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#set-up-a-vpn-connection"><i class="fa fa-check"></i><b>3.3</b> Set up a VPN connection</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>4</b> Data Science Stack</a></li>
+<li class="chapter" data-level="5" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>5</b> Docker</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>5.1</b> Installation</a></li>
+<li class="chapter" data-level="5.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>5.2</b> Useful Docker Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="file-transfer-protocol-ftp.html"><a href="file-transfer-protocol-ftp.html"><i class="fa fa-check"></i><b>6</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="7" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>7</b> JupyterLab</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
+<li class="chapter" data-level="7.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
+<li class="chapter" data-level="7.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful Python Docker Images</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html"><i class="fa fa-check"></i><b>8</b> Install and run an RStudio server</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
+<li class="chapter" data-level="8.2" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.3" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful R Docker Images</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Knowledge</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="vpn" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> VPN</h1>
+<div id="what-is-a-vpn" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> <em>What is a VPN?</em></h2>
+<p>A VPN (virtual private network) connects a machine that lies outside of the university (ie. outside the firewall) to the internal network. When the VPN is running, your network traffic (e.g. Internet) is routed through the university in the same way as if the computer was on your work desk. This enables you to:</p>
+<ul>
+<li>Access journal websites like you would inside the university</li>
+<li>Access network drives (e.g. M Drive etc) - but be careful when transferring big files</li>
+<li>Access servers (e.g. over the terminal / command line / ftp)</li>
+</ul>
+</div>
+<div id="how-can-i-setup-the-vpn-for-liverpool" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> <em>How can I setup the VPN for Liverpool?</em></h2>
+<p>You can find a more comprehensive guide to setup your VPN on the
+<a href="setup_vpn.md"><code>setup_vpn.md</code></a> document of this repository.</p>
+</div>
+<div id="set-up-a-vpn-connection" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Set up a VPN connection</h2>
+<p>This document describes how to set up a VPN. The text below has been copied from CSD website.</p>
+<p>To access the VPN service:</p>
+<ol style="list-style-type: decimal">
+<li>Register</li>
+</ol>
+<p>Submit a request to register for the VPN service via CSD. You will need to explain why you require VPN access and what you intend to do with it. It may be that other services offer the solution you require instead of the VPN.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Download the VPN Client</li>
+</ol>
+<p>Once your registration is confirmed you will need to download and install the GlobalProtect VPN Client if you are using Windows 10.</p>
+<p>You will need admin rights in order to download the GlobalProtect VPN Client. This is how to access admin rights on your MWS PC. Please access admin rights before attempting to download the VPN Client.</p>
+<p>The GlobalProtect VPN Client is also compatible with MacOS. Mobile and tablet devices cannot connect using this client. If you are using a Linux distribution, such as Ubuntu, you may be able to connect to the University network using VPNc.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Open the client and connect</li>
+</ol>
+<p>Click here for instructions on how to use the GlobalProtect VPN Client to access the University network from your PC or Mac.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="files.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-science-stack.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02_VPN.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gdsl_knowledge.pdf", "gdsl_knowledge.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

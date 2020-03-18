@@ -1,4 +1,19 @@
-# Set up a VPN connection
+# VPN
+
+## *What is a VPN?*
+
+A VPN (virtual private network) connects a machine that lies outside of the university (ie. outside the firewall) to the internal network. When the VPN is running, your network traffic (e.g. Internet) is routed through the university in the same way as if the computer was on your work desk. This enables you to:
+
+* Access journal websites like you would inside the university
+* Access network drives (e.g. M Drive etc) - but be careful when transferring big files
+* Access servers (e.g. over the terminal / command line / ftp)
+
+## *How can I setup the VPN for Liverpool?*
+
+You can find a more comprehensive guide to setup your VPN on the
+[`setup_vpn.md`](setup_vpn.md) document of this repository.
+
+## Set up a VPN connection
 
 This document describes how to set up a VPN. The text below has been copied from CSD website.
 

@@ -1,4 +1,4 @@
-# Docker containers
+# Docker
 
 This document describes how to install and use Docker on different platforms.
 

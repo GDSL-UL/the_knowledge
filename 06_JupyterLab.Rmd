@@ -1,4 +1,7 @@
-# Install and run a JupyterLab server
+# JupyterLab
+
+This document shows how to install and run a JupyterLab server locally and
+remotely.
 
 ## Local install
 
