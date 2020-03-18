@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 JupyterLab | The Knowledge</title>
+  <meta name="description" content="What every GDSLer should know to work from anywhere" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 JupyterLab | The Knowledge" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="What every GDSLer should know to work from anywhere" />
+  <meta name="github-repo" content="gdsl-ul/the_knowledge" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 JupyterLab | The Knowledge" />
+  
+  <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
+  
+
+<meta name="author" content="Geographic Data Science Lab" />
+
+
+<meta name="date" content="2020-03-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="file-transfer-protocol-ftp.html"/>
+<link rel="next" href="install-and-run-an-rstudio-server.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The Knowledge</a></li>
+<li class="chapter" data-level="2" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>2</b> Files</a></li>
+<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="vpn.html"><a href="vpn.html#what-is-a-vpn"><i class="fa fa-check"></i><b>3.1</b> <em>What is a VPN?</em></a></li>
+<li class="chapter" data-level="3.2" data-path="vpn.html"><a href="vpn.html#how-can-i-setup-the-vpn-for-liverpool"><i class="fa fa-check"></i><b>3.2</b> <em>How can I setup the VPN for Liverpool?</em></a></li>
+<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#set-up-a-vpn-connection"><i class="fa fa-check"></i><b>3.3</b> Set up a VPN connection</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>4</b> Data Science Stack</a></li>
+<li class="chapter" data-level="5" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>5</b> Docker</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>5.1</b> Installation</a></li>
+<li class="chapter" data-level="5.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>5.2</b> Useful Docker Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="file-transfer-protocol-ftp.html"><a href="file-transfer-protocol-ftp.html"><i class="fa fa-check"></i><b>6</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="7" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>7</b> JupyterLab</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
+<li class="chapter" data-level="7.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
+<li class="chapter" data-level="7.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful Python Docker Images</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html"><i class="fa fa-check"></i><b>8</b> Install and run an RStudio server</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
+<li class="chapter" data-level="8.2" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.3" data-path="install-and-run-an-rstudio-server.html"><a href="install-and-run-an-rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful R Docker Images</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Knowledge</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="jupyterlab" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> JupyterLab</h1>
+<p>This document shows how to install and run a JupyterLab server locally and
+remotely.</p>
+<div id="local-install" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Local install</h2>
+<p>This guide assumes you meet the following requirements in your personal
+machine (eg. laptop):</p>
+<ol style="list-style-type: decimal">
+<li>You have admin rights over your machine</li>
+<li>You are running either Windows 10 Pro, macOS, or Linux</li>
+</ol>
+<p>Assuming Docker is up and running (check <a href="setup_docker.md"><code>setup_docker.md</code></a>
+for that), you can install an “image”, which is the install that will let you
+run containers, by typing on a command line (<code>Terminal.app</code> or <code>PowerShell</code>
+are both good options):</p>
+<pre><code>docker pull darribas/gds:4.0</code></pre>
+<p>This will take a while to download but, once finished, you will be ready
+to go.</p>
+<p>Once the command above has finished installing your GDS stack, you are ready to go! To get a Jupyter session started, you can follow these steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Run on the same terminal as above the following command:</p>
+<pre class="shell"><code>docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0</code></pre></li>
+</ol>
+<p>The command above spins up a container of the <code>gds</code> image, version 4.0 and
+ensures it is connected through two main bridges:</p>
+<ul>
+<li>Mapping your laptop’s file system from where you have launched the
+command (<code>${PWD}</code>) to a folder called <code>work</code> on the home directory of
+the container. When you login to Jupyter (see below), you will see a
+<code>work</code> folder and, if you click into it, you should see the content of
+your laptops folder in there.</li>
+<li>Mapping port <code>8888</code> from the container to your laptop, so you can
+connect to it through a browser.</li>
+</ul>
+<p>It is important to know this command starts a Jupyter server on your machine and keeps it running, so please do not quit the window until you are
+done using Jupyter, otherwise it will crash.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Open your favorite browser (preferably Firefox or Chrome) and point it to
+<code>localhost:8888</code></p></li>
+<li><p>You will be asked for a password or a token. To find the correct one, check
+the terminal where you started the <code>docker run ...</code> command in 1) and look
+for the long token in the logs. Your prompt should look something (albeit
+not exactly) like this:</p>
+<pre class="shell"><code> docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0
+ Executing the command: jupyter notebook
+ [I 11:38:40.234 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret
+ [I 11:38:41.328 NotebookApp] Loading IPython parallel extension
+ [I 11:38:41.612 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
+ [I 11:38:41.612 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+ [I 11:38:43.091 NotebookApp] Serving notebooks from local directory: /home/jovyan
+ [I 11:38:43.091 NotebookApp] The Jupyter Notebook is running at:
+ [I 11:38:43.091 NotebookApp] http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+ [I 11:38:43.091 NotebookApp]  or http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+ [I 11:38:43.091 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+ [C 11:38:43.114 NotebookApp]
+
+     To access the notebook, open this file in a browser:
+         file:///home/jovyan/.local/share/jupyter/runtime/nbserver-6-open.html
+     Or copy and paste one of these URLs:
+         http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+      or http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434</code></pre>
+<p>The token you want to copy is the long series of letter and numbers right
+after <code>?token=</code>, starting by <code>4dc814ee</code>.</p></li>
+<li><p>The token should let you into your Jupyter Lab session. Congratulations!
+You can then access the files in your computer through the <code>work</code> directory
+on the left-side pane.</p></li>
+</ol>
+</div>
+<div id="remote-install" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Remote install</h2>
+<p>It is also possible to start a Jupyter server as above but, instead of run it
+on your local machine, it can run on a remote machine and you connect to that
+through your browser over the internet. The process in this context is a bit
+more intricate because you need to ensure that the connection is secure, but
+overall it follows a similar pattern. The following steps below assume you can
+login to the remote server where you want to run Jupyter through <code>ssh</code> and the
+serve already has a Docker image installed, ready to be run.</p>
+<ul>
+<li><p>Login to the remote machine:</p>
+<pre><code>ssh &lt;username&gt;@&lt;server.ip.address&gt;</code></pre></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Launch the container:</p>
+<pre class="shell"><code>docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0 start.sh</code></pre>
+<p>Note we are appending <code>start.sh</code> so it drops us into
+the command line of the container rather than launching the server directly</p></li>
+<li><p>Run <code>jupyter notebook --generate-config</code></p></li>
+<li><p>Generate SSH keys with: <code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem</code></p></li>
+<li><p>Generate password as in the official <a href="http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#preparing-a-hashed-password">tutorial</a></p></li>
+<li><p>Update <code>/home/jovyan/.jupyter/jupyter_notebook_config.py</code>
+```python
+# Set options for certfile, ip, password, and toggle off
+# browser auto-opening
+c.NotebookApp.certfile = u’/home/jovyan/mycert.pem’
+c.NotebookApp.keyfile = u’/home/jovyan/mykey.key’
+# Set ip to ‘<em>’ to bind on all interfaces (ips) for the public server
+c.NotebookApp.ip = ’</em>’
+c.NotebookApp.password = u’sha1:bcd259ccf…<your hashed password here>’
+c.NotebookApp.open_browser = False</p>
+<p># It is a good idea to set a known, fixed port for server access
+c.NotebookApp.port = 8888
+```</p></li>
+<li><p>Launch secure Lab: <code>jupyter lab</code></p></li>
+<li><p>On your own machine (laptop/tablet), log in to <code>&lt;server.ip.address&gt;:8888</code> with the password you have set</p></li>
+</ol>
+</div>
+<div id="useful-python-docker-images" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Useful Python Docker Images</h2>
+<ul>
+<li><a href="https://github.com/darribas/gds_env"><code>gds_env</code></a>: a containerised platform
+for Geographid Data Science in Jupyter (Python &amp; R)</li>
+<li><a href="https://github.com/jupyter/docker-stacks"><code>jupyter-stacks</code></a>: official
+Jupyter stacks (the <code>gds_env</code> is based on these)</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="file-transfer-protocol-ftp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="install-and-run-an-rstudio-server.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06_JupyterLab.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["gdsl_knowledge.pdf", "gdsl_knowledge.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
