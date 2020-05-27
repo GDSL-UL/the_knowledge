@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Data Science Stack | The Knowledge</title>
+  <title>Chapter 6 Data Science Stack | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Data Science Stack | The Knowledge" />
+  <meta property="og:title" content="Chapter 6 Data Science Stack | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Data Science Stack | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 6 Data Science Stack | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -24,15 +24,16 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="vpn.html"/>
+<link rel="prev" href="files.html"/>
 <link rel="next" href="docker.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,43 +53,6 @@
 
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -107,31 +71,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The Knowledge</a></li>
-<li class="chapter" data-level="2" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>2</b> Files</a><ul>
-<li class="chapter" data-level="2.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>2.1</b> Backup/sync</a></li>
-<li class="chapter" data-level="2.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>2.2</b> Encryption</a></li>
-<li class="chapter" data-level="2.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>2.3</b> File Transfer Protocol (FTP)</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a><ul>
+<li class="chapter" data-level="2" data-path="remote-working.html"><a href="remote-working.html"><i class="fa fa-check"></i><b>2</b> Remote Working</a></li>
+<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="vpn.html"><a href="vpn.html#what-is-a-vpn"><i class="fa fa-check"></i><b>3.1</b> <em>What is a VPN?</em></a></li>
 <li class="chapter" data-level="3.2" data-path="vpn.html"><a href="vpn.html#how-can-i-setup-the-vpn-for-liverpool"><i class="fa fa-check"></i><b>3.2</b> <em>How can I setup the VPN for Liverpool?</em></a></li>
 <li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#set-up-a-vpn-connection"><i class="fa fa-check"></i><b>3.3</b> Set up a VPN connection</a></li>
 <li class="chapter" data-level="3.4" data-path="vpn.html"><a href="vpn.html#how-to-use-the-globalprotect-vpn-client-to-access-the-university-network"><i class="fa fa-check"></i><b>3.4</b> How to use the GlobalProtect VPN Client to access the University network</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>4</b> Data Science Stack</a></li>
-<li class="chapter" data-level="5" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>5</b> Docker</a><ul>
-<li class="chapter" data-level="5.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>5.1</b> Installation</a></li>
-<li class="chapter" data-level="5.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>5.2</b> Useful Docker Commands</a></li>
+<li class="chapter" data-level="4" data-path="ssh-unix-commands.html"><a href="ssh-unix-commands.html"><i class="fa fa-check"></i><b>4</b> SSH Unix Commands</a></li>
+<li class="chapter" data-level="5" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>5</b> Files</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>5.1</b> Backup/sync</a></li>
+<li class="chapter" data-level="5.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>5.2</b> Encryption</a></li>
+<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3</b> File Transfer Protocol (FTP)</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>6</b> JupyterLab</a><ul>
-<li class="chapter" data-level="6.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>6.1</b> Local install</a></li>
-<li class="chapter" data-level="6.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>6.2</b> Remote install</a></li>
-<li class="chapter" data-level="6.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>6.3</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="6" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>6</b> Data Science Stack</a></li>
+<li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>7.1</b> Installation</a></li>
+<li class="chapter" data-level="7.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>7.2</b> Useful Docker Commands</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>7</b> RStudio server</a><ul>
-<li class="chapter" data-level="7.1" data-path="rstudio-server.html"><a href="rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
-<li class="chapter" data-level="7.2" data-path="rstudio-server.html"><a href="rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
-<li class="chapter" data-level="7.3" data-path="rstudio-server.html"><a href="rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful R Docker Images</a></li>
+<li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
+<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful Python Docker Images</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>9</b> RStudio server</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="rstudio-server.html"><a href="rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>9.1</b> Local install</a></li>
+<li class="chapter" data-level="9.2" data-path="rstudio-server.html"><a href="rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>9.2</b> Remote install</a></li>
+<li class="chapter" data-level="9.3" data-path="rstudio-server.html"><a href="rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>9.3</b> Useful R Docker Images</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -153,14 +124,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-science-stack" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Data Science Stack</h1>
+<div id="data-science-stack" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Data Science Stack</h1>
 <p>Once you have access from home to all your files and (remote) university computers, next step is easily being able to bootstrap a full data science stack that allows you to carry out scientific work. There are several ways of achieving this, but our preferred strategy is to rely on container technology, in particular on <a href="https://www.docker.com/">Docker</a>. This will allow you to rapidly install the platform and set of libraries you are familiar with in a way that can be easily reproduced and redeployed (e.g. on a remote computer on campus).</p>
 <p>Here are a series of pages that will help you get a stack ready to go:</p>
 <ul>
-<li><a href="setup_docker.md"><code>setup_docker.md</code></a>: instructions to install and get Docker up and running on different platforms</li>
-<li><a href="setup_jupyterlab.md"><code>setup_jupyterlab.md</code></a>: instructions to install and run a JupyterLab server both on local (e.g. laptop) and remote (e.g. server) machines</li>
-<li><a href="setup_rstudio.md"><code>setup_rstudio.md</code></a>: instructions to install and run a JupyterLab server both on local (e.g. laptop) and remote (e.g. server) machines</li>
+<li><a href="setup_docker.md"><code>setup_docker.md</code></a>: instructions to install and get Docker
+up and running on different platforms</li>
+<li><a href="setup_jupyterlab.md"><code>setup_jupyterlab.md</code></a>: instructions to install and
+run a JupyterLab server both on local (e.g. laptop) and remote (e.g. server)
+machines</li>
+<li><a href="setup_rstudio.md"><code>setup_rstudio.md</code></a>: instructions to install and
+run a JupyterLab server both on local (e.g. laptop) and remote (e.g. server)
+machines</li>
 </ul>
 
 </div>
@@ -169,7 +145,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="vpn.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="files.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="docker.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -201,7 +177,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/03_Data_Science_stack.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05_Data_Science_stack.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 RStudio server | The Knowledge</title>
+  <title>Chapter 9 RStudio server | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 RStudio server | The Knowledge" />
+  <meta property="og:title" content="Chapter 9 RStudio server | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 RStudio server | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 9 RStudio server | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="jupyterlab.html"/>
 
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -52,43 +53,6 @@
 
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -107,31 +71,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The Knowledge</a></li>
-<li class="chapter" data-level="2" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>2</b> Files</a><ul>
-<li class="chapter" data-level="2.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>2.1</b> Backup/sync</a></li>
-<li class="chapter" data-level="2.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>2.2</b> Encryption</a></li>
-<li class="chapter" data-level="2.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>2.3</b> File Transfer Protocol (FTP)</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a><ul>
+<li class="chapter" data-level="2" data-path="remote-working.html"><a href="remote-working.html"><i class="fa fa-check"></i><b>2</b> Remote Working</a></li>
+<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="vpn.html"><a href="vpn.html#what-is-a-vpn"><i class="fa fa-check"></i><b>3.1</b> <em>What is a VPN?</em></a></li>
 <li class="chapter" data-level="3.2" data-path="vpn.html"><a href="vpn.html#how-can-i-setup-the-vpn-for-liverpool"><i class="fa fa-check"></i><b>3.2</b> <em>How can I setup the VPN for Liverpool?</em></a></li>
 <li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#set-up-a-vpn-connection"><i class="fa fa-check"></i><b>3.3</b> Set up a VPN connection</a></li>
 <li class="chapter" data-level="3.4" data-path="vpn.html"><a href="vpn.html#how-to-use-the-globalprotect-vpn-client-to-access-the-university-network"><i class="fa fa-check"></i><b>3.4</b> How to use the GlobalProtect VPN Client to access the University network</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>4</b> Data Science Stack</a></li>
-<li class="chapter" data-level="5" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>5</b> Docker</a><ul>
-<li class="chapter" data-level="5.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>5.1</b> Installation</a></li>
-<li class="chapter" data-level="5.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>5.2</b> Useful Docker Commands</a></li>
+<li class="chapter" data-level="4" data-path="ssh-unix-commands.html"><a href="ssh-unix-commands.html"><i class="fa fa-check"></i><b>4</b> SSH Unix Commands</a></li>
+<li class="chapter" data-level="5" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>5</b> Files</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>5.1</b> Backup/sync</a></li>
+<li class="chapter" data-level="5.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>5.2</b> Encryption</a></li>
+<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3</b> File Transfer Protocol (FTP)</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>6</b> JupyterLab</a><ul>
-<li class="chapter" data-level="6.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>6.1</b> Local install</a></li>
-<li class="chapter" data-level="6.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>6.2</b> Remote install</a></li>
-<li class="chapter" data-level="6.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>6.3</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="6" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>6</b> Data Science Stack</a></li>
+<li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>7.1</b> Installation</a></li>
+<li class="chapter" data-level="7.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>7.2</b> Useful Docker Commands</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>7</b> RStudio server</a><ul>
-<li class="chapter" data-level="7.1" data-path="rstudio-server.html"><a href="rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
-<li class="chapter" data-level="7.2" data-path="rstudio-server.html"><a href="rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
-<li class="chapter" data-level="7.3" data-path="rstudio-server.html"><a href="rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful R Docker Images</a></li>
+<li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
+<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful Python Docker Images</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>9</b> RStudio server</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="rstudio-server.html"><a href="rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>9.1</b> Local install</a></li>
+<li class="chapter" data-level="9.2" data-path="rstudio-server.html"><a href="rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>9.2</b> Remote install</a></li>
+<li class="chapter" data-level="9.3" data-path="rstudio-server.html"><a href="rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>9.3</b> Useful R Docker Images</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -153,31 +124,37 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rstudio-server" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> RStudio server</h1>
-<p>This guide will help you set up a RStudio server running with Docker. The benefits of this approach is that it is more reliable and only involves one install, as opposed to several independent ones.</p>
-<div id="local-install-1" class="section level2">
-<h2><span class="header-section-number">7.1</span> Local install</h2>
+<div id="rstudio-server" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> RStudio server</h1>
+<p>This guide will help you set up a RStudio server running with Docker. The
+benefits of this approach is that it is more reliable and only involves one
+install, as opposed to several independent ones.</p>
+<div id="local-install-1" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Local install</h2>
 <p>If you are an R user; this is a great image to get you up and running with the tidyverse + various geospatial packages + Rstudio server:</p>
 <blockquote>
 <p><a href="https://hub.docker.com/r/rocker/geospatial"><code>https://hub.docker.com/r/rocker/geospatial</code></a></p>
 </blockquote>
 <p>To install…</p>
 <pre><code>docker pull rocker/geospatial</code></pre>
-<p>This will require a good internet connection and will take a while, but you only need to run it once.</p>
+<p>This will require a good internet connection and will take a while, but you
+only need to run it once.</p>
 <p>Once ready, you can start the instance as follows (Mac example):</p>
 <pre><code>docker run -d --name rstudio -v $HOME:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial</code></pre>
-<p>This maps your local home drive (<code>$HOME</code>) to a given directory in the container (in this case - <code>/home/rstudio/alex</code>). Using this approach, you can store files on your laptop’s drive, and access, edit or create new ones from the container (ie. using RStudio). The command above also sets up a password (<code>secret</code>) and username (<code>rstudio</code>) to use when you login to RStudio.</p>
+<p>This maps your local home drive (<code>$HOME</code>) to a given directory in the container (in this case - <code>/home/rstudio/alex</code>).
+Using this approach, you can store files on your laptop’s drive, and access, edit or create new ones from the container (ie. using RStudio).
+The command above also sets up a password (<code>secret</code>) and username (<code>rstudio</code>)
+to use when you login to RStudio.</p>
 <p>On Windows, this is similar (change <code>alexa</code> to your account name - look at your directory structure):</p>
 <pre><code>docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial</code></pre>
 <p>If this runs ok; you access Rstudio server through a browser at: <a href="http://localhost:8787"><code>http://localhost:8787</code></a></p>
 </div>
-<div id="remote-install-1" class="section level2">
-<h2><span class="header-section-number">7.2</span> Remote install</h2>
+<div id="remote-install-1" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Remote install</h2>
 <p>[Add here specifics to make this work across the wire in a secure way]</p>
 </div>
-<div id="useful-r-docker-images" class="section level2">
-<h2><span class="header-section-number">7.3</span> Useful R Docker Images</h2>
+<div id="useful-r-docker-images" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Useful R Docker Images</h2>
 
 </div>
 </div>
@@ -218,7 +195,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/07_RStudio.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08_RStudio.Rmd",
 "text": "Edit"
 },
 "history": {

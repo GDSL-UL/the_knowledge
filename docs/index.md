@@ -1,7 +1,7 @@
 --- 
 title: "The Knowledge"
 author: "Geographic Data Science Lab"
-date: "2020-03-19"
+date: "2020-05-27"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
