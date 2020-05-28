@@ -32,11 +32,40 @@ network (remember OneDrive is in the Cloud, not the university servers!).
 [Add guide to encryption: what it is and how to set up on
 Windows/macOS/Linux/iOS/Android]
 
-## File Transfer Protocol (FTP)
+## File Transfer
+
+There exists a number of ways through which data can be copied 
+loaded onto a remote sever. We shall discuss three such approaches
+in detail below, including: 
+
+1) File Transfer Protocol (FTP); 
+2) Secure Copy Protocol (scp);
+3) wget.
+
+### File Transfer Protocol (FTP)
 
 If you need to move large and/or many files from a local machine to a remote
 server (e.g. from your laptop to a Linux machine at the lab), you will
 probably want to use something like FTP. 
 
-[Add FTP guide here]
+Can be accessed using any FTP client (e.g., \href{https://filezilla-project.org/}{FileZilla)} using:
 
+Host: Remote Server IP Address (See servers spreadsheet).
+Username: Your username on the remote host.
+Password: Remote host password.
+
+MobileXTerm can be used to transfer files using FTP:
+
+### Secure Copy Protocol (scp)
+
+> scp ./dataset.zip user@remote_host:~/
+
+### wget
+
+Often data can be downloaded onto a remote server directly via a url. In these cases the wget command can be used to download the data. 
+
+> wget https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+
+Once the data has been downloaded we must verify that the integrity of the resource. Typically website from which data can be downloaded provide an md5 checkusum. This allows us to verify that a file has not been changed: 
+
+> md5sum cifar-10-python.tar.gz 
