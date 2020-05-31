@@ -80,7 +80,7 @@
 
 \title{The Knowledge}
 \author{Geographic Data Science Lab}
-\date{2020-05-27}
+\date{2020-05-31}
 
 \begin{document}
 \maketitle
@@ -113,6 +113,36 @@ These are the basic elements you will require, so if the answer to any of the ab
 
 \hypertarget{remote-working}{%
 \chapter{Remote Working}\label{remote-working}}
+
+\hypertarget{what-is-remote-working}{%
+\section{What is Remote Working?}\label{what-is-remote-working}}
+
+``Remote work refers to organizational work that is performed outside of the normal organizational confines of space and time. The term telecommuting refers to the substitution of communications capabilities for travel to a central work location. Office automation technology permits many office workers to be potential telecommuters in that their work can be performed remotely with computer and communications support'' \citep{olson1983remote}
+
+Some of the first trials of remote working date back to the eighties as reported by \citet{olson1983remote}. Since then, the spread and development of Information and Communication Technologies have brought about a significant increase in the popularity of remote work. Nowadays, it is possible to find fully remote jobs advertised particularly in IT and data science.
+
+The current pandemic has forced millions of workers at home, making remote work a necessity rather than an option. An early study on COVID-19 and remote work reported that in the US the fraction of workers who switched to working from home is about 34.1\%, while 14.6\% were already working from home pre-COVID-19 \citep{brynjolfsson2020covid}.
+
+Not all types of work are suitable to be performed from home \citep{holgersen2020and},
+but one of the impacts of these dramatic circumstances can be a further increase of the remote work practice.
+
+Computationally intensive tasks can be easily approached in a remote setting by accessing computing resources through the network. This document will guide you in accessing servers located in the Geographic Data Science Lab to perform heavy computations. However, an other increasingly popular option, that many companies are now implementing, is the use of cloud computing infrastructures such as Amazon Web Services (AWS), Salesforce's CRM system, Microsoft Azure.
+
+\hypertarget{advantages-and-disadvantages-of-remote-work}{%
+\section{Advantages and Disadvantages of Remote Work}\label{advantages-and-disadvantages-of-remote-work}}
+
+One of the most direct consequences of remote work is changes in commuting behaviours, bringing about time saving and a potential reduction in traffic congestion and air pollution. These were among the main points stressed by the early advocates for remote working, but researches in transportation studies have shown conflicting results. Although reductions in number and length of commuting trips is reported in some of the earlies studies \citep{Kitamura1991, olson1983remote}, more recent research shows that the expectation that home-based telework reduces travel is not so apparent \citep{e2018does} and time saving seems not to be a major pull factor \citep{bailey2002review}.
+
+The higher flexibility afforded by remote working is mentioned as an advantage, particularly for those who would have not taken part of the workforce without such settings because of caring committments \citep{olson1983remote}.
+
+Higher productivity of remote workers has been reported in some studies. However, it has to be noted that productivity and concentration at home are strongly dependent from environmental conditions \citep{bailey2002review}. Inequality in living conditions is an issue that we are clearly seeing during the coronavirus pandemic.
+
+One of the most cited drawbacks of remote working is professional and social isolation \citep{bailey2002review}, which can be also seen as making more difficoult collaborative work and collective workers actions.
+
+\hypertarget{tips}{%
+\section{Tips}\label{tips}}
+
+Here a collection of tips that have been shared on the internet on how to avoid burn out and be effective while working from home:
 
 \hypertarget{vpn}{%
 \chapter{VPN}\label{vpn}}
@@ -213,8 +243,80 @@ How to allow third party applications - like Global Protect - to install on a Ma
   Enter your computer username and password, then select Unlock
 \end{enumerate}
 
-\hypertarget{ssh-unix-commands}{%
-\chapter{SSH Unix Commands}\label{ssh-unix-commands}}
+\hypertarget{ssh}{%
+\chapter{SSH}\label{ssh}}
+
+\hypertarget{what-is-ssh}{%
+\section{What is SSH?}\label{what-is-ssh}}
+
+Secure Shell (SSH) is a cryptographic network protocol for accessing a computer over an unsecured network. It gives you secure access to a machine's command-line.
+Secure Shell provides strong password authentication and public key authentication, as well as encrypted data communications between two computers connecting over an open network, such as the internet. However, all computers within the University of Liverpool Network are not accessible from the open internet for security reasons.
+Therefore, to access a machine at the University you do not only need to be connected to the internet, but also to the Virtual Private Network (VPN) that \emph{virtually brings you to the University of Liverpool Network}.
+
+The use of SSH to connect to a remote host is performed through the following command:
+
+\begin{verbatim}
+ssh UserName@hostIPaddress 
+\end{verbatim}
+
+\begin{verbatim}
+The authenticity of host 'hostIPaddress' cannot be established.
+ DSA key fingerprint is 01:23:45:67:89:ab:cd:ef:ff:fe:dc:ba:98:76:54:32:10.
+ Are you sure you want to continue connecting (yes/no)?
+\end{verbatim}
+
+\hypertarget{unix-commands}{%
+\section{Unix Commands}\label{unix-commands}}
+
+Servers often run unix operating systems such as GNU/Linux. Unix commands are essential to perform operations from the terminal.
+
+The following are the most frequently used commands:
+
+\hypertarget{list-files}{%
+\subsection{List Files:}\label{list-files}}
+
+\begin{verbatim}
+user@host:~$ ls -lh
+\end{verbatim}
+
+\hypertarget{make-directory}{%
+\subsection{Make Directory:}\label{make-directory}}
+
+\begin{verbatim}
+user@host:~$ mkdir Fancy_Project
+\end{verbatim}
+
+\hypertarget{move}{%
+\subsection{Move:}\label{move}}
+
+\begin{verbatim}
+user@host:~/Fancy_Project$ mv example.txt new_name.txt  This is to change a file name
+user@host:~$ mv example.txt Fancy_Project/ This is to move a file to a folder
+user@host:~$ mv -r Fancy_Project/ New_Folder/ This is to move a folder with all its content to an other folder 
+\end{verbatim}
+
+\hypertarget{remove}{%
+\subsection{Remove:}\label{remove}}
+
+\begin{verbatim}
+user@host:~$ rm example.txt 
+user@host:~$ rm -r Fancy_Project/
+\end{verbatim}
+
+\hypertarget{change-your-working-directory}{%
+\subsection{Change your Working Directory:}\label{change-your-working-directory}}
+
+\begin{verbatim}
+user@host:~$ cd Fancy_Project/
+\end{verbatim}
+
+\hypertarget{copy}{%
+\subsection{Copy:}\label{copy}}
+
+\begin{verbatim}
+user@host:~$ cp ./path/filename1.txt ./path/filename2.txt
+user@host:~$ cp −r ./folder ./destination/
+\end{verbatim}
 
 \hypertarget{files}{%
 \chapter{Files}\label{files}}
