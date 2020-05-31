@@ -98,7 +98,7 @@ serve already has a Docker image installed, ready to be run.
 1. Launch the container:
 
     ```shell
-    docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0 start.sh
+    docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
     ```
 
     Note we are appending `start.sh` so it drops us into
@@ -123,6 +123,8 @@ serve already has a Docker image installed, ready to be run.
     ```
 1. Launch secure Lab: `jupyter lab`
 1. On your own machine (laptop/tablet), log in to `<server.ip.address>:8888` with the password you have set
+
+Upon accessing the notebook server your browser might warn you that your self-signed certificate is insecure or unrecognized. A fully compliant self-signed certificate is required to prevent these warnins. One approach towards solving this issue is to acquire a free SSL certificate via [Let’s Encrypt](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-let-s-encrypt). 
 
 ## Useful Python Docker Images
 
