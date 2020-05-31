@@ -75,39 +75,52 @@ a remote server you will need to enter the following into respective fields with
 Alternatively Mac and Linux users can copy files between servers using the scp command.
 To copy a local file to a remote server:
 
-> scp \<filepath\> \<username\>@\<server.ip.address\>:\<target_directory\>
+```shell
+scp <filepath> <username>@<server.ip.address>:<target_directory>
+```
 
 This command can also be use to copy a file from the remote server to your local machine:
 
-> scp \<username\>@\<server.ip.address\>:\<filepath\> \<local_target_directory\>/
+```shell
+scp <username>@<server.ip.address>:<filepath> <local_target_directory>/
+```
 
 As with copying file locally -r can be added to the above command to recursively copy
 all files within a directory. However, if a directory contains a large number of files
 then zip your directory before executing scp. The zip file can be unzipped using:
 
-> unzip \<filename\>.zip -d \<target_directory\>
+```shell
+unzip <filename>.zip -d <target_directory>
+```
 
 Tar files meanwhile can be extracted using:
 
-> tar -xvzf \<filename\>.tar.gz -C \<target_directory\>
+```shell
+tar -xvzf <filename>.tar.gz -C <target_directory>
+```
 
 ## File Download
 
 Often large datasets, etc can be downloaded from the web directly. 
 The wget command can be used to download files from both http(s) 
 
-
-> wget '\<file_url\>'
+```shell
+wget '<file_url>'
+```
 
 and ftp servers:
 
-> wget -r 'ftp://<username\>:\<password\>@\<server.ip.address\>/\<directory\>'
+```shell
+wget -r 'ftp://<username>:<password>@<server.ip.address>/<directory>'
+```
 
 Once the data has been downloaded we must verify that the integrity of the file. 
 Typically the websites from which data can be downloaded provide a md5 checksum. 
 This allows us to verify that a file has not been changed: 
 
-> md5sum \<filename\>
+```shell
+md5sum <filename>
+```
 
 ## Practical
 
@@ -122,7 +135,9 @@ specified target directory using the ls command.
 1) (Optional) Open the file using a 
 [command line editing interface](https://en.wikipedia.org/wiki/List_of_text_editors) from the terminal, e.g, nano or vim:
 
-> nano ./Test.txt
+```shell
+nano ./Test.txt
+```
 
 ### File Download
 
