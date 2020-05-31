@@ -101,7 +101,17 @@
 <ul>
 <li class="chapter" data-level="5.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>5.1</b> Backup/sync</a></li>
 <li class="chapter" data-level="5.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>5.2</b> Encryption</a></li>
-<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer"><i class="fa fa-check"></i><b>5.3</b> File Transfer</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3.1</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="files.html"><a href="files.html#secure-copy-protocol-scp"><i class="fa fa-check"></i><b>5.3.2</b> Secure Copy Protocol (scp)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="files.html"><a href="files.html#file-download"><i class="fa fa-check"></i><b>5.4</b> File Download</a></li>
+<li class="chapter" data-level="5.5" data-path="files.html"><a href="files.html#practical"><i class="fa fa-check"></i><b>5.5</b> Practical</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="files.html"><a href="files.html#file-transfer-1"><i class="fa fa-check"></i><b>5.5.1</b> File Transfer</a></li>
+<li class="chapter" data-level="5.5.2" data-path="files.html"><a href="files.html#file-download-1"><i class="fa fa-check"></i><b>5.5.2</b> File Download</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>6</b> Data Science Stack</a></li>
 <li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a>
@@ -112,8 +122,12 @@
 <li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
-<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>8.2</b> Remote Install</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="jupyterlab.html"><a href="jupyterlab.html#self-signed-certificate-warnings"><i class="fa fa-check"></i><b>8.2.1</b> Self-signed Certificate Warnings</a></li>
+</ul></li>
 <li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="8.4" data-path="jupyterlab.html"><a href="jupyterlab.html#practical-1"><i class="fa fa-check"></i><b>8.4</b> Practical</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>9</b> RStudio server</a>
 <ul>
@@ -180,6 +194,9 @@ your laptop and scale to a server (e.g. running out of the lab).</p>
 <p>Stop and remove a particular container - replace ID; with the specific ID from the above (listed under CONTAINER ID) - if everything has crashed</p>
 <pre><code>docker stop ID
 docker rm -f ID</code></pre>
+<p>To detach from a running docker session without exiting the shell, the escape sequence <em>CTRL + p</em> followed by <em>CTRL + q</em> can be used.
+To re-attach the terminal to the docker session enter:</p>
+<pre><code>docker attach &lt;session_id&gt;</code></pre>
 
 </div>
 </div>

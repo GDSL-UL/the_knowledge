@@ -101,7 +101,17 @@
 <ul>
 <li class="chapter" data-level="5.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>5.1</b> Backup/sync</a></li>
 <li class="chapter" data-level="5.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>5.2</b> Encryption</a></li>
-<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer"><i class="fa fa-check"></i><b>5.3</b> File Transfer</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3.1</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="files.html"><a href="files.html#secure-copy-protocol-scp"><i class="fa fa-check"></i><b>5.3.2</b> Secure Copy Protocol (scp)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="files.html"><a href="files.html#file-download"><i class="fa fa-check"></i><b>5.4</b> File Download</a></li>
+<li class="chapter" data-level="5.5" data-path="files.html"><a href="files.html#practical"><i class="fa fa-check"></i><b>5.5</b> Practical</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="files.html"><a href="files.html#file-transfer-1"><i class="fa fa-check"></i><b>5.5.1</b> File Transfer</a></li>
+<li class="chapter" data-level="5.5.2" data-path="files.html"><a href="files.html#file-download-1"><i class="fa fa-check"></i><b>5.5.2</b> File Download</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>6</b> Data Science Stack</a></li>
 <li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a>
@@ -112,8 +122,12 @@
 <li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
-<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>8.2</b> Remote Install</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="jupyterlab.html"><a href="jupyterlab.html#self-signed-certificate-warnings"><i class="fa fa-check"></i><b>8.2.1</b> Self-signed Certificate Warnings</a></li>
+</ul></li>
 <li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="8.4" data-path="jupyterlab.html"><a href="jupyterlab.html#practical-1"><i class="fa fa-check"></i><b>8.4</b> Practical</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>9</b> RStudio server</a>
 <ul>
@@ -145,10 +159,10 @@
 <h1><span class="header-section-number">Chapter 5</span> Files</h1>
 <p>You need to make sure that:</p>
 <ol style="list-style-type: lower-alpha">
-<li>You have access to all of your files</li>
-<li>Your files are backed up so your setup is not entirely reliant on a single device</li>
+<li>You have access to all of your files;</li>
+<li>Your files are backed up so your setup is not entirely reliant on a single device;</li>
 <li>Each device on which your files are copied or from which they are accessed
-is encrypted</li>
+is encrypted.</li>
 </ol>
 <div id="backupsync" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Backup/sync</h2>
@@ -170,16 +184,107 @@ network (remember OneDrive is in the Cloud, not the university servers!).</p>
 </div>
 <div id="encryption" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Encryption</h2>
-<p>[Add guide to encryption: what it is and how to set up on
-Windows/macOS/Linux/iOS/Android]</p>
+<!---[Add guide to encryption: what it is and how to set up on
+Windows/macOS/Linux/iOS/Android]--->
+<p>Disk encryption helps protect data on your devices through converting
+them into an unreadable format. Deciphering the data without access to the
+required keys is challenging. Therefore, should your devices be lost or stolen,
+encrypting your devices therefore introduces an additional barrier for someone
+attempting to access potentially sensitive data. Please note that, as per
+University of Liverpool guidelines,
+<a href="https://www.liverpool.ac.uk/csd/security/information-security/encryption/">“the security of confidential information is the responsibility of the individual
+member of staff or student NOT the University, nor the line manager or Head of
+Department”</a>.
+Encryption methods are platform dependent. A list of relevant guides is provided below:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://www.liverpool.ac.uk/csd/security/information-security/encryption/">Windows</a></li>
+<li><a href="https://support.apple.com/en-gb/guide/disk-utility/dskutl35612/mac">Mac</a></li>
+<li><a href="https://help.ubuntu.com/community/Full_Disk_Encryption_Howto_2019">Ubuntu</a></li>
+<li><a href="https://support.apple.com/en-gb/guide/security/secf6276da8a/1/web/1">iOS</a></li>
+<li><a href="https://www.howtogeek.com/141953/how-to-encrypt-your-android-phone-and-why-you-might-want-to/">Android</a></li>
+</ol>
 </div>
-<div id="file-transfer-protocol-ftp" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> File Transfer Protocol (FTP)</h2>
+<div id="file-transfer" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> File Transfer</h2>
+<p>Below we shall discuss two approaches that can be used to transfer files between
+two servers:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://en.wikipedia.org/wiki/File_Transfer_Protocol">File Transfer Protocol (FTP)</a>;</li>
+<li><a href="https://en.wikipedia.org/wiki/Secure_copy">Secure Copy Protocol (scp)</a>.</li>
+</ol>
+<div id="file-transfer-protocol-ftp" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> File Transfer Protocol (FTP)</h3>
 <p>If you need to move large and/or many files from a local machine to a remote
-server (e.g. from your laptop to a Linux machine at the lab), you will
-probably want to use something like FTP.</p>
-<p>[Add FTP guide here]</p>
+server (e.g. from your laptop to a Linux machine at the lab), you can do so
+using a drag and drop interface with an FTP client (e.g., <a href="https://filezilla-project.org/">filezilla</a>
+for Windows/Mac/Ubuntu or <a href="https://winscp.net/eng/index.php">WinSCP</a> for Windows). To access
+a remote server you will need to enter the following into respective fields within your FTP client:</p>
+<ul>
+<li>Host (Remote Server IP Address);</li>
+<li>Username (Your username on the remote host);</li>
+<li>Password (Remote host password).</li>
+</ul>
+</div>
+<div id="secure-copy-protocol-scp" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Secure Copy Protocol (scp)</h3>
+<p>Alternatively Mac and Linux users can copy files between servers using the scp command.
+To copy a local file to a remote server:</p>
+<pre class="shell"><code>scp &lt;filepath&gt; &lt;username&gt;@&lt;server.ip.address&gt;:&lt;target_directory&gt;</code></pre>
+<p>This command can also be use to copy a file from the remote server to your local machine:</p>
+<pre class="shell"><code>scp &lt;username&gt;@&lt;server.ip.address&gt;:&lt;filepath&gt; &lt;local_target_directory&gt;/</code></pre>
+<p>As with copying file locally -r can be added to the above command to recursively copy
+all files within a directory. However, if a directory contains a large number of files
+then zip your directory before executing scp. The zip file can be unzipped using:</p>
+<pre class="shell"><code>unzip &lt;filename&gt;.zip -d &lt;target_directory&gt;</code></pre>
+<p>Tar files meanwhile can be extracted using:</p>
+<pre class="shell"><code>tar -xvzf &lt;filename&gt;.tar.gz -C &lt;target_directory&gt;</code></pre>
+</div>
+</div>
+<div id="file-download" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> File Download</h2>
+<p>Often large datasets, etc can be downloaded from the web directly.
+The wget command can be used to download files from both http(s)</p>
+<pre class="shell"><code>wget &#39;&lt;file_url&gt;&#39;</code></pre>
+<p>and ftp servers:</p>
+<pre class="shell"><code>wget -r &#39;ftp://&lt;username&gt;:&lt;password&gt;@&lt;server.ip.address&gt;/&lt;directory&gt;&#39;</code></pre>
+<p>Once the data has been downloaded we must verify that the integrity of the file.
+Typically the websites from which data can be downloaded provide a md5 checksum.
+This allows us to verify that a file has not been changed:</p>
+<pre class="shell"><code>md5sum &lt;filename&gt;</code></pre>
+</div>
+<div id="practical" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Practical</h2>
+<div id="file-transfer-1" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> File Transfer</h3>
+<ol style="list-style-type: decimal">
+<li>Create a file named “Test.txt” locally and enter some random text.
+From your local machine copy “Test.txt” to your remote server using either
+scp or a ftp client (e.g., using <a href="https://winscp.net/eng/index.php">WinSCP</a>
+or <a href="https://filezilla-project.org/">filezilla</a>).</li>
+<li>Upon transferring the file, ssh into the remote server and verify that the file is within the
+specified target directory using the ls command.</li>
+<li>(Optional) Open the file using a
+<a href="https://en.wikipedia.org/wiki/List_of_text_editors">command line editing interface</a> from the terminal, e.g, nano or vim:</li>
+</ol>
+<pre class="shell"><code>nano ./Test.txt</code></pre>
+</div>
+<div id="file-download-1" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> File Download</h3>
+<p>For the second task we shall download the CIFAR-10 dataset from
+<a href="https://www.cs.toronto.edu/~kriz/cifar.html">https://www.cs.toronto.edu/~kriz/cifar.html</a>
+using the wget command.</p>
+<ol style="list-style-type: decimal">
+<li>First we will need to determine the url from which we can download the dataset.
+Visit the <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10 website</a>, right
+click on the “CIFAR-10 python version”, and choose the “copy link” option,
+which will copy the link to your clipboard.</li>
+<li>Next, ssh into your remote server.</li>
+<li>Type “wget” and paste the url into to the terminal by pressing (ctrl + shift + V).</li>
+<li>Press enter to start the file download.</li>
+<li>Upon downloading the CIFAR-10 dataset verify that the md5 checksum matches the one specified on the website.</li>
+</ol>
 
+</div>
 </div>
 </div>
             </section>

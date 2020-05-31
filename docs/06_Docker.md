@@ -41,3 +41,10 @@ docker stop ID
 docker rm -f ID
 ```
 
+To detach from a running docker session without exiting the shell, the escape sequence *CTRL + p* followed by *CTRL + q* can be used.
+To re-attach the terminal to the docker session enter:
+
+```
+docker attach <session_id>
+```
+

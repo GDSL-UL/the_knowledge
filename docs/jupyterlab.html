@@ -101,7 +101,17 @@
 <ul>
 <li class="chapter" data-level="5.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>5.1</b> Backup/sync</a></li>
 <li class="chapter" data-level="5.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>5.2</b> Encryption</a></li>
-<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer"><i class="fa fa-check"></i><b>5.3</b> File Transfer</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3.1</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="files.html"><a href="files.html#secure-copy-protocol-scp"><i class="fa fa-check"></i><b>5.3.2</b> Secure Copy Protocol (scp)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="files.html"><a href="files.html#file-download"><i class="fa fa-check"></i><b>5.4</b> File Download</a></li>
+<li class="chapter" data-level="5.5" data-path="files.html"><a href="files.html#practical"><i class="fa fa-check"></i><b>5.5</b> Practical</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="files.html"><a href="files.html#file-transfer-1"><i class="fa fa-check"></i><b>5.5.1</b> File Transfer</a></li>
+<li class="chapter" data-level="5.5.2" data-path="files.html"><a href="files.html#file-download-1"><i class="fa fa-check"></i><b>5.5.2</b> File Download</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>6</b> Data Science Stack</a></li>
 <li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a>
@@ -112,8 +122,12 @@
 <li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>8.1</b> Local install</a></li>
-<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>8.2</b> Remote install</a></li>
+<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>8.2</b> Remote Install</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="jupyterlab.html"><a href="jupyterlab.html#self-signed-certificate-warnings"><i class="fa fa-check"></i><b>8.2.1</b> Self-signed Certificate Warnings</a></li>
+</ul></li>
 <li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="8.4" data-path="jupyterlab.html"><a href="jupyterlab.html#practical-1"><i class="fa fa-check"></i><b>8.4</b> Practical</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>9</b> RStudio server</a>
 <ul>
@@ -163,7 +177,7 @@ to go.</p>
 <p>Once the command above has finished installing your GDS stack, you are ready to go! To get a Jupyter session started, you can follow these steps:</p>
 <ol style="list-style-type: decimal">
 <li><p>Run on the same terminal as above the following command:</p>
-<pre class="shell"><code>docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0</code></pre></li>
+<pre class="shell"><code>docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0</code></pre></li>
 </ol>
 <p>The command above spins up a container of the <code>gds</code> image, version 4.0 and
 ensures it is connected through two main bridges:</p>
@@ -211,7 +225,7 @@ on the left-side pane.</p></li>
 </ol>
 </div>
 <div id="remote-install" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Remote install</h2>
+<h2><span class="header-section-number">8.2</span> Remote Install</h2>
 <p>It is also possible to start a Jupyter server as above but, instead of run it
 on your local machine, it can run on a remote machine and you connect to that
 through your browser over the internet. The process in this context is a bit
@@ -225,7 +239,7 @@ serve already has a Docker image installed, ready to be run.</p>
 </ul>
 <ol style="list-style-type: decimal">
 <li><p>Launch the container:</p>
-<pre class="shell"><code>docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0 start.sh</code></pre>
+<pre class="shell"><code>docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  </code></pre>
 <p>Note we are appending <code>start.sh</code> so it drops us into
 the command line of the container rather than launching the server directly</p></li>
 <li><p>Run <code>jupyter notebook --generate-config</code></p></li>
@@ -247,6 +261,13 @@ c.NotebookApp.port = 8888
 <li><p>Launch secure Lab: <code>jupyter lab</code></p></li>
 <li><p>On your own machine (laptop/tablet), log in to <code>&lt;server.ip.address&gt;:8888</code> with the password you have set</p></li>
 </ol>
+<div id="self-signed-certificate-warnings" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Self-signed Certificate Warnings</h3>
+<p>Upon accessing the notebook server your browser might warn you that your self-signed certificate is
+insecure or unrecognized. A fully compliant self-signed certificate is required to prevent these warnins.
+One approach towards solving this issue is to acquire a free SSL certificate via
+<a href="https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-let-s-encrypt">Let’s Encrypt</a>.</p>
+</div>
 </div>
 <div id="useful-python-docker-images" class="section level2" number="8.3">
 <h2><span class="header-section-number">8.3</span> Useful Python Docker Images</h2>
@@ -256,6 +277,13 @@ for Geographid Data Science in Jupyter (Python &amp; R)</li>
 <li><a href="https://github.com/jupyter/docker-stacks"><code>jupyter-stacks</code></a>: official
 Jupyter stacks (the <code>gds_env</code> is based on these)</li>
 </ul>
+</div>
+<div id="practical-1" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Practical</h2>
+<p>Follow the steps in the Remote Install section to run jupyter lab on one of the remote servers.</p>
+<p>Note that you will need to use the command line editing software nano to edit update jupyter_notebook_config.py:</p>
+<pre class="shell"><code>nano /home/jovyan/.jupyter/jupyter_notebook_config.py</code></pre>
+<p>A guide to using nano can be found <a href="https://www.howtogeek.com/howto/42980/the-beginners-guide-to-nano-the-linux-command-line-text-editor/">here</a>.</p>
 
 </div>
 </div>
