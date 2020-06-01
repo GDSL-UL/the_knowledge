@@ -1,16 +1,18 @@
-# RStudio server
+# Docker Containers for R
 
-This guide will help you set up a RStudio server running with Docker. The
-benefits of this approach is that it is more reliable and only involves one
-install, as opposed to several independent ones.
+A widely-used suite of docker images for R has been developed by the Rocker project [@RJ-2017-065]. 29 repositories of rocker's images are listed on the [docker hub](https://hub.docker.com/u/rocker/) providing R environments customized to perform a variety of tasks. Most of them include R studio server, allowing to work remotely from the R studio server web interface accessible through any browser.
 
-## Local install
+Rocker images are versioned, meaning that if you want to employ a specific version of R rather than the latest you can specify an R version tag in the image name, i.e. *rocker/verse:3.4.0*, if no tag is requested you will automatically pull the latest version [@RJ-2017-065]. 
 
-If you are an R user; this is a great image to get you up and running with the tidyverse + various geospatial packages + Rstudio server:
+## Run Docker Locally
+
+To run one of the rocker images locally on your laptop you need to install docker as described in - par ref - and pull the image of your choise from docker hub. 
+
+A great image with the tidyverse + various geospatial packages + Rstudio server is rocker geospatial:
 
 > [`https://hub.docker.com/r/rocker/geospatial`](https://hub.docker.com/r/rocker/geospatial)
 
-To install...
+You can pull the repository running the following command:
 
 ```
 docker pull rocker/geospatial
@@ -19,13 +21,11 @@ docker pull rocker/geospatial
 This will require a good internet connection and will take a while, but you
 only need to run it once.
 
-Once ready, you can start the instance as follows (Mac example):
+Once the image is on your local machine, you can run it with the following command:
 
 ```
-docker run -d --name rstudio -v $HOME:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial
+docker run -d --name rstudio -v ${PWD}:/data -e PASSWORD=secret -p 8787:8787 rocker/geospatial
 ```
-
-This maps your local home drive (`$HOME`) to a given directory in the container (in this case - `/home/rstudio/alex`). 
 Using this approach, you can store files on your laptop's drive, and access, edit or create new ones from the container (ie. using RStudio).
 The command above also sets up a password (`secret`) and username (`rstudio`)
 to use when you login to RStudio.
@@ -38,10 +38,20 @@ docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=s
 
 If this runs ok; you access Rstudio server through a browser at: [`http://localhost:8787`](http://localhost:8787)
 
-## Remote install
+## Run Docker Remotely
 
-[Add here specifics to make this work across the wire in a secure way]
+Docker is installed on all our shared resources. Most machines already have images that can be used for gds. Rocker/geospatial has been extended to have all libraries that GDSL members generally use -link to the image-. 
 
-## Useful R Docker Images
+Once you accessed the server you can list the existing images with the following command:
+
+```
+docker images ls
+```
+check ports
+
+run command same specifics of user names and psw.
+
+
+
 
 

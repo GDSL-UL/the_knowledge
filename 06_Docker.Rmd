@@ -27,13 +27,35 @@ The steps to install Docker include:
       "Shared Drives" tab; click on the drive you want to add and then "Apply"
     - `macOS`: this feature is automatically enabled
 
+## Image and Container
+
+Image and Container are two key concepts to understand Docker processes.
+
+Images are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.
+
+Containers are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.
+
 ## Useful Docker Commands
 
-See what containers are running (this also shows you the ID - this is useful to know then R-studio crashes...)
+List available images :
+
+```
+docker image ls
+```
+
+See what containers are running (this also shows you the ID and which port is occupying):
 
 ```
 docker ps
 ```
+The run command instantiates an image in an isolated container. The generic command is:
+
+```
+docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
+```
+Options that are generally added are:
+
+
 Stop and remove a particular container - replace ID; with the specific ID from the above (listed under CONTAINER ID) - if everything has crashed
 
 ```
