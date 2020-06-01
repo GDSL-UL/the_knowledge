@@ -28,7 +28,7 @@ Once the command above has finished installing your GDS stack, you are ready to 
 1. Run on the same terminal as above the following command:
 
     ```shell
-    docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0
+    docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0
     ```
 
 The command above spins up a container of the `gds` image, version 4.0 and
@@ -79,7 +79,7 @@ done using Jupyter, otherwise it will crash.
    You can then access the files in your computer through the `work` directory
    on the left-side pane.
 
-## Remote install
+## Remote Install
 
 It is also possible to start a Jupyter server as above but, instead of run it
 on your local machine, it can run on a remote machine and you connect to that
@@ -98,7 +98,7 @@ serve already has a Docker image installed, ready to be run.
 1. Launch the container:
 
     ```shell
-    docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0 start.sh
+    docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
     ```
 
     Note we are appending `start.sh` so it drops us into
@@ -124,6 +124,13 @@ serve already has a Docker image installed, ready to be run.
 1. Launch secure Lab: `jupyter lab`
 1. On your own machine (laptop/tablet), log in to `<server.ip.address>:8888` with the password you have set
 
+### Self-signed Certificate Warnings
+
+Upon accessing the notebook server your browser might warn you that your self-signed certificate is 
+insecure or unrecognized. A fully compliant self-signed certificate is required to prevent these warnins. 
+One approach towards solving this issue is to acquire a free SSL certificate via 
+[Let’s Encrypt](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-let-s-encrypt). 
+
 ## Useful Python Docker Images
 
 - [`gds_env`](https://github.com/darribas/gds_env): a containerised platform
@@ -131,3 +138,15 @@ serve already has a Docker image installed, ready to be run.
 - [`jupyter-stacks`](https://github.com/jupyter/docker-stacks): official
   Jupyter stacks (the `gds_env` is based on these)
 
+## Practical
+
+Follow the steps in the Remote Install section to run jupyter lab on one of the remote servers.
+
+Note that you will need to use the command line editing software nano to edit update jupyter_notebook_config.py:
+
+
+```shell
+nano /home/jovyan/.jupyter/jupyter_notebook_config.py
+```
+
+A guide to using nano can be found [here](https://www.howtogeek.com/howto/42980/the-beginners-guide-to-nano-the-linux-command-line-text-editor/). 
