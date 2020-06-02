@@ -45,4 +45,3 @@ This interface will allow you to monitor the memory usage, volatile GPU utility,
 
 When servers are situated within a non-air conditioned room it is also worth keeping an eye on the GPUs temperature, in particular when the server houses multiple GPUs. 
 
-## References
