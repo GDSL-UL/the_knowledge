@@ -28,6 +28,12 @@ The free edition can be downloaded [here](https://mobaxterm.mobatek.net/download
 If this is your first time connecting to the server, or if the server has recently been 
 reconfigured with a new key, then the above message is perfectly normal. You can proceed by typing yes and enter.  
 
+Once you have accessed the server the first thing to do is to change the temprorary password we assigned to your user.
+
+```shell
+user@host:~$ passwd
+```
+
 ## Unix Commands
 
 Servers often run unix operating systems such as GNU/Linux. Unix commands are essential to perform operations from the terminal.
@@ -98,7 +104,13 @@ user@host:~$ cp −r <directory> <target>
 ## Command Line Editors
 
 There exists a large number of [command line editors](https://en.wikipedia.org/wiki/List_of_text_editors) 
-that can be used to edit files directly within the terminal. Below we provide instructions for using the
+that can be used to edit files directly within the terminal. 
+To create a file from the terminal you can simply type the following command:
+```shell
+user@host:~$ > filename.txt
+```
+
+ Below we provide instructions for using the
 [nano editor](https://www.nano-editor.org/). To open a file in nano run the following command inside the 
 terminal:
 
@@ -171,3 +183,20 @@ M-E             Redo the last undone operation
 
 ...
 ```
+
+## Practical
+
+Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).
+
+Change the current temporary password with a password of your choice.
+
+Create a directory with your project name.
+
+List files to check that the directory is created.
+
+Change your working directory with the project directory.
+
+Create a file, edit and save.
+
+
+
