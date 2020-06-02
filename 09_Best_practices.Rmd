@@ -2,7 +2,7 @@
 
 Look at the Server information
 
-Book the Server with our booking system detailing your name, short description of tasks, forseen resources used (i.e. gpu -allow memory grow-, cpu threads,ram)
+Book the Server with our booking system detailing your name, short description of tasks, forseen resources used (i.e. gpu -allow memory grow-, cpu threads,ram) - the booking system will be either an excel file or a shared calendar  
 
 Always check what are the existing images before pulling a new one with docker image ls
  
