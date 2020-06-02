@@ -124,79 +124,21 @@ using **Ctrl + O**. To close the editor press **Ctrl + X**. Before the editor
 closes you will be asked if you want to save your changes. Type Y for Yes to
 save changes, and N for No if you want to close the editor without saving.
 
-For an overview of nano shortcut keys you can press **Ctrl + G**, which will output the following list:
-
-```shell
- Main nano help text
-
- The nano editor is designed to emulate the functionality and ease-of-use
- of the UW Pico text editor.  There are four main sections of the editor.
- The top line shows the program version, the current filename being
- edited, and whether or not the file has been modified.  Next is the main
- editor window showing the file being edited.  The status line is the
- third line from the bottom and shows important messages.  The bottom two
- lines show the most commonly used shortcuts in the editor.
-
- The notation for shortcuts is as follows: Control-key sequences are
- notated with a caret (^) symbol and can be entered either by using the
- Control (Ctrl) key or pressing the Escape (Esc) key twice.  Escape-key
- sequences are notated with the Meta (M-) symbol and can be entered using
- either the Esc, Alt, or Meta key depending on your keyboard setup.  Also,
- pressing Esc twice and then typing a three-digit decimal number from 000
- to 255 will enter the character with the corresponding value.  The
- following keystrokes are available in the main editor window.
- Alternative keys are shown in parentheses:
-
-^G    (F1)      Display this help text
-^X    (F2)      Close the current file buffer / Exit from nano
-^O    (F3)      Write the current file to disk
-^R    (F5)      Insert another file into the current one
-
-^W    (F6)      Search for a string or a regular expression
-^\    (M-R)     Replace a string or a regular expression
-^K    (F9)      Cut the current line and store it in the cutbuffer
-^U    (F10)     Uncut from the cutbuffer into the current line
-
-^J    (F4)      Justify the current paragraph
-^T    (F12)     Invoke the spell checker, if available
-                Invoke the linter, if available
-                Invoke formatter, if available
-
-^C    (F11)     Display the position of the cursor
-^_    (M-G)     Go to line and column number
-
-^Y    (F7)      Go one screenful up
-^V    (F8)      Go one screenful down
-M-\   (M-|)     Go to the first line of the file
-M-/   (M-?)     Go to the last line of the file
-
-M-W   (F16)     Repeat the last search
-M-]             Go to the matching bracket
-^^    (M-A)     Mark text starting from the cursor position
-M-^   (M-6)     Copy the current line and store it in the cutbuffer
-
-M-}             Indent the current line
-M-{             Unindent the current line
-
-M-U             Undo the last operation
-M-E             Redo the last undone operation
-
-...
-```
+For an overview of nano shortcut keys you can press **Ctrl + G**, which will output the following list.
 
 ## Practical
 
-Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).
+1) Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).
 
-Change the current temporary password with a password of your choice.
+1) Change the current temporary password with a password of your choice.
 
-Create a directory with your project name.
+1) Create a directory with your project name.
 
-List files to check that the directory is created.
+1) List files to check that the directory is created.
 
-Change your working directory with the project directory.
+1) Change your working directory with the project directory.
 
-Create a file, edit and save.
+1) Create a file, edit and save using nano.
 
 
 
