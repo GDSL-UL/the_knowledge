@@ -206,9 +206,9 @@ your laptop and scale to a server (e.g. running out of the lab).</p>
 <div id="image-and-container" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Image and Container</h2>
 <p>Docker can be seen as a tool to generate a computer within your computer (the host). This creates a working environment that employs the host’s resources but follows its own internal rules.</p>
-<p>Image and Container are two key concepts to understand Docker processes.</p>
-<p>Images are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.</p>
-<p>Containers are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.</p>
+<p><strong>Image</strong> and <strong>Container</strong> are two key concepts to understand Docker processes.</p>
+<p><strong>Images</strong> are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.</p>
+<p><strong>Containers</strong> are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.</p>
 </div>
 <div id="useful-docker-commands" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Useful Docker Commands</h2>
@@ -227,7 +227,7 @@ your laptop and scale to a server (e.g. running out of the lab).</p>
 <p>All other options are listed <a href="https://docs.docker.com/engine/reference/commandline/run/">here</a></p>
 <p>To stop the container you have been running you need to send the following commands:</p>
 <p>if you have not added -d to the run command, detach from the container with the escape sequence.</p>
-<pre class="shell"><code>docker ps   **to get the Container ID**
+<pre class="shell"><code>docker ps   to get the Container ID
 docker stop &lt;container-ID&gt;  </code></pre>
 <p>if you have not added -rm option you need to manually remove the container</p>
 <pre class="shell"><code>docker rm -f &lt;container-ID&gt;</code></pre>
