@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 VPN | The Knowledge</title>
+  <title>Chapter 9 Docker Containers for R | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 VPN | The Knowledge" />
+  <meta property="og:title" content="Chapter 9 Docker Containers for R | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 VPN | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 9 Docker Containers for R | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="remote-working.html"/>
-<link rel="next" href="ssh.html"/>
+<link rel="prev" href="jupyterlab.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -164,136 +164,68 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="vpn" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> VPN</h1>
-<div id="what-is-a-vpn" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> <em>What is a VPN?</em></h2>
-<p>A VPN (virtual private network) connects a machine that lies outside of the university (ie. outside the firewall) to the internal network. When the VPN is running, your network traffic (e.g. Internet) is routed through the university in the same way as if the computer was on your work desk. This enables you to:</p>
-<ul>
-<li>Access journal websites like you would inside the university</li>
-<li>Access network drives (e.g. M Drive etc) - but be careful when transferring big files</li>
-<li>Access servers (e.g. over the terminal / command line / ftp)</li>
-</ul>
-</div>
-<div id="how-can-i-setup-the-vpn-for-liverpool" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> <em>How can I setup the VPN for Liverpool?</em></h2>
-<!--You can find a more comprehensive guide to setup your VPN on the
-[`setup_vpn.md`](setup_vpn.md) document of this repository. -->
-<p>This document describes how to set up a VPN. <!--The text below has been copied from CSD website.--></p>
-<p>To access the VPN service:</p>
-<p><strong>1. Register</strong></p>
-<p>First you will need to submit <a href="https://liverpool.service-now.com/sp?id=sc_cat_item&amp;sys_id=bd8d37f1376ba60051a3532e53990e3f">a request to register for the VPN service via CSD</a>. CSD will need you to explain why you require VPN access and what you intend to do with it. <!--It may be that other services offer the solution you require instead of the VPN.--></p>
-<p><strong>2. Download the VPN Client</strong></p>
-<p>Once your registration is confirmed you will need to download and install a VPN Client.</p>
-<p><strong>3. Open the client and connect</strong></p>
-<p>Finally you will need to connect to the VPN using your VPN client. Below we provide instructions on how to accomplish this on Windows, Mac and Ubuntu.</p>
-</div>
-<div id="windows-and-mac" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Windows and Mac</h2>
-<p>You must make sure you are registered to access the VPN service first.
-Once you are registered you can download and install the GlobalProtect VPN Client to connect to the University network.
-GlobalProtect is compatible with Windows 10 and Macs.
-Please access admin rights before attempting to download the VPN Client on your MWS PC.
-It is not possible to use GlobalProtect to connect to the University network on a mobile or tablet device.</p>
-<p>To install the Client:</p>
-<ol style="list-style-type: decimal">
-<li><p>Access Admin Rights on you PC.</p></li>
-<li><p>Visit <a href="https://vpn.liv.ac.uk" class="uri">https://vpn.liv.ac.uk</a></p></li>
-<li><p>Enter your University username and password to login to the VPN portal.</p></li>
-<li><p>Click the appropriate link to download the required version of the VPN client - Windows 32 bit, Windows 64 bit, or Mac OS.
-(To check which version you require, see your system properties on your device)</p></li>
-<li><p>Once the file has downloaded, double-click to run the installation.</p></li>
-<li><p>Follow the steps through the installation wizard, accepting the default options.</p></li>
-<li><p>Once installed you will see the GlobalProtect “globe” icon appear in the system tray (bottom right, near the clock).
-It is a globe and it will have a red x on it, showing that it is not currently connected.</p></li>
-<li><p>Double-click on the GlobalProtectglobe icon in the system tray. In the window that opens, enter the following:</p>
-<ul>
-<li>Username: enter your University username</li>
-<li>Password: enter your University password</li>
-<li>Portal: vpn.liv.ac.uk</li>
-</ul></li>
-<li><p>Click Apply.</p></li>
-</ol>
-<p>The GlobalProtect VPN client will then automatically connect to the University network - the red cross should disappear form the icon in the system tray.</p>
-<p>You can close the window: the client will stay connected.</p>
-<div id="to-connect-and-disconnect-the-client" class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> To connect and disconnect the client</h3>
-<p>Once the GlobalConnect VPN client has been installed, the icon will remain in your system tray.</p>
-<p>To connect the VPN right click the GlobalProtect icon in the system tray and choose Connect.
-When you have finished and want to disconnect the VPN, right click on the icon and choose Disconnect.</p>
-<p>How to allow third party applications - like Global Protect - to install on a Mac</p>
-<ol style="list-style-type: decimal">
-<li><p>Open System Preferences and click Security &amp; Privacy</p></li>
-<li><p>Select the General tab</p></li>
-<li><p>Click the lock in the lower left-hand corner</p></li>
-<li><p>Enter your computer username and password, then select Unlock</p></li>
-</ol>
-</div>
-</div>
-<div id="ubuntu" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Ubuntu</h2>
-<p>The University of Liverpool provides a <a href="https://liverpool.service-now.com/sp/?id=kb_article&amp;sysparm_article=KB0010404&amp;sys_kb_id=52bfb8303717e200d6fa4a7a43990ef9">guide</a>
-for setting up VPN on Linux, tested with Ubuntu 14.04, 16.04, 18.04 and Centos 7. The guide recommends the
-installation of the VPN Client VPNc:</p>
-<pre class="shell"><code>sudo apt-get install network-manager-vpnc
-sudo apt-get install network-manager-vpnc-gnome</code></pre>
-<p>Alternatively yum can be used to install the software:</p>
-<pre class="shell"><code>sudo yum install NetworkManager-vpnc
-sudo yum install NetworkManager-vpnc-gnome</code></pre>
-<p>To recap the remaining steps from the <a href="https://liverpool.service-now.com/sp/?id=kb_article&amp;sysparm_article=KB0010404&amp;sys_kb_id=52bfb8303717e200d6fa4a7a43990ef9">UoL guide</a>:</p>
-<ol style="list-style-type: decimal">
-<li>First you will need to download the UoL VPN configuration file:
-<a href="https://pcwww.liv.ac.uk/csd/vpn/University%20of%20Liverpool%20VPN.PCF">VPN.PCF</a></li>
-<li>In the top right corner of your desktop there is a network icon.
-Click on this icon, then choose:</li>
-</ol>
+<div id="docker-containers-for-r" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Docker Containers for R</h1>
+<p>A widely-used suite of docker images for R has been developed by the Rocker project <span class="citation">(Boettiger and Eddelbuettel <a href="#ref-RJ-2017-065" role="doc-biblioref">2017</a>)</span>. 29 repositories of rocker’s images are listed on the <a href="https://hub.docker.com/u/rocker/">docker hub</a> providing R environments customized to perform a variety of tasks. Most of them include R studio server, allowing to work remotely from the R studio server web interface accessible through any browser.</p>
+<p>Rocker images are versioned, meaning that if you want to employ a specific version of R rather than the latest you can specify an R version tag in the image name, i.e. <em>rocker/verse:3.4.0</em>, if no tag is requested you will automatically pull the latest version <span class="citation">(Boettiger and Eddelbuettel <a href="#ref-RJ-2017-065" role="doc-biblioref">2017</a>)</span>.</p>
+<div id="run-docker-locally" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Run Docker Locally</h2>
+<p>To run one of the rocker images locally on your laptop you need to install docker as described in - par ref - and pull the image of your choise from docker hub.</p>
+<p>A great image with the tidyverse + various geospatial packages + Rstudio server is rocker geospatial:</p>
 <blockquote>
-<p>VPN Connections &gt; Configure VPN</p>
+<p><a href="https://hub.docker.com/r/rocker/geospatial"><code>https://hub.docker.com/r/rocker/geospatial</code></a></p>
 </blockquote>
-<ol style="list-style-type: decimal">
-<li><p>Click “Add” and then “Select Import” in order to locate your *.pcf file.</p></li>
-<li><p>Next enter your MWS username in the User Name field.</p></li>
-<li><p>Click the IPv4 Settings tab.</p></li>
-<li><p>If left blank fill in the Group password field using the group password specified within the *.pcf file.</p></li>
-<li><p>Add DNS servers:</p>
-<ul>
-<li>138.253.110.103</li>
-<li>138.253.110.104</li>
-</ul></li>
-</ol>
-<p>and search domains (if a search domain field is available):</p>
-<ul>
-<li>liv.ac.uk</li>
-<li>liverpool.ac.uk</li>
-<li>livad.liv.ac.uk</li>
-</ul>
-<ol style="list-style-type: decimal">
-<li><p>Click on Routes.</p></li>
-<li><p>You will need one route with the following details:</p>
-<ul>
-<li>Address: 138.253.0.0</li>
-<li>Netmask: 255.255.255.0</li>
-<li>gateway: 0.0.0.0</li>
-<li>metric: 0</li>
-</ul></li>
-<li><p>Tick the “Use this connection only for resources on its network” box.</p></li>
-<li><p>Click Save / Apply / Close depending on the distribution.</p></li>
-</ol>
-<div id="to-connect-the-client-and-disconnect-the-client" class="section level3" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> To connect the client and disconnect the client:</h3>
-<p>To connect to the network, click on the icon in the top right corner of the desktop and choose</p>
-<blockquote>
-<p>VPN Connections &gt; University of Liverpool VPN Service</p>
-</blockquote>
-<p>You will be promted to authenticate using your MWS password. Upon connecting the network
-icon will display a locked symbol. You can now use your computera as if you were physically
-connected to the University of Liverpool network.</p>
-<p>To disconnect click on the network icon again and choose:</p>
-<blockquote>
-<p>VPN Connections &gt; Disconnect VPN</p>
-</blockquote>
+<p>You can pull the repository running the following command:</p>
+<pre><code>docker pull rocker/geospatial</code></pre>
+<p>This will require a good internet connection and will take a while, but you
+only need to run it once.</p>
+<p>Once the image is on your local machine, you can run it with the following command:</p>
+<pre><code>docker run -d --name rstudio -v ${PWD}:/data -e PASSWORD=secret -p 8787:8787 rocker/geospatial</code></pre>
+<p>Using this approach, you can store files on your laptop’s drive, and access, edit or create new ones from the container (ie. using RStudio).
+The command above also sets up a password (<code>secret</code>) and username (<code>rstudio</code>)
+to use when you login to RStudio.</p>
+<p>On Windows, this is similar (change <code>alexa</code> to your account name - look at your directory structure):</p>
+<pre><code>docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial</code></pre>
+<p>If this runs ok; you access Rstudio server through a browser at: <a href="http://localhost:8787"><code>http://localhost:8787</code></a></p>
+</div>
+<div id="run-docker-remotely" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Run Docker Remotely</h2>
+<p>Docker is installed on all our shared resources. Most machines already have images that can be used for gds. Rocker/geospatial has been extended to have all libraries that GDSL members generally use -link to the image-.</p>
+<p>Once you accessed the server you can list the existing images with the following command:</p>
+<pre><code>docker images ls</code></pre>
+<p>check ports</p>
+<p>run command same specifics of user names and psw.</p>
 
+
+<div id="refs" class="references hanging-indent">
+<div>
+<p>Bailey, Diane E, and Nancy B Kurland. 2002. “A Review of Telework Research: Findings, New Directions, and Lessons for the Study of Modern Work.” <em>Journal of Organizational Behavior: The International Journal of Industrial, Occupational and Organizational Psychology and Behavior</em> 23 (4): 383–400.</p>
 </div>
+<div>
+<p>Boettiger, Carl, and Dirk Eddelbuettel. 2017. “An Introduction to Rocker: Docker Containers for R.” <em>The R Journal</em> 9 (2): 527–36. <a href="https://doi.org/10.32614/RJ-2017-065">https://doi.org/10.32614/RJ-2017-065</a>.</p>
+</div>
+<div>
+<p>Brynjolfsson, Erik, John Horton, Adam Ozimek, Daniel Rock, Garima Sharma, and Hong Yi Tu Ye. 2020. “COVID-19 and Remote Work: An Early Look at Us Data.” <em>Unpublished Work</em>.</p>
+</div>
+<div>
+<p>Holgersen, Henning, Zhiyang Jia, and Simen Svenkerud. 2020. “Who and How Many Can Work from Home? Evidence from Task Descriptions and Norwegian Job Advertisements.” <em>Evidence from Task Descriptions and Norwegian Job Advertisements.(April 20, 2020)</em>.</p>
+</div>
+<div>
+<p>Kitamura, Ryuichi, Jack M Nilles, Patrick Conroy, and David M Fleming. 1991. “Telecommuting as a Transportation Planning Measure : Initial Results of California Pilot Project Ryuichi Kitamura Reprint No . 58 of California.” <em>Transportation Research Record</em> 1285: 98–104.</p>
+</div>
+<div>
+<p>Olson, Margrethe H. 1983. “Remote Office Work: Changing Work Patterns in Space and Time.” <em>Communications of the ACM</em> 26 (3): 182–87.</p>
+</div>
+<div>
+<p>Silva, João de Abreu e, and Patrı́cia C Melo. 2018. “Does Home-Based Telework Reduce Household Total Travel? A Path Analysis Using Single and Two Worker British Households.” <em>Journal of Transport Geography</em> 73: 148–62.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-RJ-2017-065">
+<p>Boettiger, Carl, and Dirk Eddelbuettel. 2017. “An Introduction to Rocker: Docker Containers for R.” <em>The R Journal</em> 9 (2): 527–36. <a href="https://doi.org/10.32614/RJ-2017-065">https://doi.org/10.32614/RJ-2017-065</a>.</p>
 </div>
 </div>
             </section>
@@ -301,8 +233,8 @@ connected to the University of Liverpool network.</p>
           </div>
         </div>
       </div>
-<a href="remote-working.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ssh.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="jupyterlab.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -333,7 +265,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02_VPN.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/08_RStudio.Rmd",
 "text": "Edit"
 },
 "history": {

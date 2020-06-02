@@ -21,9 +21,18 @@ The authenticity of host 'hostIPaddress' cannot be established.
  DSA key fingerprint is 01:23:45:67:89:ab:cd:ef:ff:fe:dc:ba:98:76:54:32:10.
  Are you sure you want to continue connecting (yes/no)?
 ```
+Windows users need to install an SSH client in order to access a server remotely through SSH. There are several clients available, MobaXterm is the option we advise to employ as it provides a number of useful functions for remote computing in a single application. 
+The free edition can be downloaded [here](https://mobaxterm.mobatek.net/download.html). To establish a connection with your remote server you open mobaXterm and click on session and then SSH. The Remote Host is the machine you want to access which can be identified by an IP address. IP addresses of our shared resources are listed in - add file name here-.
+[Here](https://mobaxterm.mobatek.net/demo.html) you can find a simple demo of the SSH client. 
 
 If this is your first time connecting to the server, or if the server has recently been 
 reconfigured with a new key, then the above message is perfectly normal. You can proceed by typing yes and enter.  
+
+Once you have accessed the server the first thing to do is to change the temprorary password we assigned to your user.
+
+```shell
+user@host:~$ passwd
+```
 
 ## Unix Commands
 
@@ -95,7 +104,13 @@ user@host:~$ cp −r <directory> <target>
 ## Command Line Editors
 
 There exists a large number of [command line editors](https://en.wikipedia.org/wiki/List_of_text_editors) 
-that can be used to edit files directly within the terminal. Below we provide instructions for using the
+that can be used to edit files directly within the terminal. 
+To create a file from the terminal you can simply type the following command:
+```shell
+user@host:~$ > filename.txt
+```
+
+ Below we provide instructions for using the
 [nano editor](https://www.nano-editor.org/). To open a file in nano run the following command inside the 
 terminal:
 
@@ -109,62 +124,21 @@ using **Ctrl + O**. To close the editor press **Ctrl + X**. Before the editor
 closes you will be asked if you want to save your changes. Type Y for Yes to
 save changes, and N for No if you want to close the editor without saving.
 
-For an overview of nano shortcut keys you can press **Ctrl + G**, which will output the following list:
+For an overview of nano shortcut keys you can press **Ctrl + G**, which will output the following list.
 
-```shell
- Main nano help text
+## Practical
 
- The nano editor is designed to emulate the functionality and ease-of-use
- of the UW Pico text editor.  There are four main sections of the editor.
- The top line shows the program version, the current filename being
- edited, and whether or not the file has been modified.  Next is the main
- editor window showing the file being edited.  The status line is the
- third line from the bottom and shows important messages.  The bottom two
- lines show the most commonly used shortcuts in the editor.
+1) Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).
 
- The notation for shortcuts is as follows: Control-key sequences are
- notated with a caret (^) symbol and can be entered either by using the
- Control (Ctrl) key or pressing the Escape (Esc) key twice.  Escape-key
- sequences are notated with the Meta (M-) symbol and can be entered using
- either the Esc, Alt, or Meta key depending on your keyboard setup.  Also,
- pressing Esc twice and then typing a three-digit decimal number from 000
- to 255 will enter the character with the corresponding value.  The
- following keystrokes are available in the main editor window.
- Alternative keys are shown in parentheses:
+1) Change the current temporary password with a password of your choice.
 
-^G    (F1)      Display this help text
-^X    (F2)      Close the current file buffer / Exit from nano
-^O    (F3)      Write the current file to disk
-^R    (F5)      Insert another file into the current one
+1) Create a directory with your project name.
 
-^W    (F6)      Search for a string or a regular expression
-^\    (M-R)     Replace a string or a regular expression
-^K    (F9)      Cut the current line and store it in the cutbuffer
-^U    (F10)     Uncut from the cutbuffer into the current line
+1) List files to check that the directory is created.
 
-^J    (F4)      Justify the current paragraph
-^T    (F12)     Invoke the spell checker, if available
-                Invoke the linter, if available
-                Invoke formatter, if available
+1) Change your working directory with the project directory.
 
-^C    (F11)     Display the position of the cursor
-^_    (M-G)     Go to line and column number
+1) Create a file, edit and save using nano.
 
-^Y    (F7)      Go one screenful up
-^V    (F8)      Go one screenful down
-M-\   (M-|)     Go to the first line of the file
-M-/   (M-?)     Go to the last line of the file
 
-M-W   (F16)     Repeat the last search
-M-]             Go to the matching bracket
-^^    (M-A)     Mark text starting from the cursor position
-M-^   (M-6)     Copy the current line and store it in the cutbuffer
 
-M-}             Indent the current line
-M-{             Unindent the current line
-
-M-U             Undo the last operation
-M-E             Redo the last undone operation
-
-...
-```

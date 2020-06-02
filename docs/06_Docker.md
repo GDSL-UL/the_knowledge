@@ -27,24 +27,66 @@ The steps to install Docker include:
       "Shared Drives" tab; click on the drive you want to add and then "Apply"
     - `macOS`: this feature is automatically enabled
 
+## Image and Container
+
+Docker can be seen as a tool to generate a computer within your computer (the host). This creates a working environment that employs the host's resources but follows its own internal rules. 
+
+Image and Container are two key concepts to understand Docker processes.
+
+Images are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.
+
+Containers are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.
+
 ## Useful Docker Commands
 
-See what containers are running (this also shows you the ID - this is useful to know then R-studio crashes...)
+List available images :
 
+```shell
+docker image ls
 ```
+
+See what containers are running (this also shows you the ID and which port is occupying):
+
+```shell
 docker ps
 ```
-Stop and remove a particular container - replace ID; with the specific ID from the above (listed under CONTAINER ID) - if everything has crashed
+The run command instantiates an image in an isolated container. The generic command is:
 
+```shell
+docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG...]
 ```
-docker stop ID
-docker rm -f ID
+Options that are generally added are:
+
+```shell
+--detach or -d -> Run container in background and print container ID
 ```
 
-To detach from a running docker session without exiting the shell, the escape sequence *CTRL + p* followed by *CTRL + q* can be used.
-To re-attach the terminal to the docker session enter:
+If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence *CTRL + p* followed by *CTRL + q* can be used. To re-attach the terminal to the docker session enter: docker attach <session_id>
 
+```shell
+-rm  -> Automatically remove the container when it exits
 ```
-docker attach <session_id>
+
+--publish or -p -> Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
+
+```shell
+--volume or -v -> Bind mount a volume 
+```
+
+All other options are listed [here](https://docs.docker.com/engine/reference/commandline/run/)
+
+To stop the container you have been running you need to send the following commands: 
+
+if you have not added -d to the run command, detach from the container with the escape sequence.
+
+```shell
+docker ps   **to get the Container ID**
+docker stop <container-ID>  
+```
+
+if you have not added -rm option you need to manually remove the container
+
+```shell
+docker rm -f <container-ID>
 ```
 
