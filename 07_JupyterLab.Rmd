@@ -3,7 +3,7 @@
 This document shows how to install and run a JupyterLab server locally and
 remotely.
 
-## Local install
+## Run Jupyter Lab Locally
 
 This guide assumes you meet the following requirements in your personal
 machine (eg. laptop):
@@ -79,7 +79,7 @@ done using Jupyter, otherwise it will crash.
    You can then access the files in your computer through the `work` directory
    on the left-side pane.
 
-## Remote Install
+## Run Jupyter Lab Remotely
 
 It is also possible to start a Jupyter server as above but, instead of run it
 on your local machine, it can run on a remote machine and you connect to that
