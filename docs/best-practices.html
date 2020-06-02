@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Remote Working | The Knowledge</title>
+  <title>Chapter 10 Best Practices | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Remote Working | The Knowledge" />
+  <meta property="og:title" content="Chapter 10 Best Practices | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Remote Working | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 10 Best Practices | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="vpn.html"/>
+<link rel="prev" href="docker-containers-for-r.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -172,49 +172,65 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="remote-working" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Remote Working</h1>
-<div id="what-is-remote-working" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> What is Remote Working?</h2>
-<p>“Remote work refers to organizational work that is performed outside of the normal organizational confines of space and time. The term telecommuting refers to the substitution of communications capabilities for travel to a central work location. Office automation technology permits many office workers to be potential telecommuters in that their work can be performed remotely with computer and communications support” <span class="citation">(Olson <a href="#ref-olson1983remote" role="doc-biblioref">1983</a>)</span></p>
-<p>Some of the first trials of remote working date back to the eighties as reported by <span class="citation">Olson (<a href="#ref-olson1983remote" role="doc-biblioref">1983</a>)</span>. Since then, the spread and development of Information and Communication Technologies have brought about a significant increase in the popularity of remote work. Nowadays, it is possible to find fully remote jobs advertised particularly in IT and data science.</p>
-<p>The current pandemic has forced millions of workers at home, making remote work a necessity rather than an option. An early study on COVID-19 and remote work reported that in the US the fraction of workers who switched to working from home is about 34.1%, while 14.6% were already working from home pre-COVID-19 <span class="citation">(Brynjolfsson et al. <a href="#ref-brynjolfsson2020covid" role="doc-biblioref">2020</a>)</span>.</p>
-<p>Not all types of work are suitable to be performed from home <span class="citation">(Holgersen, Jia, and Svenkerud <a href="#ref-holgersen2020and" role="doc-biblioref">2020</a>)</span>,
-but one of the impacts of these dramatic circumstances can be a further increase of the remote work practice.</p>
-<p>Computationally intensive tasks can be easily approached in a remote setting by accessing computing resources through the network. This document will guide you in accessing servers located in the Geographic Data Science Lab to perform heavy computations. However, an other increasingly popular option, that many companies are now implementing, is the use of cloud computing infrastructures such as Amazon Web Services (AWS), Salesforce’s CRM system, Microsoft Azure.</p>
+<div id="best-practices" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Best Practices</h1>
+<div id="booking-a-server" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Booking a server</h2>
+<p>Before booking a server look at the server information sheet to verify that the resource can meet your needs.</p>
+<p>Book the Server with our booking system detailing your name, short description of tasks, forseen resources used (i.e. gpu, cpu threads,ram) - the booking system will be either an excel file or a shared calendar.</p>
 </div>
-<div id="advantages-and-disadvantages-of-remote-work" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Advantages and Disadvantages of Remote Work</h2>
-<p>One of the most direct consequences of remote work is changes in commuting behaviours, bringing about time saving and a potential reduction in traffic congestion and air pollution. These were among the main points stressed by the early advocates for remote working, but researches in transportation studies have shown conflicting results. Although reductions in number and length of commuting trips is reported in some of the earlies studies <span class="citation">(Kitamura et al. <a href="#ref-Kitamura1991" role="doc-biblioref">1991</a>; Olson <a href="#ref-olson1983remote" role="doc-biblioref">1983</a>)</span>, more recent research shows that the expectation that home-based telework reduces travel is not so apparent <span class="citation">(Silva and Melo <a href="#ref-e2018does" role="doc-biblioref">2018</a>)</span> and time saving seems not to be a major pull factor <span class="citation">(Bailey and Kurland <a href="#ref-bailey2002review" role="doc-biblioref">2002</a>)</span>.</p>
-<p>The higher flexibility afforded by remote working is mentioned as an advantage, particularly for those who would have not taken part of the workforce without such settings because of caring committments <span class="citation">(Olson <a href="#ref-olson1983remote" role="doc-biblioref">1983</a>)</span>.</p>
-<p>Higher productivity of remote workers has been reported in some studies. However, it has to be noted that productivity and concentration at home are strongly dependent from environmental conditions <span class="citation">(Bailey and Kurland <a href="#ref-bailey2002review" role="doc-biblioref">2002</a>)</span>. Inequality in living conditions is an issue that we are clearly seeing during the coronavirus pandemic.</p>
-<p>One of the most cited drawbacks of remote working is professional and social isolation <span class="citation">(Bailey and Kurland <a href="#ref-bailey2002review" role="doc-biblioref">2002</a>)</span>, which can be also seen as making more difficoult collaborative work and collective workers actions.</p>
+<div id="docker-considerations" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Docker Considerations</h2>
+<ul>
+<li><p>Always check what are the existing images before pulling a new one with:</p>
+<pre class="shell"><code>docker image ls</code></pre></li>
+<li><p>To check what is running and which ports are occupied always run:</p>
+<pre class="shell"><code>docker ps </code></pre></li>
+</ul>
 </div>
-<div id="tips" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Tips</h2>
-<p>Here a collection of tips that have been shared on the internet on how to avoid burn out and be effective while working from home:</p>
+<div id="system-monitoring" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> System Monitoring</h2>
+<p>It is highly recommended that you monitor the systems processes during before and while running your processes. This can be done via the interactive system-monitor process-viewer and process-manager <strong>htop</strong>, which can be started by typing htop into the terminal and pressing enter.</p>
+<p>Things to keep an eye on:</p>
+<ul>
+<li>How many threads are currently being used?</li>
+<li>How much memory is available?</li>
+</ul>
+<p>If your process is taking longer than expected, then this may be caused by either too many processes running in parallel, or insufficient memory being available. The later can result in swap memory being used, which will significantly slow down your processes.</p>
+</div>
+<div id="gpu-monitoring" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> GPU Monitoring</h2>
+<p>Another resource that requires monitoring are GPUs. A GPU can be monitored using the NVIDIA System Management Interface (nvididia-smi):</p>
+<pre class="shell"><code>watch -n 0.1 nvidia-smi</code></pre>
+<p>This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed. If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for <a href="https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory">more information</a>.</p>
+<p>When servers are situated within a non-air conditioned room it is also worth keeping an eye on the GPUs temperature, in particular when the server houses multiple GPUs.</p>
+</div>
+<div id="references" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> References</h2>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-bailey2002review">
+<div id="refs" class="references hanging-indent">
+<div>
 <p>Bailey, Diane E, and Nancy B Kurland. 2002. “A Review of Telework Research: Findings, New Directions, and Lessons for the Study of Modern Work.” <em>Journal of Organizational Behavior: The International Journal of Industrial, Occupational and Organizational Psychology and Behavior</em> 23 (4): 383–400.</p>
 </div>
-<div id="ref-brynjolfsson2020covid">
+<div>
+<p>Boettiger, Carl, and Dirk Eddelbuettel. 2017. “An Introduction to Rocker: Docker Containers for R.” <em>The R Journal</em> 9 (2): 527–36. <a href="https://doi.org/10.32614/RJ-2017-065">https://doi.org/10.32614/RJ-2017-065</a>.</p>
+</div>
+<div>
 <p>Brynjolfsson, Erik, John Horton, Adam Ozimek, Daniel Rock, Garima Sharma, and Hong Yi Tu Ye. 2020. “COVID-19 and Remote Work: An Early Look at Us Data.” <em>Unpublished Work</em>.</p>
 </div>
-<div id="ref-holgersen2020and">
+<div>
 <p>Holgersen, Henning, Zhiyang Jia, and Simen Svenkerud. 2020. “Who and How Many Can Work from Home? Evidence from Task Descriptions and Norwegian Job Advertisements.” <em>Evidence from Task Descriptions and Norwegian Job Advertisements.(April 20, 2020)</em>.</p>
 </div>
-<div id="ref-Kitamura1991">
+<div>
 <p>Kitamura, Ryuichi, Jack M Nilles, Patrick Conroy, and David M Fleming. 1991. “Telecommuting as a Transportation Planning Measure : Initial Results of California Pilot Project Ryuichi Kitamura Reprint No . 58 of California.” <em>Transportation Research Record</em> 1285: 98–104.</p>
 </div>
-<div id="ref-olson1983remote">
+<div>
 <p>Olson, Margrethe H. 1983. “Remote Office Work: Changing Work Patterns in Space and Time.” <em>Communications of the ACM</em> 26 (3): 182–87.</p>
 </div>
-<div id="ref-e2018does">
+<div>
 <p>Silva, João de Abreu e, and Patrı́cia C Melo. 2018. “Does Home-Based Telework Reduce Household Total Travel? A Path Analysis Using Single and Two Worker British Households.” <em>Journal of Transport Geography</em> 73: 148–62.</p>
+</div>
+</div>
 </div>
 </div>
             </section>
@@ -222,8 +238,8 @@ but one of the impacts of these dramatic circumstances can be a further increase
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vpn.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="docker-containers-for-r.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -254,7 +270,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/01_RemoteWorking.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09_Best_practices.Rmd",
 "text": "Edit"
 },
 "history": {
