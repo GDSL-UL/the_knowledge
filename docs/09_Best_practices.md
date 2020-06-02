@@ -23,7 +23,12 @@ Book the Server with our booking system detailing your name, short description o
 
 ## System Monitoring 
 
-It is highly recommended that you monitor the systems processes during before and while running your processes. This can be done via the interactive system-monitor process-viewer and process-manager **htop**, which can be started by typing htop into the terminal and pressing enter. 
+It is highly recommended that you monitor the systems processes during before and while running your processes. This can be done via the interactive system-monitor process-viewer and process-manager **htop**, which can be started by typing htop into the terminal and pressing enter: 
+
+
+```shell
+htop
+```
 
 Things to keep an eye on: 
 
@@ -41,7 +46,13 @@ Another resource that requires monitoring are GPUs. A GPU can be monitored using
 watch -n 0.1 nvidia-smi
 ```
 
-This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed. If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for [more information](https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory).
+This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed. If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for [more information](https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory). Memory growth can be enabled as follows within TensorFlow:
+
+```
+onfigProto()
+config.gpu_options.allow_growth=True
+sess = tf.Session(config=config)
+```
 
 When servers are situated within a non-air conditioned room it is also worth keeping an eye on the GPUs temperature, in particular when the server houses multiple GPUs. 
 
