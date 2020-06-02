@@ -86,10 +86,11 @@ from which the files can be recovered. Upon using this command the files are del
 
 ### Change your Working Directory:
 
-To change your working directory use the cd (change directory) command, specifying your target directory:
+To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:
 
 ```shell
 user@host:~$ cd <target_directory>
+user@host:~$ cd ..
 ```
 
 ### Copy:
