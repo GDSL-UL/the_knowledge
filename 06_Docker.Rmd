@@ -41,47 +41,54 @@ Containers are instantiations of images, meaning that they are instances of the 
 
 List available images :
 
-```
+```shell
 docker image ls
 ```
 
 See what containers are running (this also shows you the ID and which port is occupying):
 
-```
+```shell
 docker ps
 ```
 The run command instantiates an image in an isolated container. The generic command is:
 
-```
+```shell
 docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG...]
 ```
 Options that are generally added are:
 
-```
+```shell
 --detach or -d -> Run container in background and print container ID
+```
 
 If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence *CTRL + p* followed by *CTRL + q* can be used. To re-attach the terminal to the docker session enter: docker attach <session_id>
 
+```shell
 -rm  -> Automatically remove the container when it exits
+```
 
 --publish or -p -> Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
 
+```shell
 --volume or -v -> Bind mount a volume 
+```
 
 All other options are listed [here](https://docs.docker.com/engine/reference/commandline/run/)
-```
 
 To stop the container you have been running you need to send the following commands: 
 
 ```
 if you have not added -d to the run command, detach from the container with the escape sequence.
 
-docker ps   **to get the Container ID**
 
+```shell
+docker ps   **to get the Container ID**
 docker stop <container-ID>  
+```
 
 if you have not added -rm option you need to manually remove the container
-docker rm -f <container-ID>
 
+```shell
+docker rm -f <container-ID>
 ```
 
