@@ -1,0 +1,16 @@
+# Best Practices
+
+Look at the Server information
+
+Book the Server with our booking system detailing your name, short description of tasks, forseen resources used (i.e. gpu -allow memory grow-, cpu threads,ram)
+
+Always check what are the existing images before pulling a new one with docker image ls
+ 
+Always run docker ps to check what is running and which ports are occupied
+
+Use htop to monitor your tasks - check memory usage and swap
+
+Use watch -n 0.1 nvidia-smi to check GPU temperature 
+
+
+
