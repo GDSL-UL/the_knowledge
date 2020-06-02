@@ -10,7 +10,7 @@ The current pandemic has forced millions of workers at home, making remote work 
 Not all types of work are suitable to be performed from home [@holgersen2020and],
 but one of the impacts of these dramatic circumstances can be a further increase of the remote work practice.
 
-Computationally intensive tasks can be easily approached in a remote setting by accessing computing resources through the network. This document will guide you in accessing servers located in the Geographic Data Science Lab to perform heavy computations. However, an other increasingly popular option, that many companies are now implementing, is the use of cloud computing infrastructures such as Amazon Web Services (AWS), Salesforce’s CRM system, Microsoft Azure.
+Computationally intensive tasks can be easily approached in a remote setting by accessing computing resources through the network. This document will guide you in accessing servers located in the Geographic Data Science Lab to perform heavy computations ^[An other option which is widely implemented by companies, is the use of cloud computing infrastructures such as Amazon Web Services (AWS), Salesforce’s CRM system, Microsoft Azure.].
 
 ## Advantages and Disadvantages of Remote Work
 
@@ -18,12 +18,17 @@ One of the most direct consequences of remote work is changes in commuting behav
 
 The higher flexibility afforded by remote working is mentioned as an advantage, particularly for those who would have not taken part of the workforce without such settings because of caring committments [@olson1983remote].
 
-Higher productivity of remote workers has been reported in some studies. However, it has to be noted that productivity and concentration at home are strongly dependent from environmental conditions [@bailey2002review]. Inequality in living conditions is an issue that we are clearly seeing during the coronavirus pandemic.
+Higher productivity of remote workers has been reported in some studies. However, it has to be noted that productivity and concentration at home are strongly dependent from environmental conditions [@bailey2002review]. Inequality in living conditions is clearly affecting the ability to work from home during the coronavirus pandemic.
 
 One of the most cited drawbacks of remote working is professional and social isolation [@bailey2002review], which can be also seen as making more difficoult collaborative work and collective workers actions. 
 
 ## Tips
 
 Here a collection of tips that have been shared on the internet on how to avoid burn out and be effective while working from home:
+
+* [Covid-19: How to foster healthy home working](https://www.ucl.ac.uk/news/2020/apr/covid-19-how-foster-healthy-home-working)
+* [Tips on working from home with children](https://www.timeshighereducation.com/blog/tips-working-home-children#%20)
+* [Working from home? Why detachment is crucial for mental health](https://theconversation.com/working-from-home-why-detachment-is-crucial-for-mental-health-135986)
+
 
 

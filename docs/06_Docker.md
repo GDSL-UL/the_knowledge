@@ -75,18 +75,27 @@ If you do not add this option to the run command you can detach from a running d
 
 All other options are listed [here](https://docs.docker.com/engine/reference/commandline/run/)
 
-To stop the container you have been running you need to send the following commands: 
-
-if you have not added -d to the run command, detach from the container with the escape sequence.
+To stop the container you have been running you need to detach from the container using the escape sequence (unless you added -d to the run command) and send the following commands: 
 
 ```shell
 docker ps   to get the Container ID
 docker stop <container-ID>  
 ```
 
-if you have not added -rm option you need to manually remove the container
+If you have not added -rm option you also need to manually remove the container
 
 ```shell
 docker rm -f <container-ID>
 ```
+
+An exemplary run command is the following:
+
+```shell
+docker run -d --rm -p 8080:8787 -v ${PWD}:/data rocker/geospatial
+```
+
+After the -p option you add the ports mapping: <host port>:<container port>. In this example, docker runs an image with r studio server which uses the port 8787 by default, but the host (the server where you are running docker) has the port 8787 already in use by other services. Therefore, you need to map the port of the image (8787) with a free port of the host (in this example 8080).
+
+After the -v option you add the paths to mount a volume:<host path>:<container path>. In this example, the working directory is mapped to a data directory in the container. ${PWD} stands for Print Working Directory.
+ 
 
