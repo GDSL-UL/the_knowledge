@@ -150,7 +150,6 @@
 <li class="chapter" data-level="10.2" data-path="best-practices.html"><a href="best-practices.html#docker-considerations"><i class="fa fa-check"></i><b>10.2</b> Docker Considerations</a></li>
 <li class="chapter" data-level="10.3" data-path="best-practices.html"><a href="best-practices.html#system-monitoring"><i class="fa fa-check"></i><b>10.3</b> System Monitoring</a></li>
 <li class="chapter" data-level="10.4" data-path="best-practices.html"><a href="best-practices.html#gpu-monitoring"><i class="fa fa-check"></i><b>10.4</b> GPU Monitoring</a></li>
-<li class="chapter" data-level="10.5" data-path="best-practices.html"><a href="best-practices.html#references"><i class="fa fa-check"></i><b>10.5</b> References</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -204,9 +203,6 @@
 <pre class="shell"><code>watch -n 0.1 nvidia-smi</code></pre>
 <p>This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed. If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for <a href="https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory">more information</a>.</p>
 <p>When servers are situated within a non-air conditioned room it is also worth keeping an eye on the GPUs temperature, in particular when the server houses multiple GPUs.</p>
-</div>
-<div id="references" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> References</h2>
 
 <div id="refs" class="references hanging-indent">
 <div>
