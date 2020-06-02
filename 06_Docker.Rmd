@@ -77,9 +77,7 @@ All other options are listed [here](https://docs.docker.com/engine/reference/com
 
 To stop the container you have been running you need to send the following commands: 
 
-```
 if you have not added -d to the run command, detach from the container with the escape sequence.
-
 
 ```shell
 docker ps   **to get the Container ID**
