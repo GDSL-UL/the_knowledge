@@ -31,11 +31,11 @@ The steps to install Docker include:
 
 Docker can be seen as a tool to generate a computer within your computer (the host). This creates a working environment that employs the host's resources but follows its own internal rules. 
 
-Image and Container are two key concepts to understand Docker processes.
+**Image** and **Container** are two key concepts to understand Docker processes.
 
-Images are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.
+**Images** are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.
 
-Containers are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.
+**Containers** are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.
 
 ## Useful Docker Commands
 
@@ -80,7 +80,7 @@ To stop the container you have been running you need to send the following comma
 if you have not added -d to the run command, detach from the container with the escape sequence.
 
 ```shell
-docker ps   **to get the Container ID**
+docker ps   to get the Container ID
 docker stop <container-ID>  
 ```
 
