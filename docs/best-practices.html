@@ -149,7 +149,12 @@
 <li class="chapter" data-level="10.1" data-path="best-practices.html"><a href="best-practices.html#booking-a-server"><i class="fa fa-check"></i><b>10.1</b> Booking a server</a></li>
 <li class="chapter" data-level="10.2" data-path="best-practices.html"><a href="best-practices.html#docker-considerations"><i class="fa fa-check"></i><b>10.2</b> Docker Considerations</a></li>
 <li class="chapter" data-level="10.3" data-path="best-practices.html"><a href="best-practices.html#system-monitoring"><i class="fa fa-check"></i><b>10.3</b> System Monitoring</a></li>
-<li class="chapter" data-level="10.4" data-path="best-practices.html"><a href="best-practices.html#gpu-monitoring"><i class="fa fa-check"></i><b>10.4</b> GPU Monitoring</a></li>
+<li class="chapter" data-level="10.4" data-path="best-practices.html"><a href="best-practices.html#gpu-considerations"><i class="fa fa-check"></i><b>10.4</b> GPU Considerations</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="best-practices.html"><a href="best-practices.html#monitoring"><i class="fa fa-check"></i><b>10.4.1</b> Monitoring</a></li>
+<li class="chapter" data-level="10.4.2" data-path="best-practices.html"><a href="best-practices.html#memory-growth"><i class="fa fa-check"></i><b>10.4.2</b> Memory Growth</a></li>
+<li class="chapter" data-level="10.4.3" data-path="best-practices.html"><a href="best-practices.html#temperature-monitoring"><i class="fa fa-check"></i><b>10.4.3</b> Temperature Monitoring</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -198,14 +203,23 @@
 </ul>
 <p>If your process is taking longer than expected, then this may be caused by either too many processes running in parallel, or insufficient memory being available. The later can result in swap memory being used, which will significantly slow down your processes.</p>
 </div>
-<div id="gpu-monitoring" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> GPU Monitoring</h2>
+<div id="gpu-considerations" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> GPU Considerations</h2>
+<div id="monitoring" class="section level3" number="10.4.1">
+<h3><span class="header-section-number">10.4.1</span> Monitoring</h3>
 <p>Another resource that requires monitoring are GPUs. A GPU can be monitored using the NVIDIA System Management Interface (nvididia-smi):</p>
 <pre class="shell"><code>watch -n 0.1 nvidia-smi</code></pre>
-<p>This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed. If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for <a href="https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory">more information</a>. Memory growth can be enabled as follows within TensorFlow:</p>
-<pre><code>onfigProto()
+<p>This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed.</p>
+</div>
+<div id="memory-growth" class="section level3" number="10.4.2">
+<h3><span class="header-section-number">10.4.2</span> Memory Growth</h3>
+<p>If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for <a href="https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory">more information</a>. Memory growth can be enabled as follows within TensorFlow:</p>
+<pre><code>config = tf.ConfigProto()
 config.gpu_options.allow_growth=True
 sess = tf.Session(config=config)</code></pre>
+</div>
+<div id="temperature-monitoring" class="section level3" number="10.4.3">
+<h3><span class="header-section-number">10.4.3</span> Temperature Monitoring</h3>
 <p>When servers are situated within a non-air conditioned room it is also worth keeping an eye on the GPUs temperature, in particular when the server houses multiple GPUs.</p>
 
 <div id="refs" class="references hanging-indent">
@@ -229,6 +243,7 @@ sess = tf.Session(config=config)</code></pre>
 </div>
 <div>
 <p>Silva, João de Abreu e, and Patrı́cia C Melo. 2018. “Does Home-Based Telework Reduce Household Total Travel? A Path Analysis Using Single and Two Worker British Households.” <em>Journal of Transport Geography</em> 73: 148–62.</p>
+</div>
 </div>
 </div>
 </div>

@@ -37,7 +37,9 @@ Things to keep an eye on:
 
 If your process is taking longer than expected, then this may be caused by either too many processes running in parallel, or insufficient memory being available. The later can result in swap memory being used, which will significantly slow down your processes. 
 
-## GPU Monitoring 
+## GPU Considerations
+
+### Monitoring
 
 Another resource that requires monitoring are GPUs. A GPU can be monitored using the NVIDIA System Management Interface  (nvididia-smi):
 
@@ -46,13 +48,19 @@ Another resource that requires monitoring are GPUs. A GPU can be monitored using
 watch -n 0.1 nvidia-smi
 ```
 
-This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed. If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for [more information](https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory). Memory growth can be enabled as follows within TensorFlow:
+This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed. 
+
+### Memory Growth
+
+If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for [more information](https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory). Memory growth can be enabled as follows within TensorFlow:
 
 ```
-onfigProto()
+config = tf.ConfigProto()
 config.gpu_options.allow_growth=True
 sess = tf.Session(config=config)
 ```
+
+### Temperature Monitoring
 
 When servers are situated within a non-air conditioned room it is also worth keeping an eye on the GPUs temperature, in particular when the server houses multiple GPUs. 
 
