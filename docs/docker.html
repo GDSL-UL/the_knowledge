@@ -142,8 +142,8 @@
 </ul></li>
 <li class="chapter" data-level="9" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html"><i class="fa fa-check"></i><b>9</b> Docker Containers for R</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.1</b> Run Docker Remotely</a></li>
-<li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.2</b> Run Docker Locally</a></li>
+<li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.1</b> Run Docker Locally</a></li>
+<li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.2</b> Run Docker Remotely</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="best-practices.html"><a href="best-practices.html"><i class="fa fa-check"></i><b>10</b> Best Practices</a>
 <ul>
@@ -229,7 +229,7 @@ your laptop and scale to a server (e.g. running out of the lab).</p>
 <p>If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence <em>CTRL + p</em> followed by <em>CTRL + q</em> can be used. To re-attach the terminal to the docker session enter: docker attach <session_id></p>
 <pre class="shell"><code>-rm  -&gt; Automatically remove the container when it exits</code></pre>
 <pre class="shell"><code>--env or -e  -&gt; Set environment variables.</code></pre>
-<p>Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environmental variable is <em>HOME</em> which is associated with the path of your home directory (<em>/home/your-user</em>). By adding <em>-e</em> to the run command you pass the environmental variable to the container where a certain image is running. Cases when this option is necessary will be discussed.</p>
+<p>Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environment variable is <em>HOME</em> which is associated with the path of your home directory (<em>/home/your-user</em>). By adding <em>-e</em> to the run command you pass the environment variable to the container where a certain image is running. Cases when this option is necessary will be discussed.</p>
 <p>–publish or -p -&gt; Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)</p>
 <pre class="shell"><code>--volume or -v -&gt; Bind mount a volume </code></pre>
 <p>All other options are listed <a href="https://docs.docker.com/engine/reference/commandline/run/">here</a></p>
@@ -241,7 +241,7 @@ docker stop &lt;container-ID&gt;  </code></pre>
 <p>An exemplary run command is the following:</p>
 <pre class="shell"><code>docker run -d --rm -p 8080:8787 -v ${PWD}:/data rocker/geospatial</code></pre>
 <p>After the -p option you add the ports mapping: <host port>:<container port>. In this example, docker runs an image with r studio server which uses the port 8787 by default, but the host (the server where you are running docker) has the port 8787 already in use by other services. Therefore, you need to map the port of the image (8787) with a free port of the host (in this example 8080).</p>
-<p>After the -v option you add the paths to mount a volume:<host path>:<container path>. In this example, the working directory is mapped to a data directory in the container. ${PWD} stands for Print Working Directory.</p>
+<p>After the -v option you add the paths to mount a volume:<host path>:<container path>. In this example, the working directory (the directory where you are running the command from) is mapped to a data directory in the container. ${PWD} stands for <strong>Print Working Directory</strong>.</p>
 
 </div>
 </div>
