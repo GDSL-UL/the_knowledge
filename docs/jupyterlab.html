@@ -24,7 +24,7 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-06-02" />
+<meta name="date" content="2020-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,8 +136,9 @@
 <ul>
 <li class="chapter" data-level="8.2.1" data-path="jupyterlab.html"><a href="jupyterlab.html#self-signed-certificate-warnings"><i class="fa fa-check"></i><b>8.2.1</b> Self-signed Certificate Warnings</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.3</b> Useful Python Docker Images</a></li>
-<li class="chapter" data-level="8.4" data-path="jupyterlab.html"><a href="jupyterlab.html#practical-2"><i class="fa fa-check"></i><b>8.4</b> Practical</a></li>
+<li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#using-sudo-within-a-container"><i class="fa fa-check"></i><b>8.3</b> Using sudo within a container</a></li>
+<li class="chapter" data-level="8.4" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.4</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="8.5" data-path="jupyterlab.html"><a href="jupyterlab.html#practical-2"><i class="fa fa-check"></i><b>8.5</b> Practical</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html"><i class="fa fa-check"></i><b>9</b> Docker Containers for R</a>
 <ul>
@@ -290,8 +291,13 @@ One approach towards solving this issue is to acquire a free SSL certificate via
 <a href="https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-let-s-encrypt">Let’s Encrypt</a>.</p>
 </div>
 </div>
-<div id="useful-python-docker-images" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Useful Python Docker Images</h2>
+<div id="using-sudo-within-a-container" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Using sudo within a container</h2>
+<p>For the above image password authentication has been disabled for the NB_USER jovyan. However, you might want to install additional programs using a package management tool (e.g., apt). To do so you can grant the within-container NB_USER passwordless sudo access by adding -e GRANT_SUDO=yes and –user root when launching the image:</p>
+<pre class="shell"><code>docker run --rm -ti -e GRANT_SUDO=yes --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  </code></pre>
+</div>
+<div id="useful-python-docker-images" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Useful Python Docker Images</h2>
 <ul>
 <li><a href="https://github.com/darribas/gds_env"><code>gds_env</code></a>: a containerised platform
 for Geographid Data Science in Jupyter (Python &amp; R)</li>
@@ -299,8 +305,8 @@ for Geographid Data Science in Jupyter (Python &amp; R)</li>
 Jupyter stacks (the <code>gds_env</code> is based on these)</li>
 </ul>
 </div>
-<div id="practical-2" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Practical</h2>
+<div id="practical-2" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> Practical</h2>
 <p>Follow the steps in the Remote Install section to run jupyter lab on one of the remote servers.</p>
 <p>Note that you will need to use the command line editing software nano to edit update jupyter_notebook_config.py:</p>
 <pre class="shell"><code>nano /home/jovyan/.jupyter/jupyter_notebook_config.py</code></pre>
