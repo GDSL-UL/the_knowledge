@@ -131,6 +131,14 @@ insecure or unrecognized. A fully compliant self-signed certificate is required 
 One approach towards solving this issue is to acquire a free SSL certificate via 
 [Let’s Encrypt](https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-let-s-encrypt). 
 
+## Using sudo within a container
+
+For the above image password authentication has been disabled for the NB\_USER jovyan. However, you might want to install additional programs using a package management tool (e.g., apt). To do so you can grant the within-container NB\_USER passwordless sudo access by adding -e GRANT\_SUDO=yes and --user root when launching the image:
+
+```shell
+docker run --rm -ti -e GRANT_SUDO=yes --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
+```
+
 ## Useful Python Docker Images
 
 - [`gds_env`](https://github.com/darribas/gds_env): a containerised platform
