@@ -24,7 +24,7 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-06-02" />
+<meta name="date" content="2020-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -227,6 +227,8 @@ your laptop and scale to a server (e.g. running out of the lab).</p>
 <pre class="shell"><code>--detach or -d -&gt; Run container in background and print container ID</code></pre>
 <p>If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence <em>CTRL + p</em> followed by <em>CTRL + q</em> can be used. To re-attach the terminal to the docker session enter: docker attach <session_id></p>
 <pre class="shell"><code>-rm  -&gt; Automatically remove the container when it exits</code></pre>
+<pre class="shell"><code>--env or -e  -&gt; Set environment variables.</code></pre>
+<p>Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environmental variable is <em>HOME</em> which is associated with the path of your home directory (<em>/home/your-user</em>). By adding <em>-e</em> to the run command you pass the environmental variable to the container where a certain image is running. Cases when this option is necessary will be discussed.</p>
 <p>–publish or -p -&gt; Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)</p>
 <pre class="shell"><code>--volume or -v -&gt; Bind mount a volume </code></pre>
 <p>All other options are listed <a href="https://docs.docker.com/engine/reference/commandline/run/">here</a></p>

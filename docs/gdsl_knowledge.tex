@@ -80,7 +80,7 @@
 
 \title{The Knowledge}
 \author{Geographic Data Science Lab}
-\date{2020-06-02}
+\date{2020-06-03}
 
 \begin{document}
 \maketitle
@@ -866,6 +866,12 @@ If you do not add this option to the run command you can detach from a running d
 -rm  -> Automatically remove the container when it exits
 \end{verbatim}
 
+\begin{verbatim}
+--env or -e  -> Set environment variables.
+\end{verbatim}
+
+Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environmental variable is \emph{HOME} which is associated with the path of your home directory (\emph{/home/your-user}). By adding \emph{-e} to the run command you pass the environmental variable to the container where a certain image is running. Cases when this option is necessary will be discussed.
+
 --publish or -p -\textgreater{} Publish a container's port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
 
 \begin{verbatim}
@@ -1101,16 +1107,12 @@ A widely-used suite of docker images for R has been developed by the Rocker proj
 
 Rocker images are versioned, meaning that if you want to employ a specific version of R rather than the latest you can specify an R version tag in the image name, i.e.~\emph{rocker/verse:3.4.0}, if no tag is requested you will automatically pull the latest version \citep{RJ-2017-065}.
 
-\hypertarget{run-docker-locally}{%
-\section{Run Docker Locally}\label{run-docker-locally}}
+\hypertarget{run-docker-remotely}{%
+\section{Run Docker Remotely}\label{run-docker-remotely}}
 
-To run one of the rocker images locally on your laptop you need to install docker as described in - par ref - and pull the image of your choise from docker hub.
+Docker is installed on all our shared resources. Most machines already have images that can be used for gds.
 
-A great image with the tidyverse + various geospatial packages + Rstudio server is rocker geospatial:
-
-\begin{quote}
-\href{https://hub.docker.com/r/rocker/geospatial}{\texttt{https://hub.docker.com/r/rocker/geospatial}}
-\end{quote}
+An useful image for running geospatial analysis, including the tidyverse + various geospatial packages, is \href{https://hub.docker.com/r/rocker/geospatial}{\emph{rocker/geospatial}}:
 
 You can pull the repository running the following command:
 
@@ -1118,31 +1120,7 @@ You can pull the repository running the following command:
 docker pull rocker/geospatial
 \end{verbatim}
 
-This will require a good internet connection and will take a while, but you
-only need to run it once.
-
-Once the image is on your local machine, you can run it with the following command:
-
-\begin{verbatim}
-docker run -d --name rstudio -v ${PWD}:/data -e PASSWORD=secret -p 8787:8787 rocker/geospatial
-\end{verbatim}
-
-Using this approach, you can store files on your laptop's drive, and access, edit or create new ones from the container (ie. using RStudio).
-The command above also sets up a password (\texttt{secret}) and username (\texttt{rstudio})
-to use when you login to RStudio.
-
-On Windows, this is similar (change \texttt{alexa} to your account name - look at your directory structure):
-
-\begin{verbatim}
-docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial
-\end{verbatim}
-
-If this runs ok; you access Rstudio server through a browser at: \href{http://localhost:8787}{\texttt{http://localhost:8787}}
-
-\hypertarget{run-docker-remotely}{%
-\section{Run Docker Remotely}\label{run-docker-remotely}}
-
-Docker is installed on all our shared resources. Most machines already have images that can be used for gds. Rocker/geospatial has been extended to have all libraries that GDSL members generally use -link to the image-.
+\emph{Rocker/geospatial} has been extended to have all libraries that GDSL members generally use -link to the image-.
 
 Once you accessed the server you can list the existing images with the following command:
 
@@ -1153,6 +1131,26 @@ docker images ls
 check ports
 
 run command same specifics of user names and psw.
+
+\begin{verbatim}
+docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p <free-port>:8787 -v ${PWD}:/home/your-user rocker/geospatial
+\end{verbatim}
+
+With the run command you generate a container where the image is running. You can check your process with the \emph{docker ps} command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:
+
+\begin{verbatim}
+<host-ip>:<port>
+\end{verbatim}
+
+\hypertarget{run-docker-locally}{%
+\section{Run Docker Locally}\label{run-docker-locally}}
+
+To run one of the rocker images locally on your laptop you need to install docker as described in - par ref - and pull the image of your choise from the docker hub.
+
+Once the image is on your local machine, you can run it with the same command as above.
+
+You can access Rstudio server running on your local host through a browser at:
+\href{http://localhost:8787}{\texttt{http://localhost:8787}}
 
 \hypertarget{best-practices}{%
 \chapter{Best Practices}\label{best-practices}}
