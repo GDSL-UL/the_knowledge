@@ -142,8 +142,8 @@
 </ul></li>
 <li class="chapter" data-level="9" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html"><i class="fa fa-check"></i><b>9</b> Docker Containers for R</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.1</b> Run Docker Locally</a></li>
-<li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.2</b> Run Docker Remotely</a></li>
+<li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.1</b> Run Docker Remotely</a></li>
+<li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.2</b> Run Docker Locally</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="best-practices.html"><a href="best-practices.html"><i class="fa fa-check"></i><b>10</b> Best Practices</a>
 <ul>
@@ -181,33 +181,27 @@
 <h1><span class="header-section-number">Chapter 9</span> Docker Containers for R</h1>
 <p>A widely-used suite of docker images for R has been developed by the Rocker project <span class="citation">(Boettiger and Eddelbuettel <a href="#ref-RJ-2017-065" role="doc-biblioref">2017</a>)</span>. 29 repositories of rocker’s images are listed on the <a href="https://hub.docker.com/u/rocker/">docker hub</a> providing R environments customized to perform a variety of tasks. Most of them include R studio server, allowing to work remotely from the R studio server web interface accessible through any browser.</p>
 <p>Rocker images are versioned, meaning that if you want to employ a specific version of R rather than the latest you can specify an R version tag in the image name, i.e. <em>rocker/verse:3.4.0</em>, if no tag is requested you will automatically pull the latest version <span class="citation">(Boettiger and Eddelbuettel <a href="#ref-RJ-2017-065" role="doc-biblioref">2017</a>)</span>.</p>
-<div id="run-docker-locally" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Run Docker Locally</h2>
-<p>To run one of the rocker images locally on your laptop you need to install docker as described in - par ref - and pull the image of your choise from docker hub.</p>
-<p>A great image with the tidyverse + various geospatial packages + Rstudio server is rocker geospatial:</p>
-<blockquote>
-<p><a href="https://hub.docker.com/r/rocker/geospatial"><code>https://hub.docker.com/r/rocker/geospatial</code></a></p>
-</blockquote>
+<div id="run-docker-remotely" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Run Docker Remotely</h2>
+<p>Docker is installed on all our shared resources. Most machines already have images that can be used for gds.</p>
+<p>An useful image for running geospatial analysis, including the tidyverse + various geospatial packages, is <a href="https://hub.docker.com/r/rocker/geospatial"><em>rocker/geospatial</em></a>:</p>
 <p>You can pull the repository running the following command:</p>
-<pre><code>docker pull rocker/geospatial</code></pre>
-<p>This will require a good internet connection and will take a while, but you
-only need to run it once.</p>
-<p>Once the image is on your local machine, you can run it with the following command:</p>
-<pre><code>docker run -d --name rstudio -v ${PWD}:/data -e PASSWORD=secret -p 8787:8787 rocker/geospatial</code></pre>
-<p>Using this approach, you can store files on your laptop’s drive, and access, edit or create new ones from the container (ie. using RStudio).
-The command above also sets up a password (<code>secret</code>) and username (<code>rstudio</code>)
-to use when you login to RStudio.</p>
-<p>On Windows, this is similar (change <code>alexa</code> to your account name - look at your directory structure):</p>
-<pre><code>docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial</code></pre>
-<p>If this runs ok; you access Rstudio server through a browser at: <a href="http://localhost:8787"><code>http://localhost:8787</code></a></p>
-</div>
-<div id="run-docker-remotely" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Run Docker Remotely</h2>
-<p>Docker is installed on all our shared resources. Most machines already have images that can be used for gds. Rocker/geospatial has been extended to have all libraries that GDSL members generally use -link to the image-.</p>
+<pre class="shell"><code>docker pull rocker/geospatial</code></pre>
+<p><em>Rocker/geospatial</em> has been extended to have all libraries that GDSL members generally use -link to the image-.</p>
 <p>Once you accessed the server you can list the existing images with the following command:</p>
-<pre><code>docker images ls</code></pre>
+<pre class="shell"><code>docker images ls</code></pre>
 <p>check ports</p>
 <p>run command same specifics of user names and psw.</p>
+<pre class="shell"><code>docker run -e USER=&lt;your-user&gt; -e PASSWORD=&lt;your-password&gt; -e USERID=$UID -e GROUPID=$GID -d --rm -p &lt;free-port&gt;:8787 -v ${PWD}:/home/your-user rocker/geospatial</code></pre>
+<p>With the run command you generate a container where the image is running. You can check your process with the <em>docker ps</em> command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:</p>
+<pre class="shell"><code>&lt;host-ip&gt;:&lt;port&gt;</code></pre>
+</div>
+<div id="run-docker-locally" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Run Docker Locally</h2>
+<p>To run one of the rocker images locally on your laptop you need to install docker as described in - par ref - and pull the image of your choise from the docker hub.</p>
+<p>Once the image is on your local machine, you can run it with the same command as above.</p>
+<p>You can access Rstudio server running on your local host through a browser at:
+<a href="http://localhost:8787"><code>http://localhost:8787</code></a></p>
 
 </div>
 </div>
