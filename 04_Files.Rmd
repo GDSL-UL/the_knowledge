@@ -124,21 +124,6 @@ md5sum <filename>
 
 ## Practical
 
-### File Transfer
-
-1) Create a file named "Test.txt" locally and enter some random text. 
-From your local machine copy "Test.txt" to your remote server using either 
-scp or a ftp client (e.g., using [WinSCP](https://winscp.net/eng/index.php)
-or [filezilla](https://filezilla-project.org/)). 
-1) Upon transferring the file, ssh into the remote server and verify that the file is within the 
-specified target directory using the ls command. 
-1) (Optional) Open the file using a 
-[command line editing interface](https://en.wikipedia.org/wiki/List_of_text_editors) from the terminal, e.g, nano or vim:
-
-```shell
-nano ./Test.txt
-```
-
 ### File Download
 
 For the second task we shall download the CIFAR-10 dataset from 
@@ -153,3 +138,18 @@ which will copy the link to your clipboard.
 1) Type "wget " and paste the url into to the terminal by pressing (ctrl + shift + V).
 1) Press enter to start the file download.
 1) Upon downloading the CIFAR-10 dataset verify that the md5 checksum matches the one specified on the website. 
+
+### File Transfer (Optional)
+
+1) Create a file named "Test.txt" locally and enter some random text. 
+From your local machine copy "Test.txt" to your remote server using either 
+scp or a ftp client (e.g., using [WinSCP](https://winscp.net/eng/index.php)
+or [filezilla](https://filezilla-project.org/)). 
+1) Upon transferring the file, ssh into the remote server and verify that the file is within the 
+specified target directory using the ls command. 
+1) (Optional) Open the file using a 
+[command line editing interface](https://en.wikipedia.org/wiki/List_of_text_editors) from the terminal, e.g, nano or vim:
+
+```shell
+nano ./Test.txt
+```
