@@ -37,6 +37,15 @@ Things to keep an eye on:
 
 If your process is taking longer than expected, then this may be caused by either too many processes running in parallel, or insufficient memory being available. The later can result in swap memory being used, which will significantly slow down your processes. 
 
+### Memory Leaks
+
+There is also the potential for "memory leaks" within the code that you are using. Memory leaks can be caused when: 
+
+* large objects are not released when they are no longer required;
+* reference cycles within the code you are running. 
+
+Before running your code on shared resources, run smaller tests (when possible) on you local system while monitoring the memory usage over time. If the amount of memory remains more or less consistent, then you should be safe to run your application on a shared resource. Although note that memory leaks may be difficult to notice at first, and may only become apparent after running a program for hours/days. See the following guide for [discovering memory leaks in python](https://medium.com/zendesk-engineering/hunting-for-memory-leaks-in-python-applications-6824d0518774). 
+
 ## GPU Considerations
 
 ### Monitoring
