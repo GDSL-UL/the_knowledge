@@ -1,6 +1,6 @@
 # JupyterLab
 
-This document shows how to install and run a JupyterLab server locally and
+This document shows how to pull and run a JupyterLab server locally and
 remotely.
 
 ## Run Jupyter Lab Locally
@@ -12,7 +12,7 @@ machine (eg. laptop):
 1. You are running either Windows 10 Pro, macOS, or Linux
 
 Assuming Docker is up and running (check [`setup_docker.md`](setup_docker.md)
-for that), you can install an "image", which is the install that will let you
+for that), you can pull an "image", which will let you
 run containers, by typing on a command line (`Terminal.app` or `PowerShell`
 are both good options):
 
@@ -20,10 +20,9 @@ are both good options):
 docker pull darribas/gds:4.0
 ```
 
-This will take a while to download but, once finished, you will be ready
-to go.
-
-Once the command above has finished installing your GDS stack, you are ready to go! To get a Jupyter session started, you can follow these steps:
+Upon executing the above command you will see output providing information regarding the download progress. 
+Once the above command has finished installing your GDS stack, you are ready to go! 
+To get a Jupyter session started, you can follow these steps:
 
 1. Run on the same terminal as above the following command:
 
@@ -108,6 +107,7 @@ serve already has a Docker image installed, ready to be run.
 1. Generate SSH keys with: `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem`
 1. Generate password as in the official [tutorial](http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#preparing-a-hashed-password)
 1. Update `/home/jovyan/.jupyter/jupyter_notebook_config.py`
+
     ```python
     # Set options for certfile, ip, password, and toggle off
     # browser auto-opening
