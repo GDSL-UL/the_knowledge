@@ -70,7 +70,7 @@ If you do not add this option to the run command you can detach from a running d
 ```shell
 --env or -e  -> Set environment variables.
 ```
-Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environmental variable is *HOME* which is associated with the path of your home directory (*/home/your-user*). By adding *-e* to the run command you pass the environmental variable to the container where a certain image is running. Cases when this option is necessary will be discussed.
+Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environment variable is *HOME* which is associated with the path of your home directory (*/home/your-user*). By adding *-e* to the run command you pass the environment variable to the container where a certain image is running. Cases when this option is necessary will be discussed.
 
 --publish or -p -> Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
 
@@ -101,6 +101,6 @@ docker run -d --rm -p 8080:8787 -v ${PWD}:/data rocker/geospatial
 
 After the -p option you add the ports mapping: <host port>:<container port>. In this example, docker runs an image with r studio server which uses the port 8787 by default, but the host (the server where you are running docker) has the port 8787 already in use by other services. Therefore, you need to map the port of the image (8787) with a free port of the host (in this example 8080).
 
-After the -v option you add the paths to mount a volume:<host path>:<container path>. In this example, the working directory is mapped to a data directory in the container. ${PWD} stands for Print Working Directory.
+After the -v option you add the paths to mount a volume:<host path>:<container path>. In this example, the working directory (the directory where you are running the command from) is mapped to a data directory in the container. ${PWD} stands for **Print Working Directory**.
  
 
