@@ -255,30 +255,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre class="shell"><code>docker pull rocker/geospatial</code></pre>
 <p>Once the image is on your local machine, you can run it with the following command:</p>
 <pre class="shell"><code>docker run -e USER=&lt;your-user&gt; -e PASSWORD=&lt;your-password&gt; -e USERID=$UID -e GROUPID=$GID -d --rm -p 8787:8787 -v ${PWD}:/home/your-user rocker/geospatial</code></pre>
-<p>All the docker run options used here have been described in <a href="06_docker.md"><code>docker.md</code></a>. Here, it is assumed that the port 8787 is not occupied on your local machine. If you do not have an instance of R studio server running, that port should be free.
-The environment variables necessary to run an image with R studio server are the following:
-* USER -&gt; you can add your user name
-* PASSWORD -&gt; a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
-* USERID and GROUPID -&gt; these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files.</p>
+<p>All the docker run options used here have been described in <a href="06_docker.md"><code>docker.md</code></a>. Here, it is assumed that the port 8787 is not occupied on your local machine. If you do not have an instance of R studio server running, that port should be free.</p>
 <p>Once you have run the command you can access Rstudio server running on your local host through a browser at: <a href="http://localhost:8787"><code>http://localhost:8787</code></a> and adding your credentials.</p>
 </div>
 <div id="run-docker-remotely" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> Run Docker Remotely</h2>
 <p>Docker is installed on all our shared resources. Most machines already have images that can be used for gds. <em>Rocker/geospatial</em> has been extended to have all libraries that GDSL members generally use. This extended image has been named <em>rstudio_gdsl</em>.</p>
 <p>Once you accessed the server you can list the existing images with the following command:</p>
-<pre class="shell"><code>docker images ls</code></pre>
-<p>You can pick the image that you need for your analysis, or pull a new image with the following command (the pull command can generally be copied from the docker hub image page, it is always good practice to check it as in some cases it needs further options):</p>
-<pre class="shell"><code>docker pull *image tag*</code></pre>
+<pre class="shell"><code>docker image ls</code></pre>
+<p>You can pick the image that you need for your analysis, or pull a new image with the following command:</p>
+<pre class="shell"><code>docker pull image-tag</code></pre>
 <p>Once you decided which image you want to use, you can start building the run command with the appropriate options:</p>
 <ul>
 <li>-d and -rm are advised, the first will automatically detach you from the container while the second will remove the container when you stop it. Do not forget to remove the container manually whether you have not added the -rm option.</li>
 <li>-p is needed to map the host’s port with the container’s port. To do this, you first need to verify which port is free to use. Ports that are permanently occupied on the servers are detailed on the servers_description file. In addition, you need to run <em>docker ps</em> to list the containers are running (if any) and verify which ports are using.</li>
-<li>-e with the same environment variables that have been listed above.</li>
+<li>-e to set the environment variables.</li>
 </ul>
 <p>The final run command employing the extended image will look as follows:</p>
 <pre class="shell"><code>docker run -e USER=&lt;your-user&gt; -e PASSWORD=&lt;your-password&gt; -e USERID=$UID -e GROUPID=$GID -d --rm -p &lt;free-port&gt;:8787 -v ${PWD}:/home/your-user rstudio_gdsl</code></pre>
-<p>With the run command you generate a container where the image is running.
-You can check your process with the <em>docker ps</em> command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:</p>
+<p>The environment variables necessary to run an image with R studio server are the following:
+* USER -&gt; you can add your user name
+* PASSWORD -&gt; a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
+* USERID and GROUPID -&gt; these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files.</p>
+<p>With the run command you generate a container where the image is running.</p>
+<p>You can check your process with the <em>docker ps</em> command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:</p>
 <pre class="shell"><code>&lt;host-ip&gt;:&lt;port&gt;</code></pre>
 <p>You can find the host IP address in the document describing the servers.</p>
 
