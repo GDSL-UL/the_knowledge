@@ -61,10 +61,18 @@ Options that are generally added are:
 --detach or -d -> Run container in background and print container ID
 ```
 
-If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence *CTRL + p* followed by *CTRL + q* can be used. To re-attach the terminal to the docker session enter: docker attach <session_id>
+If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence *Ctrl + p* followed by *Ctrl + q* can be used. 
+
+To re-attach the terminal to the docker session enter: 
 
 ```shell
--rm  -> Automatically remove the container when it exits
+docker attach <session_id>
+```
+
+Other commonly used flags include:
+
+```shell
+--rm  -> Automatically remove the container when it exits
 ```
 
 ```shell
