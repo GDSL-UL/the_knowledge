@@ -63,7 +63,21 @@ You can check your process with the *docker ps* command. As already mentioned ab
 ``` 
 You can find the host IP address in the document describing the servers.
 
+## Extend an image
 
+Some images may not have all the libraries needed for your study. In that case you can extend the image with new libraries. Sometimes you can simply install a library from the R studio interface and it works with no errors. More frequently you will need to add some dependencies to make the installation work.
+
+To do that you need to access the container's shell with the following command:
+
+```shell
+docker exec -it <mycontainer> bash
+```
+
+Once you have installed the packages and dependences you need, you can save it by creating a new image through the commit command:
+
+```shell
+docker commit -m "commit message" <container id> <new image name>
+```
 
 
 

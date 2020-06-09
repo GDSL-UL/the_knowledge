@@ -207,6 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.1</b> Run Docker Locally</a></li>
 <li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.2</b> Run Docker Remotely</a></li>
+<li class="chapter" data-level="9.3" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#extend-an-image"><i class="fa fa-check"></i><b>9.3</b> Extend an image</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="best-practices.html"><a href="best-practices.html"><i class="fa fa-check"></i><b>10</b> Best Practices</a>
 <ul>
@@ -281,6 +282,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can check your process with the <em>docker ps</em> command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:</p>
 <pre class="shell"><code>&lt;host-ip&gt;:&lt;port&gt;</code></pre>
 <p>You can find the host IP address in the document describing the servers.</p>
+</div>
+<div id="extend-an-image" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Extend an image</h2>
+<p>Some images may not have all the libraries needed for your study. In that case you can extend the image with new libraries. Sometimes you can simply install a library from the R studio interface and it works with no errors. More frequently you will need to add some dependencies to make the installation work.</p>
+<p>To do that you need to access the container’s shell with the following command:</p>
+<pre class="shell"><code>docker exec -it &lt;mycontainer&gt; bash</code></pre>
+<p>Once you have installed the packages and dependences you need, you can save it by creating a new image through the commit command:</p>
+<pre class="shell"><code>docker commit -m &quot;commit message&quot; &lt;container id&gt; &lt;new image name&gt;</code></pre>
 
 </div>
 </div>
