@@ -130,7 +130,7 @@ For an overview of nano shortcut keys you can press **Ctrl + G**, which will out
 
 1) Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).
 
-1) Change the current temporary password with a password of your choice.
+1) **Change the current temporary password with a password of your choice.**
 
 1) Create a directory with your project name.
 

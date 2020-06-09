@@ -126,7 +126,7 @@ serve already has a Docker image installed, ready to be run.
     c.NotebookApp.port = 8888
     ```
 1. Launch secure Lab: `jupyter lab`
-1. On your own machine (laptop/tablet), log in to `https://<server.ip.address>:<mapping_port>` with the password you have set. Since we are using SSL make sure you specify *https://* in your browser. 
+1. On your own machine (laptop/tablet), log in to `https://<server.ip.address>:<mapping_port>` with the password you have set. Since we are using SSL make sure you specify **https://** in your browser. 
 
 ### Self-signed Certificate Warnings
 
