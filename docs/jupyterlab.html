@@ -24,7 +24,7 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-06-08" />
+<meta name="date" content="2020-06-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -327,26 +327,27 @@ serve already has a Docker image installed, ready to be run.</p>
 </ul>
 <ol style="list-style-type: decimal">
 <li><p>Launch the container:</p>
-<pre class="shell"><code>docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  </code></pre>
+<pre class="shell"><code>docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p &lt;mapping_port&gt;:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  </code></pre>
 <p>Note we are appending <code>start.sh</code> so it drops us into
 the command line of the container rather than launching the server directly</p></li>
 <li><p>Run <code>jupyter notebook --generate-config</code></p></li>
-<li><p>Generate SSH keys with: <code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem</code></p></li>
 <li><p>Generate password as in the official <a href="http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#preparing-a-hashed-password">tutorial</a></p></li>
-<li><p>Update <code>/home/jovyan/.jupyter/jupyter_notebook_config.py</code></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="jupyterlab.html#cb37-1"></a><span class="co"># Set options for certfile, ip, password, and toggle off</span></span>
-<span id="cb37-2"><a href="jupyterlab.html#cb37-2"></a><span class="co"># browser auto-opening</span></span>
-<span id="cb37-3"><a href="jupyterlab.html#cb37-3"></a>c.NotebookApp.certfile <span class="op">=</span> <span class="st">u&#39;/home/jovyan/mycert.pem&#39;</span></span>
-<span id="cb37-4"><a href="jupyterlab.html#cb37-4"></a>c.NotebookApp.keyfile <span class="op">=</span> <span class="st">u&#39;/home/jovyan/mykey.key&#39;</span></span>
-<span id="cb37-5"><a href="jupyterlab.html#cb37-5"></a><span class="co"># Set ip to &#39;*&#39; to bind on all interfaces (ips) for the public server</span></span>
-<span id="cb37-6"><a href="jupyterlab.html#cb37-6"></a>c.NotebookApp.ip <span class="op">=</span> <span class="st">&#39;*&#39;</span></span>
-<span id="cb37-7"><a href="jupyterlab.html#cb37-7"></a>c.NotebookApp.password <span class="op">=</span> <span class="st">u&#39;sha1:bcd259ccf...&lt;your hashed password here&gt;&#39;</span></span>
-<span id="cb37-8"><a href="jupyterlab.html#cb37-8"></a>c.NotebookApp.open_browser <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb37-9"><a href="jupyterlab.html#cb37-9"></a></span>
-<span id="cb37-10"><a href="jupyterlab.html#cb37-10"></a><span class="co"># It is a good idea to set a known, fixed port for server access</span></span>
-<span id="cb37-11"><a href="jupyterlab.html#cb37-11"></a>c.NotebookApp.port <span class="op">=</span> <span class="dv">8888</span></span></code></pre></div></li>
+<li><p>Since we will be using the created password we shall also enable SSL (secure sockets layer). SSL is a protocol for web browsers and servers that allows for the authentication, encryption and decryption of data sent over the Internet. Therefore, by enabling SSL our password won’t be sent unencypted by our browser when we login to the server. We shall generate a self-signed SSL certificate with:</p>
+<pre class="shell"><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem</code></pre></li>
+<li><p>Next we shall update the <code>/home/jovyan/.jupyter/jupyter_notebook_config.py</code> file:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="jupyterlab.html#cb39-1"></a><span class="co"># Set options for certfile, ip, password, and toggle off</span></span>
+<span id="cb39-2"><a href="jupyterlab.html#cb39-2"></a><span class="co"># browser auto-opening</span></span>
+<span id="cb39-3"><a href="jupyterlab.html#cb39-3"></a>c.NotebookApp.certfile <span class="op">=</span> <span class="st">u&#39;/home/jovyan/mycert.pem&#39;</span></span>
+<span id="cb39-4"><a href="jupyterlab.html#cb39-4"></a>c.NotebookApp.keyfile <span class="op">=</span> <span class="st">u&#39;/home/jovyan/mykey.key&#39;</span></span>
+<span id="cb39-5"><a href="jupyterlab.html#cb39-5"></a><span class="co"># Set ip to &#39;*&#39; to bind on all interfaces (ips) for the public server</span></span>
+<span id="cb39-6"><a href="jupyterlab.html#cb39-6"></a>c.NotebookApp.ip <span class="op">=</span> <span class="st">&#39;*&#39;</span></span>
+<span id="cb39-7"><a href="jupyterlab.html#cb39-7"></a>c.NotebookApp.password <span class="op">=</span> <span class="st">u&#39;sha1:bcd259ccf...&lt;your hashed password here&gt;&#39;</span></span>
+<span id="cb39-8"><a href="jupyterlab.html#cb39-8"></a>c.NotebookApp.open_browser <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb39-9"><a href="jupyterlab.html#cb39-9"></a></span>
+<span id="cb39-10"><a href="jupyterlab.html#cb39-10"></a><span class="co"># It is a good idea to set a known, fixed port for server access</span></span>
+<span id="cb39-11"><a href="jupyterlab.html#cb39-11"></a>c.NotebookApp.port <span class="op">=</span> <span class="dv">8888</span></span></code></pre></div></li>
 <li><p>Launch secure Lab: <code>jupyter lab</code></p></li>
-<li><p>On your own machine (laptop/tablet), log in to <code>&lt;server.ip.address&gt;:8888</code> with the password you have set</p></li>
+<li><p>On your own machine (laptop/tablet), log in to <code>https://&lt;server.ip.address&gt;:&lt;mapping_port&gt;</code> with the password you have set. Since we are using SSL make sure you specify <strong><a href="https://" class="uri">https://</a></strong> in your browser.</p></li>
 </ol>
 <div id="self-signed-certificate-warnings" class="section level3" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> Self-signed Certificate Warnings</h3>

@@ -97,16 +97,20 @@ serve already has a Docker image installed, ready to be run.
 1. Launch the container:
 
     ```shell
-    docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
+    docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p <mapping_port>:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
     ```
-
+    
     Note we are appending `start.sh` so it drops us into
     the command line of the container rather than launching the server directly
 
 1. Run `jupyter notebook --generate-config`
-1. Generate SSH keys with: `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem`
 1. Generate password as in the official [tutorial](http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#preparing-a-hashed-password)
-1. Update `/home/jovyan/.jupyter/jupyter_notebook_config.py`
+1. Since we will be using the created password we shall also enable SSL (secure sockets layer). SSL is a protocol for web browsers and servers that allows for the authentication, encryption and decryption of data sent over the Internet. Therefore, by enabling SSL our password won't be sent unencypted by our browser when we login to the server. We shall generate a self-signed SSL certificate with:
+
+    ```shell
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+    ```
+1. Next we shall update the `/home/jovyan/.jupyter/jupyter_notebook_config.py` file:
 
     ```python
     # Set options for certfile, ip, password, and toggle off
@@ -122,7 +126,7 @@ serve already has a Docker image installed, ready to be run.
     c.NotebookApp.port = 8888
     ```
 1. Launch secure Lab: `jupyter lab`
-1. On your own machine (laptop/tablet), log in to `<server.ip.address>:8888` with the password you have set
+1. On your own machine (laptop/tablet), log in to `https://<server.ip.address>:<mapping_port>` with the password you have set. Since we are using SSL make sure you specify **https://** in your browser. 
 
 ### Self-signed Certificate Warnings
 

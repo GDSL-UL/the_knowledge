@@ -22,8 +22,7 @@ The authenticity of host 'hostIPaddress' cannot be established.
  Are you sure you want to continue connecting (yes/no)?
 ```
 Windows users need to install an SSH client in order to access a server remotely through SSH. There are several clients available, MobaXterm is the option we advise to employ as it provides a number of useful functions for remote computing in a single application. 
-The free edition can be downloaded [here](https://mobaxterm.mobatek.net/download.html). To establish a connection with your remote server you open mobaXterm and click on session and then SSH. The Remote Host is the machine you want to access which can be identified by an IP address. IP addresses of our shared resources are listed in - add file name here-.
-[Here](https://mobaxterm.mobatek.net/demo.html) you can find a simple demo of the SSH client. 
+The free edition can be downloaded [here](https://mobaxterm.mobatek.net/download.html). To establish a connection with your remote server you open mobaXterm and click on session and then SSH. The Remote Host is the machine you want to access which can be identified by an IP address. [Here](https://mobaxterm.mobatek.net/demo.html) you can find a simple demo of the SSH client. 
 
 If this is your first time connecting to the server, or if the server has recently been 
 reconfigured with a new key, then the above message is perfectly normal. You can proceed by typing yes and enter.  
@@ -131,7 +130,7 @@ For an overview of nano shortcut keys you can press **Ctrl + G**, which will out
 
 1) Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).
 
-1) Change the current temporary password with a password of your choice.
+1) **Change the current temporary password with a password of your choice.**
 
 1) Create a directory with your project name.
 
