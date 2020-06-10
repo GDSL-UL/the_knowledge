@@ -24,7 +24,7 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-06-09" />
+<meta name="date" content="2020-06-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -161,10 +161,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="ssh.html"><a href="ssh.html#list-files"><i class="fa fa-check"></i><b>4.3.1</b> List Files:</a></li>
 <li class="chapter" data-level="4.3.2" data-path="ssh.html"><a href="ssh.html#make-directory"><i class="fa fa-check"></i><b>4.3.2</b> Make Directory:</a></li>
-<li class="chapter" data-level="4.3.3" data-path="ssh.html"><a href="ssh.html#move"><i class="fa fa-check"></i><b>4.3.3</b> Move:</a></li>
-<li class="chapter" data-level="4.3.4" data-path="ssh.html"><a href="ssh.html#remove"><i class="fa fa-check"></i><b>4.3.4</b> Remove:</a></li>
-<li class="chapter" data-level="4.3.5" data-path="ssh.html"><a href="ssh.html#change-your-working-directory"><i class="fa fa-check"></i><b>4.3.5</b> Change your Working Directory:</a></li>
-<li class="chapter" data-level="4.3.6" data-path="ssh.html"><a href="ssh.html#copy"><i class="fa fa-check"></i><b>4.3.6</b> Copy:</a></li>
+<li class="chapter" data-level="4.3.3" data-path="ssh.html"><a href="ssh.html#change-your-working-directory"><i class="fa fa-check"></i><b>4.3.3</b> Change your Working Directory:</a></li>
+<li class="chapter" data-level="4.3.4" data-path="ssh.html"><a href="ssh.html#move"><i class="fa fa-check"></i><b>4.3.4</b> Move:</a></li>
+<li class="chapter" data-level="4.3.5" data-path="ssh.html"><a href="ssh.html#copy"><i class="fa fa-check"></i><b>4.3.5</b> Copy:</a></li>
+<li class="chapter" data-level="4.3.6" data-path="ssh.html"><a href="ssh.html#remove"><i class="fa fa-check"></i><b>4.3.6</b> Remove:</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="ssh.html"><a href="ssh.html#command-line-editors"><i class="fa fa-check"></i><b>4.4</b> Command Line Editors</a></li>
 <li class="chapter" data-level="4.5" data-path="ssh.html"><a href="ssh.html#practical"><i class="fa fa-check"></i><b>4.5</b> Practical</a></li>
@@ -285,34 +285,32 @@ reconfigured with a new key, then the above message is perfectly normal. You can
 <p>A new directory can be created using the mkdir command:</p>
 <pre class="shell"><code>user@host:~$ mkdir &lt;new_directory_name&gt;</code></pre>
 </div>
-<div id="move" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Move:</h3>
+<div id="change-your-working-directory" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Change your Working Directory:</h3>
+<p>To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:</p>
+<pre class="shell"><code>user@host:~$ cd &lt;target_directory&gt;
+user@host:~$ cd ..</code></pre>
+</div>
+<div id="move" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Move:</h3>
 <p>The mv command command can be used to either rename or move files and folders:</p>
 <pre class="shell"><code>user@host:~$ mv &lt;current_filename&gt; &lt;new_filename&gt;  # This is to change a file name
-user@host:~$ mv &lt;filepath&gt; &lt;target_directory&gt; # This is to move a file to a folder
-user@host:~$ mv -r &lt;directory_path&gt; &lt;target_directory&gt; # This is to move a folder with all its content to an other folder </code></pre>
-<p>We add the -r (recursive) flag to move a directory and all its contents (subdirectories and files).</p>
+user@host:~$ mv &lt;filepath&gt; &lt;target_directory&gt; # This is to move a file to a folder</code></pre>
 </div>
-<div id="remove" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Remove:</h3>
+<div id="copy" class="section level3" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Copy:</h3>
+<p>To copy files use cp. The -r flag can be added to recursively copy all files and subdirectories within a directory:</p>
+<pre class="shell"><code>user@host:~$ cp &lt;filename&gt; &lt;filecopy&gt;
+user@host:~$ cp −r &lt;directory&gt; &lt;target&gt;</code></pre>
+</div>
+<div id="remove" class="section level3" number="4.3.6">
+<h3><span class="header-section-number">4.3.6</span> Remove:</h3>
 <p>Files and folders and can be deleted using the rm (remove) command:</p>
 <pre class="shell"><code>user@host:~$ rm &lt;filepath&gt; # To delete a file
 user@host:~$ rm -r &lt;directory&gt; # To delete a folder and its content</code></pre>
 <p>Again, we add the -r (recursive) flag to remove a directory and all its contents (subdirectories and files).</p>
 <p><strong>Warning: rm is to be used with caution. There is no trash folder
 from which the files can be recovered. Upon using this command the files are deleted.</strong></p>
-</div>
-<div id="change-your-working-directory" class="section level3" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> Change your Working Directory:</h3>
-<p>To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:</p>
-<pre class="shell"><code>user@host:~$ cd &lt;target_directory&gt;
-user@host:~$ cd ..</code></pre>
-</div>
-<div id="copy" class="section level3" number="4.3.6">
-<h3><span class="header-section-number">4.3.6</span> Copy:</h3>
-<p>To copy files use cp. Again the -r flag can be added to recursively copy all files and subdirectories within a directory:</p>
-<pre class="shell"><code>user@host:~$ cp &lt;filename&gt; &lt;filecopy&gt;
-user@host:~$ cp −r &lt;directory&gt; &lt;target&gt;</code></pre>
 </div>
 </div>
 <div id="command-line-editors" class="section level2" number="4.4">
