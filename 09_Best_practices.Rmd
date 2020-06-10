@@ -4,7 +4,9 @@
 
 Before booking a server look at the server information sheet to verify that the resource can meet your needs. 
 
-Book the Server with our booking system detailing your name, short description of tasks, forseen resources used (i.e. gpu, cpu threads,ram) - the booking system will be either an excel file or a shared calendar.
+Book the Server with our booking system detailing your name, description of tasks and, when possible, forseen resources used (i.e. gpu, cpu threads,ram). 
+
+It is better to have no more than one person per server to avoid overload in the machine. However, non expensive tasks can be performed simultaneously. Always check what tasks will be performed on the booking calendar and communicate with each other.  
 
 ## Docker Considerations
 

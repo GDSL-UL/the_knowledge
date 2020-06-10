@@ -207,6 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.1</b> Run Docker Locally</a></li>
 <li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.2</b> Run Docker Remotely</a></li>
+<li class="chapter" data-level="9.3" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#extend-an-image"><i class="fa fa-check"></i><b>9.3</b> Extend an image</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="best-practices.html"><a href="best-practices.html"><i class="fa fa-check"></i><b>10</b> Best Practices</a>
 <ul>
@@ -286,6 +287,8 @@ your laptop and scale to a server (e.g. running out of the lab).</p>
 <h2><span class="header-section-number">7.3</span> Useful Docker Commands</h2>
 <p>List available images :</p>
 <pre class="shell"><code>docker image ls</code></pre>
+<p>Pull a new image:</p>
+<pre class="shell"><code>docker pull image-tag</code></pre>
 <p>See what containers are running (this also shows you the ID and which port is occupying):</p>
 <pre class="shell"><code>docker ps</code></pre>
 <p>The run command instantiates an image in an isolated container. The generic command is:</p>
@@ -299,8 +302,9 @@ your laptop and scale to a server (e.g. running out of the lab).</p>
 <pre class="shell"><code>--rm  -&gt; Automatically remove the container when it exits</code></pre>
 <pre class="shell"><code>--env or -e  -&gt; Set environment variables.</code></pre>
 <p>Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environment variable is <em>HOME</em> which is associated with the path of your home directory (<em>/home/your-user</em>). By adding <em>-e</em> to the run command you pass the environment variable to the container where a certain image is running. Cases when this option is necessary will be discussed.</p>
-<p>–publish or -p -&gt; Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)</p>
-<pre class="shell"><code>--volume or -v -&gt; Bind mount a volume </code></pre>
+<pre class="shell"><code>--publish or -p -&gt; Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
+
+--volume or -v -&gt; Bind mount a volume </code></pre>
 <p>All other options are listed <a href="https://docs.docker.com/engine/reference/commandline/run/">here</a></p>
 <p>To stop the container you have been running you need to detach from the container using the escape sequence (unless you added -d to the run command) and send the following commands:</p>
 <pre class="shell"><code>docker ps   to get the Container ID

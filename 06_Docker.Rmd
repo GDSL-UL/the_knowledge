@@ -44,6 +44,11 @@ List available images :
 ```shell
 docker image ls
 ```
+Pull a new image:
+
+```shell
+docker pull image-tag
+```
 
 See what containers are running (this also shows you the ID and which port is occupying):
 
@@ -80,9 +85,9 @@ Other commonly used flags include:
 ```
 Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environment variable is *HOME* which is associated with the path of your home directory (*/home/your-user*). By adding *-e* to the run command you pass the environment variable to the container where a certain image is running. Cases when this option is necessary will be discussed.
 
+```shell
 --publish or -p -> Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
 
-```shell
 --volume or -v -> Bind mount a volume 
 ```
 

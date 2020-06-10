@@ -41,6 +41,46 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -80,7 +120,7 @@
 
 \title{The Knowledge}
 \author{Geographic Data Science Lab}
-\date{2020-06-03}
+\date{2020-06-09}
 
 \begin{document}
 \maketitle
@@ -403,8 +443,7 @@ The authenticity of host 'hostIPaddress' cannot be established.
 \end{verbatim}
 
 Windows users need to install an SSH client in order to access a server remotely through SSH. There are several clients available, MobaXterm is the option we advise to employ as it provides a number of useful functions for remote computing in a single application.
-The free edition can be downloaded \href{https://mobaxterm.mobatek.net/download.html}{here}. To establish a connection with your remote server you open mobaXterm and click on session and then SSH. The Remote Host is the machine you want to access which can be identified by an IP address. IP addresses of our shared resources are listed in - add file name here-.
-\href{https://mobaxterm.mobatek.net/demo.html}{Here} you can find a simple demo of the SSH client.
+The free edition can be downloaded \href{https://mobaxterm.mobatek.net/download.html}{here}. To establish a connection with your remote server you open mobaXterm and click on session and then SSH. The Remote Host is the machine you want to access which can be identified by an IP address. \href{https://mobaxterm.mobatek.net/demo.html}{Here} you can find a simple demo of the SSH client.
 
 If this is your first time connecting to the server, or if the server has recently been
 reconfigured with a new key, then the above message is perfectly normal. You can proceed by typing yes and enter.
@@ -531,7 +570,7 @@ For an overview of nano shortcut keys you can press \textbf{Ctrl + G}, which wil
 \item
   Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).
 \item
-  Change the current temporary password with a password of your choice.
+  \textbf{Change the current temporary password with a password of your choice.}
 \item
   Create a directory with your project name.
 \item
@@ -702,29 +741,6 @@ md5sum <filename>
 \hypertarget{practical-1}{%
 \section{Practical}\label{practical-1}}
 
-\hypertarget{file-transfer-1}{%
-\subsection{File Transfer}\label{file-transfer-1}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi})}
-\tightlist
-\item
-  Create a file named ``Test.txt'' locally and enter some random text.
-  From your local machine copy ``Test.txt'' to your remote server using either
-  scp or a ftp client (e.g., using \href{https://winscp.net/eng/index.php}{WinSCP}
-  or \href{https://filezilla-project.org/}{filezilla}).
-\item
-  Upon transferring the file, ssh into the remote server and verify that the file is within the
-  specified target directory using the ls command.
-\item
-  (Optional) Open the file using a
-  \href{https://en.wikipedia.org/wiki/List_of_text_editors}{command line editing interface} from the terminal, e.g, nano or vim:
-\end{enumerate}
-
-\begin{verbatim}
-nano ./Test.txt
-\end{verbatim}
-
 \hypertarget{file-download-1}{%
 \subsection{File Download}\label{file-download-1}}
 
@@ -749,6 +765,29 @@ using the wget command.
 \item
   Upon downloading the CIFAR-10 dataset verify that the md5 checksum matches the one specified on the website.
 \end{enumerate}
+
+\hypertarget{file-transfer-optional}{%
+\subsection{File Transfer (Optional)}\label{file-transfer-optional}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Create a file named ``Test.txt'' locally and enter some random text.
+  From your local machine copy ``Test.txt'' to your remote server using either
+  scp or a ftp client (e.g., using \href{https://winscp.net/eng/index.php}{WinSCP}
+  or \href{https://filezilla-project.org/}{filezilla}).
+\item
+  Upon transferring the file, ssh into the remote server and verify that the file is within the
+  specified target directory using the ls command.
+\item
+  (Optional) Open the file using a
+  \href{https://en.wikipedia.org/wiki/List_of_text_editors}{command line editing interface} from the terminal, e.g, nano or vim:
+\end{enumerate}
+
+\begin{verbatim}
+nano ./Test.txt
+\end{verbatim}
 
 \hypertarget{data-science-stack}{%
 \chapter{Data Science Stack}\label{data-science-stack}}
@@ -842,6 +881,12 @@ List available images :
 docker image ls
 \end{verbatim}
 
+Pull a new image:
+
+\begin{verbatim}
+docker pull image-tag
+\end{verbatim}
+
 See what containers are running (this also shows you the ID and which port is occupying):
 
 \begin{verbatim}
@@ -860,10 +905,18 @@ Options that are generally added are:
 --detach or -d -> Run container in background and print container ID
 \end{verbatim}
 
-If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence \emph{CTRL + p} followed by \emph{CTRL + q} can be used. To re-attach the terminal to the docker session enter: docker attach
+If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence \emph{Ctrl + p} followed by \emph{Ctrl + q} can be used.
+
+To re-attach the terminal to the docker session enter:
 
 \begin{verbatim}
--rm  -> Automatically remove the container when it exits
+docker attach <session_id>
+\end{verbatim}
+
+Other commonly used flags include:
+
+\begin{verbatim}
+--rm  -> Automatically remove the container when it exits
 \end{verbatim}
 
 \begin{verbatim}
@@ -872,9 +925,9 @@ If you do not add this option to the run command you can detach from a running d
 
 Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environment variable is \emph{HOME} which is associated with the path of your home directory (\emph{/home/your-user}). By adding \emph{-e} to the run command you pass the environment variable to the container where a certain image is running. Cases when this option is necessary will be discussed.
 
---publish or -p -\textgreater{} Publish a container's port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
-
 \begin{verbatim}
+--publish or -p -> Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
+
 --volume or -v -> Bind mount a volume 
 \end{verbatim}
 
@@ -906,7 +959,7 @@ After the -v option you add the paths to mount a volume::. In this example, the 
 \hypertarget{jupyterlab}{%
 \chapter{JupyterLab}\label{jupyterlab}}
 
-This document shows how to install and run a JupyterLab server locally and
+This document shows how to pull and run a JupyterLab server locally and
 remotely.
 
 \hypertarget{run-jupyter-lab-locally}{%
@@ -925,7 +978,7 @@ machine (eg. laptop):
 \end{enumerate}
 
 Assuming Docker is up and running (check \href{setup_docker.md}{\texttt{setup\_docker.md}}
-for that), you can install an ``image'', which is the install that will let you
+for that), you can pull an ``image'', which will let you
 run containers, by typing on a command line (\texttt{Terminal.app} or \texttt{PowerShell}
 are both good options):
 
@@ -933,10 +986,9 @@ are both good options):
 docker pull darribas/gds:4.0
 \end{verbatim}
 
-This will take a while to download but, once finished, you will be ready
-to go.
-
-Once the command above has finished installing your GDS stack, you are ready to go! To get a Jupyter session started, you can follow these steps:
+Upon executing the above command you will see output providing information regarding the download progress.
+Once the above command has finished installing your GDS stack, you are ready to go!
+To get a Jupyter session started, you can follow these steps:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1034,7 +1086,7 @@ ssh <username>@<server.ip.address>
   Launch the container:
 
 \begin{verbatim}
-docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
+docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p <mapping_port>:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
 \end{verbatim}
 
   Note we are appending \texttt{start.sh} so it drops us into
@@ -1042,28 +1094,35 @@ docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${P
 \item
   Run \texttt{jupyter\ notebook\ -\/-generate-config}
 \item
-  Generate SSH keys with: \texttt{openssl\ req\ -x509\ -nodes\ -days\ 365\ -newkey\ rsa:2048\ -keyout\ mykey.key\ -out\ mycert.pem}
-\item
   Generate password as in the official \href{http://jupyter-notebook.readthedocs.io/en/stable/public_server.html\#preparing-a-hashed-password}{tutorial}
 \item
-  Update \texttt{/home/jovyan/.jupyter/jupyter\_notebook\_config.py}
-  ```python
-  \# Set options for certfile, ip, password, and toggle off
-  \# browser auto-opening
-  c.NotebookApp.certfile = u'/home/jovyan/mycert.pem'
-  c.NotebookApp.keyfile = u'/home/jovyan/mykey.key'
-  \# Set ip to `\emph{' to bind on all interfaces (ips) for the public server
-  c.NotebookApp.ip = '}'
-  c.NotebookApp.password = u'sha1:bcd259ccf\ldots{}'
-  c.NotebookApp.open\_browser = False
+  Since we will be using the created password we shall also enable SSL (secure sockets layer). SSL is a protocol for web browsers and servers that allows for the authentication, encryption and decryption of data sent over the Internet. Therefore, by enabling SSL our password won't be sent unencypted by our browser when we login to the server. We shall generate a self-signed SSL certificate with:
 
-  \# It is a good idea to set a known, fixed port for server access
-  c.NotebookApp.port = 8888
-  ```
+\begin{verbatim}
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+\end{verbatim}
+\item
+  Next we shall update the \texttt{/home/jovyan/.jupyter/jupyter\_notebook\_config.py} file:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set options for certfile, ip, password, and toggle off}
+\CommentTok{\# browser auto{-}opening}
+\NormalTok{c.NotebookApp.certfile }\OperatorTok{=} \StringTok{u\textquotesingle{}/home/jovyan/mycert.pem\textquotesingle{}}
+\NormalTok{c.NotebookApp.keyfile }\OperatorTok{=} \StringTok{u\textquotesingle{}/home/jovyan/mykey.key\textquotesingle{}}
+\CommentTok{\# Set ip to \textquotesingle{}*\textquotesingle{} to bind on all interfaces (ips) for the public server}
+\NormalTok{c.NotebookApp.ip }\OperatorTok{=} \StringTok{\textquotesingle{}*\textquotesingle{}}
+\NormalTok{c.NotebookApp.password }\OperatorTok{=} \StringTok{u\textquotesingle{}sha1:bcd259ccf...\textless{}your hashed password here\textgreater{}\textquotesingle{}}
+\NormalTok{c.NotebookApp.open\_browser }\OperatorTok{=} \VariableTok{False}
+
+\CommentTok{\# It is a good idea to set a known, fixed port for server access}
+\NormalTok{c.NotebookApp.port }\OperatorTok{=} \DecValTok{8888}
+\end{Highlighting}
+\end{Shaded}
 \item
   Launch secure Lab: \texttt{jupyter\ lab}
 \item
-  On your own machine (laptop/tablet), log in to \texttt{\textless{}server.ip.address\textgreater{}:8888} with the password you have set
+  On your own machine (laptop/tablet), log in to \texttt{https://\textless{}server.ip.address\textgreater{}:\textless{}mapping\_port\textgreater{}} with the password you have set. Since we are using SSL make sure you specify \textbf{\url{https://}} in your browser.
 \end{enumerate}
 
 \hypertarget{self-signed-certificate-warnings}{%
@@ -1136,10 +1195,6 @@ docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GRO
 \end{verbatim}
 
 All the docker run options used here have been described in \href{06_docker.md}{\texttt{docker.md}}. Here, it is assumed that the port 8787 is not occupied on your local machine. If you do not have an instance of R studio server running, that port should be free.
-The environment variables necessary to run an image with R studio server are the following:
-* USER -\textgreater{} you can add your user name
-* PASSWORD -\textgreater{} a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
-* USERID and GROUPID -\textgreater{} these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files.
 
 Once you have run the command you can access Rstudio server running on your local host through a browser at: \href{http://localhost:8787}{\texttt{http://localhost:8787}} and adding your credentials.
 
@@ -1151,13 +1206,13 @@ Docker is installed on all our shared resources. Most machines already have imag
 Once you accessed the server you can list the existing images with the following command:
 
 \begin{verbatim}
-docker images ls
+docker image ls
 \end{verbatim}
 
-You can pick the image that you need for your analysis, or pull a new image with the following command (the pull command can generally be copied from the docker hub image page, it is always good practice to check it as in some cases it needs further options):
+You can pick the image that you need for your analysis, or pull a new image with the following command:
 
 \begin{verbatim}
-docker pull *image tag*
+docker pull image-tag
 \end{verbatim}
 
 Once you decided which image you want to use, you can start building the run command with the appropriate options:
@@ -1169,7 +1224,7 @@ Once you decided which image you want to use, you can start building the run com
 \item
   -p is needed to map the host's port with the container's port. To do this, you first need to verify which port is free to use. Ports that are permanently occupied on the servers are detailed on the servers\_description file. In addition, you need to run \emph{docker ps} to list the containers are running (if any) and verify which ports are using.
 \item
-  -e with the same environment variables that have been listed above.
+  -e to set the environment variables.
 \end{itemize}
 
 The final run command employing the extended image will look as follows:
@@ -1178,7 +1233,13 @@ The final run command employing the extended image will look as follows:
 docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p <free-port>:8787 -v ${PWD}:/home/your-user rstudio_gdsl
 \end{verbatim}
 
+The environment variables necessary to run an image with R studio server are the following:
+* USER -\textgreater{} you can add your user name
+* PASSWORD -\textgreater{} a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
+* USERID and GROUPID -\textgreater{} these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files.
+
 With the run command you generate a container where the image is running.
+
 You can check your process with the \emph{docker ps} command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:
 
 \begin{verbatim}
@@ -1186,6 +1247,23 @@ You can check your process with the \emph{docker ps} command. As already mention
 \end{verbatim}
 
 You can find the host IP address in the document describing the servers.
+
+\hypertarget{extend-an-image}{%
+\section{Extend an image}\label{extend-an-image}}
+
+Some images may not have all the libraries needed for your study. In that case you can extend the image with new libraries. Sometimes you can simply install a library from the R studio interface and it works with no errors. More frequently you will need to add some dependencies to make the installation work.
+
+To do that you need to access the container's shell with the following command:
+
+\begin{verbatim}
+docker exec -it <mycontainer> bash
+\end{verbatim}
+
+Once you have installed the packages and dependences you need, you can save it by creating a new image through the commit command:
+
+\begin{verbatim}
+docker commit -m "commit message" <container id> <new image name>
+\end{verbatim}
 
 \hypertarget{best-practices}{%
 \chapter{Best Practices}\label{best-practices}}
@@ -1195,7 +1273,9 @@ You can find the host IP address in the document describing the servers.
 
 Before booking a server look at the server information sheet to verify that the resource can meet your needs.
 
-Book the Server with our booking system detailing your name, short description of tasks, forseen resources used (i.e.~gpu, cpu threads,ram) - the booking system will be either an excel file or a shared calendar.
+Book the Server with our booking system detailing your name, description of tasks and, when possible, forseen resources used (i.e.~gpu, cpu threads,ram).
+
+It is better to have no more than one person per server to avoid overload in the machine. However, non expensive tasks can be performed simultaneously. Always check what tasks will be performed on the booking calendar and communicate with each other.
 
 \hypertarget{docker-considerations}{%
 \section{Docker Considerations}\label{docker-considerations}}
@@ -1235,6 +1315,21 @@ Things to keep an eye on:
 \end{itemize}
 
 If your process is taking longer than expected, then this may be caused by either too many processes running in parallel, or insufficient memory being available. The later can result in swap memory being used, which will significantly slow down your processes.
+
+\hypertarget{memory-leaks}{%
+\subsection{Memory Leaks}\label{memory-leaks}}
+
+There is also the potential for ``memory leaks'' within the code that you are using. Memory leaks can be caused when:
+
+\begin{itemize}
+\tightlist
+\item
+  large objects are not released when they are no longer required;
+\item
+  reference cycles within the code you are running.
+\end{itemize}
+
+Before running your code on shared resources, run smaller tests (when possible) on you local system while monitoring the memory usage over time. If the amount of memory remains more or less consistent, then you should be safe to run your application on a shared resource. Although note that memory leaks may be difficult to notice at first, and may only become apparent after running a program for hours/days. See the following guide for \href{https://medium.com/zendesk-engineering/hunting-for-memory-leaks-in-python-applications-6824d0518774}{discovering memory leaks in python}.
 
 \hypertarget{gpu-considerations}{%
 \section{GPU Considerations}\label{gpu-considerations}}
