@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Docker | The Knowledge</title>
+  <title>Chapter 2 Remote Working | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Docker | The Knowledge" />
+  <meta property="og:title" content="Chapter 2 Remote Working | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Docker | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 2 Remote Working | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-science-stack.html"/>
-<link rel="next" href="jupyterlab.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="vpn.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -244,87 +244,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="docker" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Docker</h1>
-<p>This document describes how to install and use Docker on different platforms.</p>
-<div id="installation" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Installation</h2>
-<p>If you are on Mac, Linux or Windows 10 Pro/Student editions, installing Docker
-is relatively straightforward:</p>
-<ul>
-<li><a href="https://docs.docker.com/docker-for-mac/">Mac</a></li>
-<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Linux official instructions</a></li>
-<li><a href="https://docs.docker.com/docker-for-windows/">Windows 10 Pro/Student</a></li>
-</ul>
-<p>It is important to note that, on Mac and Windows, Docker runs under a virtual
-machine so it will not use up all of the resources of your machine
-(conversely, it’ll equate to be working on a more limited machine). This can
-be changed. But if you need more firepower, the idea is that you develop on
-your laptop and scale to a server (e.g. running out of the lab).</p>
-<p>The steps to install Docker include:</p>
-<ul>
-<li>Obtain a copy of Docker and install it:
-<ul>
-<li><code>Windows10 Pro/Enterprise</code>: <a href="https://docs.docker.com/docker-for-windows/install/">Install Docker Desktop for Windows</a></li>
-<li><code>macOS</code>: <a href="https://docs.docker.com/docker-for-mac/">Get started with Docker Desktop for Mac</a></li>
-</ul></li>
-<li>Once Docker is successfully installed, make sure to enable access to your main drive (e.g. <code>C:\\</code>):
-<ul>
-<li><code>Windows10 Pro/Enterprise</code>: Open the preferences for Docker and click the
-“Shared Drives” tab; click on the drive you want to add and then “Apply”</li>
-<li><code>macOS</code>: this feature is automatically enabled</li>
-</ul></li>
-</ul>
+<div id="remote-working" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Remote Working</h1>
+<div id="what-is-remote-working" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> What is Remote Working?</h2>
+<p>“Remote work refers to organizational work that is performed outside of the normal organizational confines of space and time. The term telecommuting refers to the substitution of communications capabilities for travel to a central work location. Office automation technology permits many office workers to be potential telecommuters in that their work can be performed remotely with computer and communications support” <span class="citation">(Olson <a href="#ref-olson1983remote" role="doc-biblioref">1983</a>)</span></p>
+<p>Some of the first trials of remote working date back to the eighties as reported by <span class="citation">Olson (<a href="#ref-olson1983remote" role="doc-biblioref">1983</a>)</span>. Since then, the spread and development of Information and Communication Technologies have brought about a significant increase in the popularity of remote work. Nowadays, it is possible to find fully remote jobs advertised particularly in IT and data science.</p>
+<p>The current pandemic has forced millions of workers at home, making remote work a necessity rather than an option. An early study on COVID-19 and remote work reported that in the US the fraction of workers who switched to working from home is about 34.1%, while 14.6% were already working from home pre-COVID-19 <span class="citation">(Brynjolfsson et al. <a href="#ref-brynjolfsson2020covid" role="doc-biblioref">2020</a>)</span>.</p>
+<p>Not all types of work are suitable to be performed from home <span class="citation">(Holgersen, Jia, and Svenkerud <a href="#ref-holgersen2020and" role="doc-biblioref">2020</a>)</span>,
+but one of the impacts of these dramatic circumstances can be a further increase of the remote work practice.</p>
+<p>Computationally intensive tasks can be easily approached in a remote setting by accessing computing resources through the network. This document will guide you in accessing servers located in the Geographic Data Science Lab to perform heavy computations.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
-<div id="image-and-container" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Image and Container</h2>
-<p>Docker can be seen as a tool to generate a computer within your computer (the host). This creates a working environment that employs the host’s resources but follows its own internal rules.</p>
-<p><strong>Image</strong> and <strong>Container</strong> are two key concepts to understand Docker processes.</p>
-<p><strong>Images</strong> are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.</p>
-<p><strong>Containers</strong> are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.</p>
+<div id="advantages-and-disadvantages-of-remote-work" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Advantages and Disadvantages of Remote Work</h2>
+<p>One of the most direct consequences of remote work is changes in commuting behaviours, bringing about time saving and a potential reduction in traffic congestion and air pollution. These were among the main points stressed by the early advocates for remote working, but researches in transportation studies have shown conflicting results. Although reductions in number and length of commuting trips is reported in some of the earlies studies <span class="citation">(Kitamura et al. <a href="#ref-Kitamura1991" role="doc-biblioref">1991</a>; Olson <a href="#ref-olson1983remote" role="doc-biblioref">1983</a>)</span>, more recent research shows that the expectation that home-based telework reduces travel is not so apparent <span class="citation">(Silva and Melo <a href="#ref-e2018does" role="doc-biblioref">2018</a>)</span> and time saving seems not to be a major pull factor <span class="citation">(Bailey and Kurland <a href="#ref-bailey2002review" role="doc-biblioref">2002</a>)</span>.</p>
+<p>The higher flexibility afforded by remote working is mentioned as an advantage, particularly for those who would have not taken part of the workforce without such settings because of caring committments <span class="citation">(Olson <a href="#ref-olson1983remote" role="doc-biblioref">1983</a>)</span>.</p>
+<p>Higher productivity of remote workers has been reported in some studies. However, it has to be noted that productivity and concentration at home are strongly dependent from environmental conditions <span class="citation">(Bailey and Kurland <a href="#ref-bailey2002review" role="doc-biblioref">2002</a>)</span>. Inequality in living conditions is clearly affecting the ability to work from home during the coronavirus pandemic.</p>
+<p>One of the most cited drawbacks of remote working is professional and social isolation <span class="citation">(Bailey and Kurland <a href="#ref-bailey2002review" role="doc-biblioref">2002</a>)</span>, which can be also seen as making more difficoult collaborative work and collective workers actions.</p>
 </div>
-<div id="useful-docker-commands" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Useful Docker Commands</h2>
-<p>List available images :</p>
-<pre class="shell"><code>docker image ls</code></pre>
-<p>Pull a new image:</p>
-<pre class="shell"><code>docker pull image-tag</code></pre>
-<p>See what containers are running (this also shows you the ID and which port is occupying):</p>
-<pre class="shell"><code>docker ps</code></pre>
-<p>The run command instantiates an image in an isolated container. The generic command is:</p>
-<pre class="shell"><code>docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG...]</code></pre>
-<p>Options that are generally added are:</p>
-<pre class="shell"><code>--detach or -d -&gt; Run container in background and print container ID</code></pre>
-<p>If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence <em>Ctrl + p</em> followed by <em>Ctrl + q</em> can be used.</p>
-<p>To re-attach the terminal to the docker session enter:</p>
-<pre class="shell"><code>docker attach &lt;session_id&gt;</code></pre>
-<p>Other commonly used flags include:</p>
-<pre class="shell"><code>--rm  -&gt; Automatically remove the container when it exits</code></pre>
-<pre class="shell"><code>--env or -e  -&gt; Set environment variables.</code></pre>
-<p>Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environment variable is <em>HOME</em> which is associated with the path of your home directory (<em>/home/your-user</em>). By adding <em>-e</em> to the run command you pass the environment variable to the container where a certain image is running. Cases when this option is necessary will be discussed.</p>
-<pre class="shell"><code>--publish or -p -&gt; Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
-
---volume or -v -&gt; Bind mount a volume </code></pre>
-<p>All other options are listed <a href="https://docs.docker.com/engine/reference/commandline/run/">here</a></p>
-<p>To stop the container you have been running you need to detach from the container using the escape sequence (unless you added -d to the run command) and send the following commands:</p>
-<pre class="shell"><code>docker ps   to get the Container ID
-docker stop &lt;container-ID&gt;  </code></pre>
-<p>If you have not added -rm option you also need to manually remove the container</p>
-<pre class="shell"><code>docker rm -f &lt;container-ID&gt;</code></pre>
-<p>An exemplary run command is the following:</p>
-<pre class="shell"><code>docker run -d --rm -p 8080:8787 -v ${PWD}:/data rocker/geospatial</code></pre>
-<p>After the -p option you add the ports mapping: <host port>:<container port>. In this example, docker runs an image with r studio server which uses the port 8787 by default, but the host (the server where you are running docker) has the port 8787 already in use by other services. Therefore, you need to map the port of the image (8787) with a free port of the host (in this example 8080).</p>
-<p>After the -v option you add the paths to mount a volume:<host path>:<container path>. In this example, the working directory (the directory where you are running the command from) is mapped to a data directory in the container. ${PWD} stands for <strong>Print Working Directory</strong>.</p>
+<div id="tips" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Tips</h2>
+<p>Here a collection of tips that have been shared on the internet on how to avoid burn out and be effective while working from home:</p>
+<ul>
+<li><a href="https://www.ucl.ac.uk/news/2020/apr/covid-19-how-foster-healthy-home-working">Covid-19: How to foster healthy home working</a></li>
+<li><a href="https://www.timeshighereducation.com/blog/tips-working-home-children#%20">Tips on working from home with children</a></li>
+<li><a href="https://theconversation.com/working-from-home-why-detachment-is-crucial-for-mental-health-135986">Working from home? Why detachment is crucial for mental health</a></li>
+<li><a href="https://www.liverpool.ac.uk/researcher/work-life-balance/">Work Life Balance</a></li>
+</ul>
 
 </div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-bailey2002review">
+<p>Bailey, Diane E, and Nancy B Kurland. 2002. “A Review of Telework Research: Findings, New Directions, and Lessons for the Study of Modern Work.” <em>Journal of Organizational Behavior: The International Journal of Industrial, Occupational and Organizational Psychology and Behavior</em> 23 (4): 383–400.</p>
+</div>
+<div id="ref-brynjolfsson2020covid">
+<p>Brynjolfsson, Erik, John Horton, Adam Ozimek, Daniel Rock, Garima Sharma, and Hong Yi Tu Ye. 2020. “COVID-19 and Remote Work: An Early Look at Us Data.” <em>Unpublished Work</em>.</p>
+</div>
+<div id="ref-holgersen2020and">
+<p>Holgersen, Henning, Zhiyang Jia, and Simen Svenkerud. 2020. “Who and How Many Can Work from Home? Evidence from Task Descriptions and Norwegian Job Advertisements.” <em>Evidence from Task Descriptions and Norwegian Job Advertisements.(April 20, 2020)</em>.</p>
+</div>
+<div id="ref-Kitamura1991">
+<p>Kitamura, Ryuichi, Jack M Nilles, Patrick Conroy, and David M Fleming. 1991. “Telecommuting as a Transportation Planning Measure : Initial Results of California Pilot Project Ryuichi Kitamura Reprint No . 58 of California.” <em>Transportation Research Record</em> 1285: 98–104.</p>
+</div>
+<div id="ref-olson1983remote">
+<p>Olson, Margrethe H. 1983. “Remote Office Work: Changing Work Patterns in Space and Time.” <em>Communications of the ACM</em> 26 (3): 182–87.</p>
+</div>
+<div id="ref-e2018does">
+<p>Silva, João de Abreu e, and Patrı́cia C Melo. 2018. “Does Home-Based Telework Reduce Household Total Travel? A Path Analysis Using Single and Two Worker British Households.” <em>Journal of Transport Geography</em> 73: 148–62.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>An other option which is widely implemented by companies, is the use of cloud computing infrastructures such as Amazon Web Services (AWS), Salesforce’s CRM system, Microsoft Azure.<a href="remote-working.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="data-science-stack.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="jupyterlab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vpn.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -355,7 +338,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06_Docker.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01_RemoteWorking.Rmd",
 "text": "Edit"
 },
 "history": {

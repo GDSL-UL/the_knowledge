@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 VPN | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 VPN | The Knowledge" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,16 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-06-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="files.html"/>
-<link rel="next" href="data-science-stack.html"/>
+<link rel="prev" href="remote-working.html"/>
+<link rel="next" href="ssh.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,41 +54,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -107,31 +134,95 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The Knowledge</a></li>
-<li class="chapter" data-level="2" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>2</b> Files</a><ul>
-<li class="chapter" data-level="2.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>2.1</b> Backup/sync</a></li>
-<li class="chapter" data-level="2.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>2.2</b> Encryption</a></li>
-<li class="chapter" data-level="2.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>2.3</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="2" data-path="remote-working.html"><a href="remote-working.html"><i class="fa fa-check"></i><b>2</b> Remote Working</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="remote-working.html"><a href="remote-working.html#what-is-remote-working"><i class="fa fa-check"></i><b>2.1</b> What is Remote Working?</a></li>
+<li class="chapter" data-level="2.2" data-path="remote-working.html"><a href="remote-working.html#advantages-and-disadvantages-of-remote-work"><i class="fa fa-check"></i><b>2.2</b> Advantages and Disadvantages of Remote Work</a></li>
+<li class="chapter" data-level="2.3" data-path="remote-working.html"><a href="remote-working.html#tips"><i class="fa fa-check"></i><b>2.3</b> Tips</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a><ul>
+<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="vpn.html"><a href="vpn.html#what-is-a-vpn"><i class="fa fa-check"></i><b>3.1</b> <em>What is a VPN?</em></a></li>
 <li class="chapter" data-level="3.2" data-path="vpn.html"><a href="vpn.html#how-can-i-setup-the-vpn-for-liverpool"><i class="fa fa-check"></i><b>3.2</b> <em>How can I setup the VPN for Liverpool?</em></a></li>
-<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#set-up-a-vpn-connection"><i class="fa fa-check"></i><b>3.3</b> Set up a VPN connection</a></li>
-<li class="chapter" data-level="3.4" data-path="vpn.html"><a href="vpn.html#how-to-use-the-globalprotect-vpn-client-to-access-the-university-network"><i class="fa fa-check"></i><b>3.4</b> How to use the GlobalProtect VPN Client to access the University network</a></li>
+<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#windows-and-mac"><i class="fa fa-check"></i><b>3.3</b> Windows and Mac</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="vpn.html"><a href="vpn.html#to-connect-and-disconnect-the-client"><i class="fa fa-check"></i><b>3.3.1</b> To connect and disconnect the client</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>4</b> Data Science Stack</a></li>
-<li class="chapter" data-level="5" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>5</b> Docker</a><ul>
-<li class="chapter" data-level="5.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>5.1</b> Installation</a></li>
-<li class="chapter" data-level="5.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>5.2</b> Useful Docker Commands</a></li>
+<li class="chapter" data-level="3.4" data-path="vpn.html"><a href="vpn.html#ubuntu"><i class="fa fa-check"></i><b>3.4</b> Ubuntu</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="vpn.html"><a href="vpn.html#to-connect-the-client-and-disconnect-the-client"><i class="fa fa-check"></i><b>3.4.1</b> To connect the client and disconnect the client:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>6</b> JupyterLab</a><ul>
-<li class="chapter" data-level="6.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>6.1</b> Local install</a></li>
-<li class="chapter" data-level="6.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>6.2</b> Remote install</a></li>
-<li class="chapter" data-level="6.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>6.3</b> Useful Python Docker Images</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>7</b> RStudio server</a><ul>
-<li class="chapter" data-level="7.1" data-path="rstudio-server.html"><a href="rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
-<li class="chapter" data-level="7.2" data-path="rstudio-server.html"><a href="rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
-<li class="chapter" data-level="7.3" data-path="rstudio-server.html"><a href="rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful R Docker Images</a></li>
+<li class="chapter" data-level="4" data-path="ssh.html"><a href="ssh.html"><i class="fa fa-check"></i><b>4</b> SSH</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ssh.html"><a href="ssh.html#what-is-ssh"><i class="fa fa-check"></i><b>4.1</b> What is SSH?</a></li>
+<li class="chapter" data-level="4.2" data-path="ssh.html"><a href="ssh.html#connecting-to-a-remote-host"><i class="fa fa-check"></i><b>4.2</b> Connecting to a remote host</a></li>
+<li class="chapter" data-level="4.3" data-path="ssh.html"><a href="ssh.html#unix-commands"><i class="fa fa-check"></i><b>4.3</b> Unix Commands</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ssh.html"><a href="ssh.html#list-files"><i class="fa fa-check"></i><b>4.3.1</b> List Files:</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ssh.html"><a href="ssh.html#make-directory"><i class="fa fa-check"></i><b>4.3.2</b> Make Directory:</a></li>
+<li class="chapter" data-level="4.3.3" data-path="ssh.html"><a href="ssh.html#change-your-working-directory"><i class="fa fa-check"></i><b>4.3.3</b> Change your Working Directory:</a></li>
+<li class="chapter" data-level="4.3.4" data-path="ssh.html"><a href="ssh.html#move"><i class="fa fa-check"></i><b>4.3.4</b> Move:</a></li>
+<li class="chapter" data-level="4.3.5" data-path="ssh.html"><a href="ssh.html#copy"><i class="fa fa-check"></i><b>4.3.5</b> Copy:</a></li>
+<li class="chapter" data-level="4.3.6" data-path="ssh.html"><a href="ssh.html#remove"><i class="fa fa-check"></i><b>4.3.6</b> Remove:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ssh.html"><a href="ssh.html#command-line-editors"><i class="fa fa-check"></i><b>4.4</b> Command Line Editors</a></li>
+<li class="chapter" data-level="4.5" data-path="ssh.html"><a href="ssh.html#practical"><i class="fa fa-check"></i><b>4.5</b> Practical</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>5</b> Files</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>5.1</b> Backup/sync</a></li>
+<li class="chapter" data-level="5.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>5.2</b> Encryption</a></li>
+<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer"><i class="fa fa-check"></i><b>5.3</b> File Transfer</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3.1</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="files.html"><a href="files.html#secure-copy-protocol-scp"><i class="fa fa-check"></i><b>5.3.2</b> Secure Copy Protocol (scp)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="files.html"><a href="files.html#file-download"><i class="fa fa-check"></i><b>5.4</b> File Download</a></li>
+<li class="chapter" data-level="5.5" data-path="files.html"><a href="files.html#practical-1"><i class="fa fa-check"></i><b>5.5</b> Practical</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="files.html"><a href="files.html#file-download-1"><i class="fa fa-check"></i><b>5.5.1</b> File Download</a></li>
+<li class="chapter" data-level="5.5.2" data-path="files.html"><a href="files.html#file-transfer-optional"><i class="fa fa-check"></i><b>5.5.2</b> File Transfer (Optional)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>6</b> Data Science Stack</a></li>
+<li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>7.1</b> Installation</a></li>
+<li class="chapter" data-level="7.2" data-path="docker.html"><a href="docker.html#image-and-container"><i class="fa fa-check"></i><b>7.2</b> Image and Container</a></li>
+<li class="chapter" data-level="7.3" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>7.3</b> Useful Docker Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="jupyterlab.html"><a href="jupyterlab.html#run-jupyter-lab-locally"><i class="fa fa-check"></i><b>8.1</b> Run Jupyter Lab Locally</a></li>
+<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#run-jupyter-lab-remotely"><i class="fa fa-check"></i><b>8.2</b> Run Jupyter Lab Remotely</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="jupyterlab.html"><a href="jupyterlab.html#self-signed-certificate-warnings"><i class="fa fa-check"></i><b>8.2.1</b> Self-signed Certificate Warnings</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#using-sudo-within-a-container"><i class="fa fa-check"></i><b>8.3</b> Using sudo within a container</a></li>
+<li class="chapter" data-level="8.4" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.4</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="8.5" data-path="jupyterlab.html"><a href="jupyterlab.html#practical-2"><i class="fa fa-check"></i><b>8.5</b> Practical</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html"><i class="fa fa-check"></i><b>9</b> Docker Containers for R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.1</b> Run Docker Locally</a></li>
+<li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.2</b> Run Docker Remotely</a></li>
+<li class="chapter" data-level="9.3" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#extend-an-image"><i class="fa fa-check"></i><b>9.3</b> Extend an image</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="best-practices.html"><a href="best-practices.html"><i class="fa fa-check"></i><b>10</b> Best Practices</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="best-practices.html"><a href="best-practices.html#booking-a-server"><i class="fa fa-check"></i><b>10.1</b> Booking a server</a></li>
+<li class="chapter" data-level="10.2" data-path="best-practices.html"><a href="best-practices.html#docker-considerations"><i class="fa fa-check"></i><b>10.2</b> Docker Considerations</a></li>
+<li class="chapter" data-level="10.3" data-path="best-practices.html"><a href="best-practices.html#system-monitoring"><i class="fa fa-check"></i><b>10.3</b> System Monitoring</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="best-practices.html"><a href="best-practices.html#memory-leaks"><i class="fa fa-check"></i><b>10.3.1</b> Memory Leaks</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="best-practices.html"><a href="best-practices.html#gpu-considerations"><i class="fa fa-check"></i><b>10.4</b> GPU Considerations</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="best-practices.html"><a href="best-practices.html#monitoring"><i class="fa fa-check"></i><b>10.4.1</b> Monitoring</a></li>
+<li class="chapter" data-level="10.4.2" data-path="best-practices.html"><a href="best-practices.html#memory-growth"><i class="fa fa-check"></i><b>10.4.2</b> Memory Growth</a></li>
+<li class="chapter" data-level="10.4.3" data-path="best-practices.html"><a href="best-practices.html#temperature-monitoring"><i class="fa fa-check"></i><b>10.4.3</b> Temperature Monitoring</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -153,9 +244,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="vpn" class="section level1">
+<div id="vpn" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> VPN</h1>
-<div id="what-is-a-vpn" class="section level2">
+<div id="what-is-a-vpn" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> <em>What is a VPN?</em></h2>
 <p>A VPN (virtual private network) connects a machine that lies outside of the university (ie. outside the firewall) to the internal network. When the VPN is running, your network traffic (e.g. Internet) is routed through the university in the same way as if the computer was on your work desk. This enables you to:</p>
 <ul>
@@ -164,40 +255,52 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Access servers (e.g. over the terminal / command line / ftp)</li>
 </ul>
 </div>
-<div id="how-can-i-setup-the-vpn-for-liverpool" class="section level2">
+<div id="how-can-i-setup-the-vpn-for-liverpool" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> <em>How can I setup the VPN for Liverpool?</em></h2>
-<p>You can find a more comprehensive guide to setup your VPN on the <a href="setup_vpn.md"><code>setup_vpn.md</code></a> document of this repository.</p>
-</div>
-<div id="set-up-a-vpn-connection" class="section level2">
-<h2><span class="header-section-number">3.3</span> Set up a VPN connection</h2>
-<p>This document describes how to set up a VPN. The text below has been copied from CSD website.</p>
+<!--You can find a more comprehensive guide to setup your VPN on the
+[`setup_vpn.md`](setup_vpn.md) document of this repository. -->
+<p>This document describes how to set up a VPN. <!--The text below has been copied from CSD website.--></p>
 <p>To access the VPN service:</p>
 <p><strong>1. Register</strong></p>
-<p>Submit <a href="https://liverpool.service-now.com/sp?id=sc_cat_item&amp;sys_id=bd8d37f1376ba60051a3532e53990e3f">a request to register for the VPN service via CSD</a>. You will need to explain why you require VPN access and what you intend to do with it. It may be that other services offer the solution you require instead of the VPN.</p>
+<p>First you will need to submit <a href="https://liverpool.service-now.com/sp?id=sc_cat_item&amp;sys_id=bd8d37f1376ba60051a3532e53990e3f">a request to register for the VPN service via CSD</a>. CSD will need you to explain why you require VPN access and what you intend to do with it. <!--It may be that other services offer the solution you require instead of the VPN.--></p>
 <p><strong>2. Download the VPN Client</strong></p>
-<p>Once your registration is confirmed you will need to download and install the GlobalProtect VPN Client if you are using Windows 10.</p>
-<p>You will need admin rights in order to download the GlobalProtect VPN Client. This is how to access admin rights on your MWS PC. Please access admin rights before attempting to download the VPN Client.</p>
-<p>The GlobalProtect VPN Client is also compatible with MacOS. Mobile and tablet devices cannot connect using this client. If you are using a Linux distribution, such as Ubuntu, you may be able to connect to the University network using VPNc.</p>
+<p>Once your registration is confirmed you will need to download and install a VPN Client.</p>
 <p><strong>3. Open the client and connect</strong></p>
-<p>Click here for instructions on how to use the GlobalProtect VPN Client to access the University network from your PC or Mac.</p>
+<p>Finally you will need to connect to the VPN using your VPN client. Below we provide instructions on how to accomplish this on Windows, Mac and Ubuntu.</p>
 </div>
-<div id="how-to-use-the-globalprotect-vpn-client-to-access-the-university-network" class="section level2">
-<h2><span class="header-section-number">3.4</span> How to use the GlobalProtect VPN Client to access the University network</h2>
-<p>You must make sure you are registered to access the VPN service first. Once you are registered you can download and install the GlobalProtect VPN Client to connect to the University network.</p>
-<p>GlobalProtect is compatible with Windows 10 and Macs. It is not possible to use GlobalProtect to connect to the University network on a mobile or tablet device.</p>
-<p>To install the Client</p>
-<p>Access Admin Rights on you PC.</p>
-<p>Visit <a href="https://vpn.liv.ac.uk" class="uri">https://vpn.liv.ac.uk</a> Enter your University username and password to login to the VPN portal.</p>
-<p>Click the appropriate link to download the required version of the VPN client - Windows 32 bit, Windows 64 bit, or Mac OS. (To check which version you require, see your system properties on your device)</p>
-<p>Once the file has downloaded, double-click to run the installation. Follow the steps through the installation wizard, accepting the default options.</p>
-<p>Once installed you will see the GlobalProtect “globe” icon appear in the system tray (bottom right, near the clock). It is a globe and it will have a red x on it, showing that it is not currently connected.</p>
-<p>Double-click on the GlobalProtectglobe icon in the system tray. In the window that opens, enter the following:</p>
-<p>Username: enter your University username Password: enter your University password Portal: vpn.liv.ac.uk</p>
-<p>Click Apply.</p>
+<div id="windows-and-mac" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Windows and Mac</h2>
+<p>You must make sure you are registered to access the VPN service first.
+Once you are registered you can download and install the GlobalProtect VPN Client to connect to the University network.
+GlobalProtect is compatible with Windows 10 and Macs.
+Please access admin rights before attempting to download the VPN Client on your MWS PC.
+It is not possible to use GlobalProtect to connect to the University network on a mobile or tablet device.</p>
+<p>To install the Client:</p>
+<ol style="list-style-type: decimal">
+<li><p>Access Admin Rights on you PC.</p></li>
+<li><p>Visit <a href="https://vpn.liv.ac.uk" class="uri">https://vpn.liv.ac.uk</a></p></li>
+<li><p>Enter your University username and password to login to the VPN portal.</p></li>
+<li><p>Click the appropriate link to download the required version of the VPN client - Windows 32 bit, Windows 64 bit, or Mac OS.
+(To check which version you require, see your system properties on your device)</p></li>
+<li><p>Once the file has downloaded, double-click to run the installation.</p></li>
+<li><p>Follow the steps through the installation wizard, accepting the default options.</p></li>
+<li><p>Once installed you will see the GlobalProtect “globe” icon appear in the system tray (bottom right, near the clock).
+It is a globe and it will have a red x on it, showing that it is not currently connected.</p></li>
+<li><p>Double-click on the GlobalProtectglobe icon in the system tray. In the window that opens, enter the following:</p>
+<ul>
+<li>Username: enter your University username</li>
+<li>Password: enter your University password</li>
+<li>Portal: vpn.liv.ac.uk</li>
+</ul></li>
+<li><p>Click Apply.</p></li>
+</ol>
 <p>The GlobalProtect VPN client will then automatically connect to the University network - the red cross should disappear form the icon in the system tray.</p>
-<p>You can close the window: the client will stay connected. To connect and disconnect the client</p>
-<p>Once the GlobalConnect VPN client has been installed, the icon will remain in your system tray</p>
-<p>To connect the VPN right click the GlobalProtect icon in the system tray and choose Connect. When you have finished and want to disconnect the VPN, right click on the icon and choose Disconnect.</p>
+<p>You can close the window: the client will stay connected.</p>
+<div id="to-connect-and-disconnect-the-client" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> To connect and disconnect the client</h3>
+<p>Once the GlobalConnect VPN client has been installed, the icon will remain in your system tray.</p>
+<p>To connect the VPN right click the GlobalProtect icon in the system tray and choose Connect.
+When you have finished and want to disconnect the VPN, right click on the icon and choose Disconnect.</p>
 <p>How to allow third party applications - like Global Protect - to install on a Mac</p>
 <ol style="list-style-type: decimal">
 <li><p>Open System Preferences and click Security &amp; Privacy</p></li>
@@ -205,7 +308,72 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Click the lock in the lower left-hand corner</p></li>
 <li><p>Enter your computer username and password, then select Unlock</p></li>
 </ol>
+</div>
+</div>
+<div id="ubuntu" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Ubuntu</h2>
+<p>The University of Liverpool provides a <a href="https://liverpool.service-now.com/sp/?id=kb_article&amp;sysparm_article=KB0010404&amp;sys_kb_id=52bfb8303717e200d6fa4a7a43990ef9">guide</a>
+for setting up VPN on Linux, tested with Ubuntu 14.04, 16.04, 18.04 and Centos 7. The guide recommends the
+installation of the VPN Client VPNc:</p>
+<pre class="shell"><code>sudo apt-get install network-manager-vpnc
+sudo apt-get install network-manager-vpnc-gnome</code></pre>
+<p>Alternatively yum can be used to install the software:</p>
+<pre class="shell"><code>sudo yum install NetworkManager-vpnc
+sudo yum install NetworkManager-vpnc-gnome</code></pre>
+<p>To recap the remaining steps from the <a href="https://liverpool.service-now.com/sp/?id=kb_article&amp;sysparm_article=KB0010404&amp;sys_kb_id=52bfb8303717e200d6fa4a7a43990ef9">UoL guide</a>:</p>
+<ol style="list-style-type: decimal">
+<li>First you will need to download the UoL VPN configuration file:
+<a href="https://pcwww.liv.ac.uk/csd/vpn/University%20of%20Liverpool%20VPN.PCF">VPN.PCF</a></li>
+<li>In the top right corner of your desktop there is a network icon.
+Click on this icon, then choose:</li>
+</ol>
+<blockquote>
+<p>VPN Connections &gt; Configure VPN</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><p>Click “Add” and then “Select Import” in order to locate your *.pcf file.</p></li>
+<li><p>Next enter your MWS username in the User Name field.</p></li>
+<li><p>Click the IPv4 Settings tab.</p></li>
+<li><p>If left blank fill in the Group password field using the group password specified within the *.pcf file.</p></li>
+<li><p>Add DNS servers:</p>
+<ul>
+<li>138.253.110.103</li>
+<li>138.253.110.104</li>
+</ul></li>
+</ol>
+<p>and search domains (if a search domain field is available):</p>
+<ul>
+<li>liv.ac.uk</li>
+<li>liverpool.ac.uk</li>
+<li>livad.liv.ac.uk</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Click on Routes.</p></li>
+<li><p>You will need one route with the following details:</p>
+<ul>
+<li>Address: 138.253.0.0</li>
+<li>Netmask: 255.255.255.0</li>
+<li>gateway: 0.0.0.0</li>
+<li>metric: 0</li>
+</ul></li>
+<li><p>Tick the “Use this connection only for resources on its network” box.</p></li>
+<li><p>Click Save / Apply / Close depending on the distribution.</p></li>
+</ol>
+<div id="to-connect-the-client-and-disconnect-the-client" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> To connect the client and disconnect the client:</h3>
+<p>To connect to the network, click on the icon in the top right corner of the desktop and choose</p>
+<blockquote>
+<p>VPN Connections &gt; University of Liverpool VPN Service</p>
+</blockquote>
+<p>You will be promted to authenticate using your MWS password. Upon connecting the network
+icon will display a locked symbol. You can now use your computera as if you were physically
+connected to the University of Liverpool network.</p>
+<p>To disconnect click on the network icon again and choose:</p>
+<blockquote>
+<p>VPN Connections &gt; Disconnect VPN</p>
+</blockquote>
 
+</div>
 </div>
 </div>
             </section>
@@ -213,8 +381,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="files.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-science-stack.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="remote-working.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ssh.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

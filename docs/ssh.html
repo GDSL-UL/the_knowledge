@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Docker | The Knowledge</title>
+  <title>Chapter 4 SSH | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Docker | The Knowledge" />
+  <meta property="og:title" content="Chapter 4 SSH | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Docker | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 4 SSH | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="data-science-stack.html"/>
-<link rel="next" href="jupyterlab.html"/>
+<link rel="prev" href="vpn.html"/>
+<link rel="next" href="files.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -244,77 +244,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="docker" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Docker</h1>
-<p>This document describes how to install and use Docker on different platforms.</p>
-<div id="installation" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Installation</h2>
-<p>If you are on Mac, Linux or Windows 10 Pro/Student editions, installing Docker
-is relatively straightforward:</p>
+<div id="ssh" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> SSH</h1>
+<div id="what-is-ssh" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> What is SSH?</h2>
+<p>Secure Shell (SSH) is a cryptographic network protocol for accessing a computer over an unsecured network. It gives you secure access to a machine’s command-line.
+Secure Shell provides strong password authentication and public key authentication, as well as encrypted data communications between two computers connecting over an open network, such as the internet. However, all computers within the University of Liverpool Network are not accessible from the open internet for security reasons.
+Therefore, to access a machine at the University you do not only need to be connected to the internet, but also to the Virtual Private Network (VPN) that <em>virtually brings you to the University of Liverpool Network</em>.</p>
+</div>
+<div id="connecting-to-a-remote-host" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Connecting to a remote host</h2>
+<p>The use of SSH to connect to a remote host is performed through the following command:</p>
+<pre class="shell"><code>ssh &lt;username&gt;@&lt;server.ip.address&gt;</code></pre>
+<p>If you are connecting to a server for the first time, then you may receive the following warning:</p>
+<pre><code>The authenticity of host &#39;hostIPaddress&#39; cannot be established.
+ DSA key fingerprint is 01:23:45:67:89:ab:cd:ef:ff:fe:dc:ba:98:76:54:32:10.
+ Are you sure you want to continue connecting (yes/no)?</code></pre>
+<p>Windows users need to install an SSH client in order to access a server remotely through SSH. There are several clients available, MobaXterm is the option we advise to employ as it provides a number of useful functions for remote computing in a single application.
+The free edition can be downloaded <a href="https://mobaxterm.mobatek.net/download.html">here</a>. To establish a connection with your remote server you open mobaXterm and click on session and then SSH. The Remote Host is the machine you want to access which can be identified by an IP address. <a href="https://mobaxterm.mobatek.net/demo.html">Here</a> you can find a simple demo of the SSH client.</p>
+<p>If this is your first time connecting to the server, or if the server has recently been
+reconfigured with a new key, then the above message is perfectly normal. You can proceed by typing yes and enter.</p>
+<p>Once you have accessed the server the first thing to do is to change the temprorary password we assigned to your user.</p>
+<pre class="shell"><code>user@host:~$ passwd</code></pre>
+</div>
+<div id="unix-commands" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Unix Commands</h2>
+<p>Servers often run unix operating systems such as GNU/Linux. Unix commands are essential to perform operations from the terminal.</p>
+<p>The following are the most frequently used commands:</p>
+<div id="list-files" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> List Files:</h3>
+<pre class="shell"><code>user@host:~$ ls -lh</code></pre>
+<p>In the above example two flags have been added to the ls command:</p>
 <ul>
-<li><a href="https://docs.docker.com/docker-for-mac/">Mac</a></li>
-<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Linux official instructions</a></li>
-<li><a href="https://docs.docker.com/docker-for-windows/">Windows 10 Pro/Student</a></li>
-</ul>
-<p>It is important to note that, on Mac and Windows, Docker runs under a virtual
-machine so it will not use up all of the resources of your machine
-(conversely, it’ll equate to be working on a more limited machine). This can
-be changed. But if you need more firepower, the idea is that you develop on
-your laptop and scale to a server (e.g. running out of the lab).</p>
-<p>The steps to install Docker include:</p>
-<ul>
-<li>Obtain a copy of Docker and install it:
-<ul>
-<li><code>Windows10 Pro/Enterprise</code>: <a href="https://docs.docker.com/docker-for-windows/install/">Install Docker Desktop for Windows</a></li>
-<li><code>macOS</code>: <a href="https://docs.docker.com/docker-for-mac/">Get started with Docker Desktop for Mac</a></li>
-</ul></li>
-<li>Once Docker is successfully installed, make sure to enable access to your main drive (e.g. <code>C:\\</code>):
-<ul>
-<li><code>Windows10 Pro/Enterprise</code>: Open the preferences for Docker and click the
-“Shared Drives” tab; click on the drive you want to add and then “Apply”</li>
-<li><code>macOS</code>: this feature is automatically enabled</li>
-</ul></li>
+<li>-l List with long format, e.g., show file read/write/execute permissions.</li>
+<li>-h List files with readable file size, e.g. MB, GB, etc.</li>
 </ul>
 </div>
-<div id="image-and-container" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Image and Container</h2>
-<p>Docker can be seen as a tool to generate a computer within your computer (the host). This creates a working environment that employs the host’s resources but follows its own internal rules.</p>
-<p><strong>Image</strong> and <strong>Container</strong> are two key concepts to understand Docker processes.</p>
-<p><strong>Images</strong> are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.</p>
-<p><strong>Containers</strong> are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.</p>
+<div id="make-directory" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Make Directory:</h3>
+<p>A new directory can be created using the mkdir command:</p>
+<pre class="shell"><code>user@host:~$ mkdir &lt;new_directory_name&gt;</code></pre>
 </div>
-<div id="useful-docker-commands" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Useful Docker Commands</h2>
-<p>List available images :</p>
-<pre class="shell"><code>docker image ls</code></pre>
-<p>Pull a new image:</p>
-<pre class="shell"><code>docker pull image-tag</code></pre>
-<p>See what containers are running (this also shows you the ID and which port is occupying):</p>
-<pre class="shell"><code>docker ps</code></pre>
-<p>The run command instantiates an image in an isolated container. The generic command is:</p>
-<pre class="shell"><code>docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG...]</code></pre>
-<p>Options that are generally added are:</p>
-<pre class="shell"><code>--detach or -d -&gt; Run container in background and print container ID</code></pre>
-<p>If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence <em>Ctrl + p</em> followed by <em>Ctrl + q</em> can be used.</p>
-<p>To re-attach the terminal to the docker session enter:</p>
-<pre class="shell"><code>docker attach &lt;session_id&gt;</code></pre>
-<p>Other commonly used flags include:</p>
-<pre class="shell"><code>--rm  -&gt; Automatically remove the container when it exits</code></pre>
-<pre class="shell"><code>--env or -e  -&gt; Set environment variables.</code></pre>
-<p>Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environment variable is <em>HOME</em> which is associated with the path of your home directory (<em>/home/your-user</em>). By adding <em>-e</em> to the run command you pass the environment variable to the container where a certain image is running. Cases when this option is necessary will be discussed.</p>
-<pre class="shell"><code>--publish or -p -&gt; Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
-
---volume or -v -&gt; Bind mount a volume </code></pre>
-<p>All other options are listed <a href="https://docs.docker.com/engine/reference/commandline/run/">here</a></p>
-<p>To stop the container you have been running you need to detach from the container using the escape sequence (unless you added -d to the run command) and send the following commands:</p>
-<pre class="shell"><code>docker ps   to get the Container ID
-docker stop &lt;container-ID&gt;  </code></pre>
-<p>If you have not added -rm option you also need to manually remove the container</p>
-<pre class="shell"><code>docker rm -f &lt;container-ID&gt;</code></pre>
-<p>An exemplary run command is the following:</p>
-<pre class="shell"><code>docker run -d --rm -p 8080:8787 -v ${PWD}:/data rocker/geospatial</code></pre>
-<p>After the -p option you add the ports mapping: <host port>:<container port>. In this example, docker runs an image with r studio server which uses the port 8787 by default, but the host (the server where you are running docker) has the port 8787 already in use by other services. Therefore, you need to map the port of the image (8787) with a free port of the host (in this example 8080).</p>
-<p>After the -v option you add the paths to mount a volume:<host path>:<container path>. In this example, the working directory (the directory where you are running the command from) is mapped to a data directory in the container. ${PWD} stands for <strong>Print Working Directory</strong>.</p>
+<div id="change-your-working-directory" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Change your Working Directory:</h3>
+<p>To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:</p>
+<pre class="shell"><code>user@host:~$ cd &lt;target_directory&gt;
+user@host:~$ cd ..</code></pre>
+</div>
+<div id="move" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Move:</h3>
+<p>The mv command command can be used to either rename or move files and folders:</p>
+<pre class="shell"><code>user@host:~$ mv &lt;current_filename&gt; &lt;new_filename&gt;  # This is to change a file name
+user@host:~$ mv &lt;filepath&gt; &lt;target_directory&gt; # This is to move a file to a folder</code></pre>
+</div>
+<div id="copy" class="section level3" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Copy:</h3>
+<p>To copy files use cp. The -r flag can be added to recursively copy all files and subdirectories within a directory:</p>
+<pre class="shell"><code>user@host:~$ cp &lt;filename&gt; &lt;filecopy&gt;
+user@host:~$ cp −r &lt;directory&gt; &lt;target&gt;</code></pre>
+</div>
+<div id="remove" class="section level3" number="4.3.6">
+<h3><span class="header-section-number">4.3.6</span> Remove:</h3>
+<p>Files and folders and can be deleted using the rm (remove) command:</p>
+<pre class="shell"><code>user@host:~$ rm &lt;filepath&gt; # To delete a file
+user@host:~$ rm -r &lt;directory&gt; # To delete a folder and its content</code></pre>
+<p>Again, we add the -r (recursive) flag to remove a directory and all its contents (subdirectories and files).</p>
+<p><strong>Warning: rm is to be used with caution. There is no trash folder
+from which the files can be recovered. Upon using this command the files are deleted.</strong></p>
+</div>
+</div>
+<div id="command-line-editors" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Command Line Editors</h2>
+<p>There exists a large number of <a href="https://en.wikipedia.org/wiki/List_of_text_editors">command line editors</a>
+that can be used to edit files directly within the terminal.
+To create a file from the terminal you can simply type the following command:</p>
+<pre class="shell"><code>user@host:~$ &gt; filename.txt</code></pre>
+<p>Below we provide instructions for using the
+<a href="https://www.nano-editor.org/">nano editor</a>. To open a file in nano run the following command inside the
+terminal:</p>
+<pre class="shell"><code>user@host:~$ nano &lt;filename&gt;</code></pre>
+<p>Once the file opens you can move your cursor using the arrow keys, and edit content
+as in any text editor. You can save any changes that you have made to the file
+using <strong>Ctrl + O</strong>. To close the editor press <strong>Ctrl + X</strong>. Before the editor
+closes you will be asked if you want to save your changes. Type Y for Yes to
+save changes, and N for No if you want to close the editor without saving.</p>
+<p>For an overview of nano shortcut keys you can press <strong>Ctrl + G</strong>, which will output the following list.</p>
+</div>
+<div id="practical" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Practical</h2>
+<ol style="list-style-type: decimal">
+<li><p>Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).</p></li>
+<li><p><strong>Change the current temporary password with a password of your choice.</strong></p></li>
+<li><p>Create a directory with your project name.</p></li>
+<li><p>List files to check that the directory is created.</p></li>
+<li><p>Change your working directory with the project directory.</p></li>
+<li><p>Create a file, edit and save using nano.</p></li>
+</ol>
 
 </div>
 </div>
@@ -323,8 +348,8 @@ docker stop &lt;container-ID&gt;  </code></pre>
           </div>
         </div>
       </div>
-<a href="data-science-stack.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="jupyterlab.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vpn.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -355,7 +380,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06_Docker.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03_SSH_Unix_Commands.Rmd",
 "text": "Edit"
 },
 "history": {

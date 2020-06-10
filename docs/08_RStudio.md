@@ -1,0 +1,84 @@
+# Docker Containers for R
+
+A widely-used suite of docker images for R has been developed by the Rocker project [@RJ-2017-065]. 29 repositories of rocker's images are listed on the [docker hub](https://hub.docker.com/u/rocker/) providing R environments customized to perform a variety of tasks. Most of them include R studio server, allowing to work remotely from the R studio server web interface accessible through any browser.
+
+Rocker images are versioned, meaning that if you want to employ a specific version of R rather than the latest you can specify an R version tag in the image name, i.e. *rocker/verse:3.4.0*, if no tag is requested you will automatically pull the latest version [@RJ-2017-065]. 
+
+## Run Docker Locally
+
+To run one of the rocker images locally on your laptop you need to install docker as described in [`docker.md`](06_docker.md) and pull the image of your choise from the docker hub. 
+
+An useful image for running geospatial analysis, including the tidyverse + various geospatial packages, is [*rocker/geospatial*](https://hub.docker.com/r/rocker/geospatial):
+
+ You can pull the repository running the following command:
+
+```shell
+docker pull rocker/geospatial
+```
+
+Once the image is on your local machine, you can run it with the following command:
+
+```shell
+docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p 8787:8787 -v ${PWD}:/home/your-user rocker/geospatial
+```
+All the docker run options used here have been described in [`docker.md`](06_docker.md). Here, it is assumed that the port 8787 is not occupied on your local machine. If you do not have an instance of R studio server running, that port should be free.
+
+Once you have run the command you can access Rstudio server running on your local host through a browser at: [`http://localhost:8787`](http://localhost:8787) and adding your credentials.
+
+## Run Docker Remotely
+
+Docker is installed on all our shared resources. Most machines already have images that can be used for gds. *Rocker/geospatial* has been extended to have all libraries that GDSL members generally use. This extended image has been named *rstudio_gdsl*.
+
+Once you accessed the server you can list the existing images with the following command:
+
+```shell
+docker image ls
+```
+You can pick the image that you need for your analysis, or pull a new image with the following command:
+
+```shell
+docker pull image-tag
+```
+Once you decided which image you want to use, you can start building the run command with the appropriate options:
+
+* -d and -rm are advised, the first will automatically detach you from the container while the second will remove the container when you stop it. Do not forget to remove the container manually whether you have not added the -rm option.
+* -p is needed to map the host's port with the container's port. To do this, you first need to verify which port is free to use. Ports that are permanently occupied on the servers are detailed on the servers_description file. In addition, you need to run *docker ps* to list the containers are running (if any) and verify which ports are using.
+* -e to set the environment variables.
+
+The environment variables necessary to run an image with R studio server are the following:
+* USER -> you can add your user name
+* PASSWORD -> a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
+* USERID and GROUPID -> these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files. 
+
+
+The final run command employing the extended image will look as follows:
+```shell
+docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p <free-port>:8787 -v ${PWD}:/home/your-user rstudio_gdsl
+```
+
+With the run command you generate a container where an istance of the image is running. 
+
+You can check your process with the *docker ps* command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:
+```shell
+<host-ip>:<port>
+``` 
+You can find the host IP address in the document describing the servers.
+
+## Extend an image
+
+Some images may not have all the libraries needed for your study. In that case you can extend the image with new libraries. Sometimes you can simply install a library from the R studio interface and it works with no errors. More frequently you will need to add some dependencies to make the installation work.
+
+To do that you need to access the container's shell with the following command:
+
+```shell
+docker exec -it <mycontainer> bash
+```
+
+Once you have installed the packages and dependences you need, you can save it by creating a new image through the commit command:
+
+```shell
+docker commit -m "commit message" <container id> <new image name>
+```
+
+
+

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 JupyterLab | The Knowledge</title>
+  <title>Chapter 8 JupyterLab | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
-  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 JupyterLab | The Knowledge" />
+  <meta property="og:title" content="Chapter 8 JupyterLab | The Knowledge" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="gdsl-ul/the_knowledge" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 JupyterLab | The Knowledge" />
+  <meta name="twitter:title" content="Chapter 8 JupyterLab | The Knowledge" />
   
   <meta name="twitter:description" content="What every GDSLer should know to work from anywhere" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-03-19" />
+<meta name="date" content="2020-06-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,8 @@
   
   
 <link rel="prev" href="docker.html"/>
-<link rel="next" href="rstudio-server.html"/>
+<link rel="next" href="docker-containers-for-r.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,41 +54,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -107,31 +134,95 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The Knowledge</a></li>
-<li class="chapter" data-level="2" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>2</b> Files</a><ul>
-<li class="chapter" data-level="2.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>2.1</b> Backup/sync</a></li>
-<li class="chapter" data-level="2.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>2.2</b> Encryption</a></li>
-<li class="chapter" data-level="2.3" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>2.3</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="2" data-path="remote-working.html"><a href="remote-working.html"><i class="fa fa-check"></i><b>2</b> Remote Working</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="remote-working.html"><a href="remote-working.html#what-is-remote-working"><i class="fa fa-check"></i><b>2.1</b> What is Remote Working?</a></li>
+<li class="chapter" data-level="2.2" data-path="remote-working.html"><a href="remote-working.html#advantages-and-disadvantages-of-remote-work"><i class="fa fa-check"></i><b>2.2</b> Advantages and Disadvantages of Remote Work</a></li>
+<li class="chapter" data-level="2.3" data-path="remote-working.html"><a href="remote-working.html#tips"><i class="fa fa-check"></i><b>2.3</b> Tips</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a><ul>
+<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="vpn.html"><a href="vpn.html#what-is-a-vpn"><i class="fa fa-check"></i><b>3.1</b> <em>What is a VPN?</em></a></li>
 <li class="chapter" data-level="3.2" data-path="vpn.html"><a href="vpn.html#how-can-i-setup-the-vpn-for-liverpool"><i class="fa fa-check"></i><b>3.2</b> <em>How can I setup the VPN for Liverpool?</em></a></li>
-<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#set-up-a-vpn-connection"><i class="fa fa-check"></i><b>3.3</b> Set up a VPN connection</a></li>
-<li class="chapter" data-level="3.4" data-path="vpn.html"><a href="vpn.html#how-to-use-the-globalprotect-vpn-client-to-access-the-university-network"><i class="fa fa-check"></i><b>3.4</b> How to use the GlobalProtect VPN Client to access the University network</a></li>
+<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#windows-and-mac"><i class="fa fa-check"></i><b>3.3</b> Windows and Mac</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="vpn.html"><a href="vpn.html#to-connect-and-disconnect-the-client"><i class="fa fa-check"></i><b>3.3.1</b> To connect and disconnect the client</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>4</b> Data Science Stack</a></li>
-<li class="chapter" data-level="5" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>5</b> Docker</a><ul>
-<li class="chapter" data-level="5.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>5.1</b> Installation</a></li>
-<li class="chapter" data-level="5.2" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>5.2</b> Useful Docker Commands</a></li>
+<li class="chapter" data-level="3.4" data-path="vpn.html"><a href="vpn.html#ubuntu"><i class="fa fa-check"></i><b>3.4</b> Ubuntu</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="vpn.html"><a href="vpn.html#to-connect-the-client-and-disconnect-the-client"><i class="fa fa-check"></i><b>3.4.1</b> To connect the client and disconnect the client:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>6</b> JupyterLab</a><ul>
-<li class="chapter" data-level="6.1" data-path="jupyterlab.html"><a href="jupyterlab.html#local-install"><i class="fa fa-check"></i><b>6.1</b> Local install</a></li>
-<li class="chapter" data-level="6.2" data-path="jupyterlab.html"><a href="jupyterlab.html#remote-install"><i class="fa fa-check"></i><b>6.2</b> Remote install</a></li>
-<li class="chapter" data-level="6.3" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>6.3</b> Useful Python Docker Images</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rstudio-server.html"><a href="rstudio-server.html"><i class="fa fa-check"></i><b>7</b> RStudio server</a><ul>
-<li class="chapter" data-level="7.1" data-path="rstudio-server.html"><a href="rstudio-server.html#local-install-1"><i class="fa fa-check"></i><b>7.1</b> Local install</a></li>
-<li class="chapter" data-level="7.2" data-path="rstudio-server.html"><a href="rstudio-server.html#remote-install-1"><i class="fa fa-check"></i><b>7.2</b> Remote install</a></li>
-<li class="chapter" data-level="7.3" data-path="rstudio-server.html"><a href="rstudio-server.html#useful-r-docker-images"><i class="fa fa-check"></i><b>7.3</b> Useful R Docker Images</a></li>
+<li class="chapter" data-level="4" data-path="ssh.html"><a href="ssh.html"><i class="fa fa-check"></i><b>4</b> SSH</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ssh.html"><a href="ssh.html#what-is-ssh"><i class="fa fa-check"></i><b>4.1</b> What is SSH?</a></li>
+<li class="chapter" data-level="4.2" data-path="ssh.html"><a href="ssh.html#connecting-to-a-remote-host"><i class="fa fa-check"></i><b>4.2</b> Connecting to a remote host</a></li>
+<li class="chapter" data-level="4.3" data-path="ssh.html"><a href="ssh.html#unix-commands"><i class="fa fa-check"></i><b>4.3</b> Unix Commands</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="ssh.html"><a href="ssh.html#list-files"><i class="fa fa-check"></i><b>4.3.1</b> List Files:</a></li>
+<li class="chapter" data-level="4.3.2" data-path="ssh.html"><a href="ssh.html#make-directory"><i class="fa fa-check"></i><b>4.3.2</b> Make Directory:</a></li>
+<li class="chapter" data-level="4.3.3" data-path="ssh.html"><a href="ssh.html#change-your-working-directory"><i class="fa fa-check"></i><b>4.3.3</b> Change your Working Directory:</a></li>
+<li class="chapter" data-level="4.3.4" data-path="ssh.html"><a href="ssh.html#move"><i class="fa fa-check"></i><b>4.3.4</b> Move:</a></li>
+<li class="chapter" data-level="4.3.5" data-path="ssh.html"><a href="ssh.html#copy"><i class="fa fa-check"></i><b>4.3.5</b> Copy:</a></li>
+<li class="chapter" data-level="4.3.6" data-path="ssh.html"><a href="ssh.html#remove"><i class="fa fa-check"></i><b>4.3.6</b> Remove:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="ssh.html"><a href="ssh.html#command-line-editors"><i class="fa fa-check"></i><b>4.4</b> Command Line Editors</a></li>
+<li class="chapter" data-level="4.5" data-path="ssh.html"><a href="ssh.html#practical"><i class="fa fa-check"></i><b>4.5</b> Practical</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>5</b> Files</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>5.1</b> Backup/sync</a></li>
+<li class="chapter" data-level="5.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>5.2</b> Encryption</a></li>
+<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer"><i class="fa fa-check"></i><b>5.3</b> File Transfer</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3.1</b> File Transfer Protocol (FTP)</a></li>
+<li class="chapter" data-level="5.3.2" data-path="files.html"><a href="files.html#secure-copy-protocol-scp"><i class="fa fa-check"></i><b>5.3.2</b> Secure Copy Protocol (scp)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="files.html"><a href="files.html#file-download"><i class="fa fa-check"></i><b>5.4</b> File Download</a></li>
+<li class="chapter" data-level="5.5" data-path="files.html"><a href="files.html#practical-1"><i class="fa fa-check"></i><b>5.5</b> Practical</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="files.html"><a href="files.html#file-download-1"><i class="fa fa-check"></i><b>5.5.1</b> File Download</a></li>
+<li class="chapter" data-level="5.5.2" data-path="files.html"><a href="files.html#file-transfer-optional"><i class="fa fa-check"></i><b>5.5.2</b> File Transfer (Optional)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>6</b> Data Science Stack</a></li>
+<li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>7.1</b> Installation</a></li>
+<li class="chapter" data-level="7.2" data-path="docker.html"><a href="docker.html#image-and-container"><i class="fa fa-check"></i><b>7.2</b> Image and Container</a></li>
+<li class="chapter" data-level="7.3" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>7.3</b> Useful Docker Commands</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="jupyterlab.html"><a href="jupyterlab.html#run-jupyter-lab-locally"><i class="fa fa-check"></i><b>8.1</b> Run Jupyter Lab Locally</a></li>
+<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#run-jupyter-lab-remotely"><i class="fa fa-check"></i><b>8.2</b> Run Jupyter Lab Remotely</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="jupyterlab.html"><a href="jupyterlab.html#self-signed-certificate-warnings"><i class="fa fa-check"></i><b>8.2.1</b> Self-signed Certificate Warnings</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#using-sudo-within-a-container"><i class="fa fa-check"></i><b>8.3</b> Using sudo within a container</a></li>
+<li class="chapter" data-level="8.4" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.4</b> Useful Python Docker Images</a></li>
+<li class="chapter" data-level="8.5" data-path="jupyterlab.html"><a href="jupyterlab.html#practical-2"><i class="fa fa-check"></i><b>8.5</b> Practical</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html"><i class="fa fa-check"></i><b>9</b> Docker Containers for R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.1</b> Run Docker Locally</a></li>
+<li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.2</b> Run Docker Remotely</a></li>
+<li class="chapter" data-level="9.3" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#extend-an-image"><i class="fa fa-check"></i><b>9.3</b> Extend an image</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="best-practices.html"><a href="best-practices.html"><i class="fa fa-check"></i><b>10</b> Best Practices</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="best-practices.html"><a href="best-practices.html#booking-a-server"><i class="fa fa-check"></i><b>10.1</b> Booking a server</a></li>
+<li class="chapter" data-level="10.2" data-path="best-practices.html"><a href="best-practices.html#docker-considerations"><i class="fa fa-check"></i><b>10.2</b> Docker Considerations</a></li>
+<li class="chapter" data-level="10.3" data-path="best-practices.html"><a href="best-practices.html#system-monitoring"><i class="fa fa-check"></i><b>10.3</b> System Monitoring</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="best-practices.html"><a href="best-practices.html#memory-leaks"><i class="fa fa-check"></i><b>10.3.1</b> Memory Leaks</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="best-practices.html"><a href="best-practices.html#gpu-considerations"><i class="fa fa-check"></i><b>10.4</b> GPU Considerations</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="best-practices.html"><a href="best-practices.html#monitoring"><i class="fa fa-check"></i><b>10.4.1</b> Monitoring</a></li>
+<li class="chapter" data-level="10.4.2" data-path="best-practices.html"><a href="best-practices.html#memory-growth"><i class="fa fa-check"></i><b>10.4.2</b> Memory Growth</a></li>
+<li class="chapter" data-level="10.4.3" data-path="best-practices.html"><a href="best-practices.html#temperature-monitoring"><i class="fa fa-check"></i><b>10.4.3</b> Temperature Monitoring</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -153,79 +244,140 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="jupyterlab" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> JupyterLab</h1>
-<p>This document shows how to install and run a JupyterLab server locally and remotely.</p>
-<div id="local-install" class="section level2">
-<h2><span class="header-section-number">6.1</span> Local install</h2>
-<p>This guide assumes you meet the following requirements in your personal machine (eg. laptop):</p>
+<div id="jupyterlab" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> JupyterLab</h1>
+<p>This document shows how to pull and run a JupyterLab server locally and
+remotely.</p>
+<div id="run-jupyter-lab-locally" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Run Jupyter Lab Locally</h2>
+<p>This guide assumes you meet the following requirements in your personal
+machine (eg. laptop):</p>
 <ol style="list-style-type: decimal">
 <li>You have admin rights over your machine</li>
 <li>You are running either Windows 10 Pro, macOS, or Linux</li>
 </ol>
-<p>Assuming Docker is up and running (check <a href="setup_docker.md"><code>setup_docker.md</code></a> for that), you can install an “image”, which is the install that will let you run containers, by typing on a command line (<code>Terminal.app</code> or <code>PowerShell</code> are both good options):</p>
+<p>Assuming Docker is up and running (check <a href="setup_docker.md"><code>setup_docker.md</code></a>
+for that), you can pull an “image”, which will let you
+run containers, by typing on a command line (<code>Terminal.app</code> or <code>PowerShell</code>
+are both good options):</p>
 <pre><code>docker pull darribas/gds:4.0</code></pre>
-<p>This will take a while to download but, once finished, you will be ready to go.</p>
-<p>Once the command above has finished installing your GDS stack, you are ready to go! To get a Jupyter session started, you can follow these steps:</p>
+<p>Upon executing the above command you will see output providing information regarding the download progress.
+Once the above command has finished installing your GDS stack, you are ready to go!
+To get a Jupyter session started, you can follow these steps:</p>
 <ol style="list-style-type: decimal">
 <li><p>Run on the same terminal as above the following command:</p>
-<pre class="shell"><code>docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0</code></pre></li>
+<pre class="shell"><code>docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0</code></pre></li>
 </ol>
-<p>The command above spins up a container of the <code>gds</code> image, version 4.0 and ensures it is connected through two main bridges:</p>
+<p>The command above spins up a container of the <code>gds</code> image, version 4.0 and
+ensures it is connected through two main bridges:</p>
 <ul>
-<li>Mapping your laptop’s file system from where you have launched the command (<code>${PWD}</code>) to a folder called <code>work</code> on the home directory of the container. When you login to Jupyter (see below), you will see a <code>work</code> folder and, if you click into it, you should see the content of your laptops folder in there.</li>
-<li>Mapping port <code>8888</code> from the container to your laptop, so you can connect to it through a browser.</li>
+<li>Mapping your laptop’s file system from where you have launched the
+command (<code>${PWD}</code>) to a folder called <code>work</code> on the home directory of
+the container. When you login to Jupyter (see below), you will see a
+<code>work</code> folder and, if you click into it, you should see the content of
+your laptops folder in there.</li>
+<li>Mapping port <code>8888</code> from the container to your laptop, so you can
+connect to it through a browser.</li>
 </ul>
-<p>It is important to know this command starts a Jupyter server on your machine and keeps it running, so please do not quit the window until you are done using Jupyter, otherwise it will crash.</p>
+<p>It is important to know this command starts a Jupyter server on your machine and keeps it running, so please do not quit the window until you are
+done using Jupyter, otherwise it will crash.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>Open your favorite browser (preferably Firefox or Chrome) and point it to <code>localhost:8888</code></li>
-<li>You will be asked for a password or a token. To find the correct one, check the terminal where you started the <code>docker run ...</code> command in 1) and look for the long token in the logs. Your prompt should look something (albeit not exactly) like this:</li>
+<li><p>Open your favorite browser (preferably Firefox or Chrome) and point it to
+<code>localhost:8888</code></p></li>
+<li><p>You will be asked for a password or a token. To find the correct one, check
+the terminal where you started the <code>docker run ...</code> command in 1) and look
+for the long token in the logs. Your prompt should look something (albeit
+not exactly) like this:</p>
+<pre class="shell"><code> docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0
+ Executing the command: jupyter notebook
+ [I 11:38:40.234 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret
+ [I 11:38:41.328 NotebookApp] Loading IPython parallel extension
+ [I 11:38:41.612 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
+ [I 11:38:41.612 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+ [I 11:38:43.091 NotebookApp] Serving notebooks from local directory: /home/jovyan
+ [I 11:38:43.091 NotebookApp] The Jupyter Notebook is running at:
+ [I 11:38:43.091 NotebookApp] http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+ [I 11:38:43.091 NotebookApp]  or http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+ [I 11:38:43.091 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+ [C 11:38:43.114 NotebookApp]
+
+     To access the notebook, open this file in a browser:
+         file:///home/jovyan/.local/share/jupyter/runtime/nbserver-6-open.html
+     Or copy and paste one of these URLs:
+         http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+      or http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434</code></pre>
+<p>The token you want to copy is the long series of letter and numbers right
+after <code>?token=</code>, starting by <code>4dc814ee</code>.</p></li>
+<li><p>The token should let you into your Jupyter Lab session. Congratulations!
+You can then access the files in your computer through the <code>work</code> directory
+on the left-side pane.</p></li>
 </ol>
-<p>```shell docker run –rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0 Executing the command: jupyter notebook [I 11:38:40.234 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret [I 11:38:41.328 NotebookApp] Loading IPython parallel extension [I 11:38:41.612 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab [I 11:38:41.612 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab [I 11:38:43.091 NotebookApp] Serving notebooks from local directory: /home/jovyan [I 11:38:43.091 NotebookApp] The Jupyter Notebook is running at: [I 11:38:43.091 NotebookApp] <a href="http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434" class="uri">http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434</a> [I 11:38:43.091 NotebookApp] or <a href="http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434" class="uri">http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434</a> [I 11:38:43.091 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation). [C 11:38:43.114 NotebookApp]</p>
-<pre><code>    To access the notebook, open this file in a browser:
-        file:///home/jovyan/.local/share/jupyter/runtime/nbserver-6-open.html
-    Or copy and paste one of these URLs:
-        http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
-     or http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434</code></pre>
-<p>```</p>
-<p>The token you want to copy is the long series of letter and numbers right after <code>?token=</code>, starting by <code>4dc814ee</code>. 4. The token should let you into your Jupyter Lab session. Congratulations! You can then access the files in your computer through the <code>work</code> directory on the left-side pane.</p>
 </div>
-<div id="remote-install" class="section level2">
-<h2><span class="header-section-number">6.2</span> Remote install</h2>
-<p>It is also possible to start a Jupyter server as above but, instead of run it on your local machine, it can run on a remote machine and you connect to that through your browser over the internet. The process in this context is a bit more intricate because you need to ensure that the connection is secure, but overall it follows a similar pattern. The following steps below assume you can login to the remote server where you want to run Jupyter through <code>ssh</code> and the serve already has a Docker image installed, ready to be run.</p>
+<div id="run-jupyter-lab-remotely" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Run Jupyter Lab Remotely</h2>
+<p>It is also possible to start a Jupyter server as above but, instead of run it
+on your local machine, it can run on a remote machine and you connect to that
+through your browser over the internet. The process in this context is a bit
+more intricate because you need to ensure that the connection is secure, but
+overall it follows a similar pattern. The following steps below assume you can
+login to the remote server where you want to run Jupyter through <code>ssh</code> and the
+serve already has a Docker image installed, ready to be run.</p>
 <ul>
 <li><p>Login to the remote machine:</p>
 <pre><code>ssh &lt;username&gt;@&lt;server.ip.address&gt;</code></pre></li>
 </ul>
 <ol style="list-style-type: decimal">
 <li><p>Launch the container:</p>
-<pre class="shell"><code>docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0 start.sh</code></pre>
-<p>Note we are appending <code>start.sh</code> so it drops us into the command line of the container rather than launching the server directly</p></li>
-<li>Run <code>jupyter notebook --generate-config</code></li>
-<li>Generate SSH keys with: <code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem</code></li>
-<li>Generate password as in the official <a href="http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#preparing-a-hashed-password">tutorial</a></li>
-<li><p>Update <code>/home/jovyan/.jupyter/jupyter_notebook_config.py</code></p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Set options for certfile, ip, password, and toggle off</span>
-<span class="co"># browser auto-opening</span>
-c.NotebookApp.certfile <span class="op">=</span> <span class="st">u&#39;/home/jovyan/mycert.pem&#39;</span>
-c.NotebookApp.keyfile <span class="op">=</span> <span class="st">u&#39;/home/jovyan/mykey.key&#39;</span>
-<span class="co"># Set ip to &#39;*&#39; to bind on all interfaces (ips) for the public server</span>
-c.NotebookApp.ip <span class="op">=</span> <span class="st">&#39;*&#39;</span>
-c.NotebookApp.password <span class="op">=</span> <span class="st">u&#39;sha1:bcd259ccf...&lt;your hashed password here&gt;&#39;</span>
-c.NotebookApp.open_browser <span class="op">=</span> <span class="va">False</span>
-
-<span class="co"># It is a good idea to set a known, fixed port for server access</span>
-c.NotebookApp.port <span class="op">=</span> <span class="dv">8888</span></code></pre></div></li>
-<li>Launch secure Lab: <code>jupyter lab</code></li>
-<li><p>On your own machine (laptop/tablet), log in to <code>&lt;server.ip.address&gt;:8888</code> with the password you have set</p></li>
+<pre class="shell"><code>docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p &lt;mapping_port&gt;:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  </code></pre>
+<p>Note we are appending <code>start.sh</code> so it drops us into
+the command line of the container rather than launching the server directly</p></li>
+<li><p>Run <code>jupyter notebook --generate-config</code></p></li>
+<li><p>Generate password as in the official <a href="http://jupyter-notebook.readthedocs.io/en/stable/public_server.html#preparing-a-hashed-password">tutorial</a></p></li>
+<li><p>Since we will be using the created password we shall also enable SSL (secure sockets layer). SSL is a protocol for web browsers and servers that allows for the authentication, encryption and decryption of data sent over the Internet. Therefore, by enabling SSL our password won’t be sent unencypted by our browser when we login to the server. We shall generate a self-signed SSL certificate with:</p>
+<pre class="shell"><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem</code></pre></li>
+<li><p>Next we shall update the <code>/home/jovyan/.jupyter/jupyter_notebook_config.py</code> file:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="jupyterlab.html#cb40-1"></a><span class="co"># Set options for certfile, ip, password, and toggle off</span></span>
+<span id="cb40-2"><a href="jupyterlab.html#cb40-2"></a><span class="co"># browser auto-opening</span></span>
+<span id="cb40-3"><a href="jupyterlab.html#cb40-3"></a>c.NotebookApp.certfile <span class="op">=</span> <span class="st">u&#39;/home/jovyan/mycert.pem&#39;</span></span>
+<span id="cb40-4"><a href="jupyterlab.html#cb40-4"></a>c.NotebookApp.keyfile <span class="op">=</span> <span class="st">u&#39;/home/jovyan/mykey.key&#39;</span></span>
+<span id="cb40-5"><a href="jupyterlab.html#cb40-5"></a><span class="co"># Set ip to &#39;*&#39; to bind on all interfaces (ips) for the public server</span></span>
+<span id="cb40-6"><a href="jupyterlab.html#cb40-6"></a>c.NotebookApp.ip <span class="op">=</span> <span class="st">&#39;*&#39;</span></span>
+<span id="cb40-7"><a href="jupyterlab.html#cb40-7"></a>c.NotebookApp.password <span class="op">=</span> <span class="st">u&#39;sha1:bcd259ccf...&lt;your hashed password here&gt;&#39;</span></span>
+<span id="cb40-8"><a href="jupyterlab.html#cb40-8"></a>c.NotebookApp.open_browser <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb40-9"><a href="jupyterlab.html#cb40-9"></a></span>
+<span id="cb40-10"><a href="jupyterlab.html#cb40-10"></a><span class="co"># It is a good idea to set a known, fixed port for server access</span></span>
+<span id="cb40-11"><a href="jupyterlab.html#cb40-11"></a>c.NotebookApp.port <span class="op">=</span> <span class="dv">8888</span></span></code></pre></div></li>
+<li><p>Launch secure Lab: <code>jupyter lab</code></p></li>
+<li><p>On your own machine (laptop/tablet), log in to <code>https://&lt;server.ip.address&gt;:&lt;mapping_port&gt;</code> with the password you have set. Since we are using SSL make sure you specify <strong><a href="https://" class="uri">https://</a></strong> in your browser.</p></li>
 </ol>
+<div id="self-signed-certificate-warnings" class="section level3" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Self-signed Certificate Warnings</h3>
+<p>Upon accessing the notebook server your browser might warn you that your self-signed certificate is
+insecure or unrecognized. A fully compliant self-signed certificate is required to prevent these warnins.
+One approach towards solving this issue is to acquire a free SSL certificate via
+<a href="https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-let-s-encrypt">Let’s Encrypt</a>.</p>
 </div>
-<div id="useful-python-docker-images" class="section level2">
-<h2><span class="header-section-number">6.3</span> Useful Python Docker Images</h2>
+</div>
+<div id="using-sudo-within-a-container" class="section level2" number="8.3">
+<h2><span class="header-section-number">8.3</span> Using sudo within a container</h2>
+<p>For the above image password authentication has been disabled for the NB_USER jovyan. However, you might want to install additional programs using a package management tool (e.g., apt). To do so you can grant the within-container NB_USER passwordless sudo access by adding -e GRANT_SUDO=yes and –user root when launching the image:</p>
+<pre class="shell"><code>docker run --rm -ti -e GRANT_SUDO=yes --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  </code></pre>
+</div>
+<div id="useful-python-docker-images" class="section level2" number="8.4">
+<h2><span class="header-section-number">8.4</span> Useful Python Docker Images</h2>
 <ul>
-<li><a href="https://github.com/darribas/gds_env"><code>gds_env</code></a>: a containerised platform for Geographid Data Science in Jupyter (Python &amp; R)</li>
-<li><a href="https://github.com/jupyter/docker-stacks"><code>jupyter-stacks</code></a>: official Jupyter stacks (the <code>gds_env</code> is based on these)</li>
+<li><a href="https://github.com/darribas/gds_env"><code>gds_env</code></a>: a containerised platform
+for Geographid Data Science in Jupyter (Python &amp; R)</li>
+<li><a href="https://github.com/jupyter/docker-stacks"><code>jupyter-stacks</code></a>: official
+Jupyter stacks (the <code>gds_env</code> is based on these)</li>
 </ul>
+</div>
+<div id="practical-2" class="section level2" number="8.5">
+<h2><span class="header-section-number">8.5</span> Practical</h2>
+<p>Follow the steps in the Remote Install section to run jupyter lab on one of the remote servers.</p>
+<p>Note that you will need to use the command line editing software nano to edit update jupyter_notebook_config.py:</p>
+<pre class="shell"><code>nano /home/jovyan/.jupyter/jupyter_notebook_config.py</code></pre>
+<p>A guide to using nano can be found <a href="https://www.howtogeek.com/howto/42980/the-beginners-guide-to-nano-the-linux-command-line-text-editor/">here</a>.</p>
 
 </div>
 </div>
@@ -235,7 +387,7 @@ c.NotebookApp.port <span class="op">=</span> <span class="dv">8888</span></code>
         </div>
       </div>
 <a href="docker.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="rstudio-server.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="docker-containers-for-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -266,7 +418,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06_JupyterLab.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07_JupyterLab.Rmd",
 "text": "Edit"
 },
 "history": {

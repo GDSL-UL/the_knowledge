@@ -1,36 +1,46 @@
-\documentclass[]{book}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-            pdftitle={The Knowledge},
-            pdfauthor={Geographic Data Science Lab},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{apalike}
+  pdftitle={The Knowledge},
+  pdfauthor={Geographic Data Science Lab},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -40,41 +50,47 @@
 \usepackage{framed}
 \definecolor{shadecolor}{RGB}{248,248,248}
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{long table}}{}
-\usepackage{graphicx,grffile}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -83,31 +99,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 \usepackage{amsthm}
 \makeatletter
@@ -116,10 +115,12 @@
   \thm@postskip=\thm@preskip
 }
 \makeatother
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
 
 \title{The Knowledge}
 \author{Geographic Data Science Lab}
-\date{2020-03-19}
+\date{2020-06-10}
 
 \begin{document}
 \maketitle
@@ -128,11 +129,10 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\chapter{The Knowledge}\label{the-knowledge}
+\hypertarget{the-knowledge}{%
+\chapter{The Knowledge}\label{the-knowledge}}
 
-In preparation to be able to stay productive while having to work fully
-remote, this document presents a few things jotted down in one place to
-help with setups, etc.
+In preparation to be able to stay productive while having to work fully remote, this document presents a few things jotted down in one place to help with setups, etc.
 
 The first step is a checklist everyone should go through:
 
@@ -146,188 +146,154 @@ The first step is a checklist everyone should go through:
 \item
   Do you have a webcam, mic and speakers/headphones?
 \item
-  Are you able to connect to computers on campus? This involves being
-  setup with the University VPN?
+  Are you able to connect to computers on campus? This involves being setup with the University VPN?
 \end{enumerate}
 
-These are the basic elements you will require, so if the answer to any
-of the above is no, please speak with your PhD supervisor.
+These are the basic elements you will require, so if the answer to any of the above is no, please speak with your PhD supervisor.
 
-\chapter{Files}\label{files}
+\hypertarget{remote-working}{%
+\chapter{Remote Working}\label{remote-working}}
 
-You need to make sure that:
+\hypertarget{what-is-remote-working}{%
+\section{What is Remote Working?}\label{what-is-remote-working}}
 
-\begin{enumerate}
-\def\labelenumi{\alph{enumi})}
+``Remote work refers to organizational work that is performed outside of the normal organizational confines of space and time. The term telecommuting refers to the substitution of communications capabilities for travel to a central work location. Office automation technology permits many office workers to be potential telecommuters in that their work can be performed remotely with computer and communications support'' \citep{olson1983remote}
+
+Some of the first trials of remote working date back to the eighties as reported by \citet{olson1983remote}. Since then, the spread and development of Information and Communication Technologies have brought about a significant increase in the popularity of remote work. Nowadays, it is possible to find fully remote jobs advertised particularly in IT and data science.
+
+The current pandemic has forced millions of workers at home, making remote work a necessity rather than an option. An early study on COVID-19 and remote work reported that in the US the fraction of workers who switched to working from home is about 34.1\%, while 14.6\% were already working from home pre-COVID-19 \citep{brynjolfsson2020covid}.
+
+Not all types of work are suitable to be performed from home \citep{holgersen2020and},
+but one of the impacts of these dramatic circumstances can be a further increase of the remote work practice.
+
+Computationally intensive tasks can be easily approached in a remote setting by accessing computing resources through the network. This document will guide you in accessing servers located in the Geographic Data Science Lab to perform heavy computations \footnote{An other option which is widely implemented by companies, is the use of cloud computing infrastructures such as Amazon Web Services (AWS), Salesforce's CRM system, Microsoft Azure.}.
+
+\hypertarget{advantages-and-disadvantages-of-remote-work}{%
+\section{Advantages and Disadvantages of Remote Work}\label{advantages-and-disadvantages-of-remote-work}}
+
+One of the most direct consequences of remote work is changes in commuting behaviours, bringing about time saving and a potential reduction in traffic congestion and air pollution. These were among the main points stressed by the early advocates for remote working, but researches in transportation studies have shown conflicting results. Although reductions in number and length of commuting trips is reported in some of the earlies studies \citep{Kitamura1991, olson1983remote}, more recent research shows that the expectation that home-based telework reduces travel is not so apparent \citep{e2018does} and time saving seems not to be a major pull factor \citep{bailey2002review}.
+
+The higher flexibility afforded by remote working is mentioned as an advantage, particularly for those who would have not taken part of the workforce without such settings because of caring committments \citep{olson1983remote}.
+
+Higher productivity of remote workers has been reported in some studies. However, it has to be noted that productivity and concentration at home are strongly dependent from environmental conditions \citep{bailey2002review}. Inequality in living conditions is clearly affecting the ability to work from home during the coronavirus pandemic.
+
+One of the most cited drawbacks of remote working is professional and social isolation \citep{bailey2002review}, which can be also seen as making more difficoult collaborative work and collective workers actions.
+
+\hypertarget{tips}{%
+\section{Tips}\label{tips}}
+
+Here a collection of tips that have been shared on the internet on how to avoid burn out and be effective while working from home:
+
+\begin{itemize}
 \tightlist
 \item
-  You have access to all of your files
+  \href{https://www.ucl.ac.uk/news/2020/apr/covid-19-how-foster-healthy-home-working}{Covid-19: How to foster healthy home working}
 \item
-  Your files are backed up so your setup is not entirely reliant on a
-  single device
+  \href{https://www.timeshighereducation.com/blog/tips-working-home-children\#\%20}{Tips on working from home with children}
 \item
-  Each device on which your files are copied or from which they are
-  accessed is encrypted
-\end{enumerate}
+  \href{https://theconversation.com/working-from-home-why-detachment-is-crucial-for-mental-health-135986}{Working from home? Why detachment is crucial for mental health}
+\item
+  \href{https://www.liverpool.ac.uk/researcher/work-life-balance/}{Work Life Balance}
+\end{itemize}
 
-\section{Backup/sync}\label{backupsync}
+\hypertarget{vpn}{%
+\chapter{VPN}\label{vpn}}
 
-The simplest and recommended way to do this at Liverpool is to keep all
-your files and data on your university account at OneDrive. This is part
-of the Office 365 Suite available from the university, you can find more
-info at:
+\hypertarget{what-is-a-vpn}{%
+\section{\texorpdfstring{\emph{What is a VPN?}}{What is a VPN?}}\label{what-is-a-vpn}}
 
-\begin{quote}
-\href{https://www.liverpool.ac.uk/csd/working-from-home/}{\texttt{https://www.liverpool.ac.uk/csd/working-from-home/}}
-\end{quote}
-
-There are Windows and Mac clients that work relatively well (equivalent
-to Dropbox client).
-
-Once you are set up, copy all your files onto your OneDrive account,
-which will create a copy of them in Microsoft's secure cloud. The
-exception is where you have data that has requirements to be managed in
-particular ways - e.g.~only from a single machine etc; not in the cloud.
-
-Please, be sure to speak with your PhD supervisor if you access data
-that may pose some challenges when moving from local machines or within
-the university network (remember OneDrive is in the Cloud, not the
-university servers!).
-
-\section{Encryption}\label{encryption}
-
-{[}Add guide to encryption: what it is and how to set up on
-Windows/macOS/Linux/iOS/Android{]}
-
-\section{File Transfer Protocol (FTP)}\label{file-transfer-protocol-ftp}
-
-If you need to move large and/or many files from a local machine to a
-remote server (e.g.~from your laptop to a Linux machine at the lab), you
-will probably want to use something like FTP.
-
-{[}Add FTP guide here{]}
-
-\chapter{VPN}\label{vpn}
-
-\section{\texorpdfstring{\emph{What is a
-VPN?}}{What is a VPN?}}\label{what-is-a-vpn}
-
-A VPN (virtual private network) connects a machine that lies outside of
-the university (ie. outside the firewall) to the internal network. When
-the VPN is running, your network traffic (e.g.~Internet) is routed
-through the university in the same way as if the computer was on your
-work desk. This enables you to:
+A VPN (virtual private network) connects a machine that lies outside of the university (ie. outside the firewall) to the internal network. When the VPN is running, your network traffic (e.g.~Internet) is routed through the university in the same way as if the computer was on your work desk. This enables you to:
 
 \begin{itemize}
 \tightlist
 \item
   Access journal websites like you would inside the university
 \item
-  Access network drives (e.g.~M Drive etc) - but be careful when
-  transferring big files
+  Access network drives (e.g.~M Drive etc) - but be careful when transferring big files
 \item
   Access servers (e.g.~over the terminal / command line / ftp)
 \end{itemize}
 
-\section{\texorpdfstring{\emph{How can I setup the VPN for
-Liverpool?}}{How can I setup the VPN for Liverpool?}}\label{how-can-i-setup-the-vpn-for-liverpool}
+\hypertarget{how-can-i-setup-the-vpn-for-liverpool}{%
+\section{\texorpdfstring{\emph{How can I setup the VPN for Liverpool?}}{How can I setup the VPN for Liverpool?}}\label{how-can-i-setup-the-vpn-for-liverpool}}
 
-You can find a more comprehensive guide to setup your VPN on the
-\href{setup_vpn.md}{\texttt{setup\_vpn.md}} document of this repository.
-
-\section{Set up a VPN connection}\label{set-up-a-vpn-connection}
-
-This document describes how to set up a VPN. The text below has been
-copied from CSD website.
+This document describes how to set up a VPN.
 
 To access the VPN service:
 
 \textbf{1. Register}
 
-Submit
-\href{https://liverpool.service-now.com/sp?id=sc_cat_item\&sys_id=bd8d37f1376ba60051a3532e53990e3f}{a
-request to register for the VPN service via CSD}. You will need to
-explain why you require VPN access and what you intend to do with it. It
-may be that other services offer the solution you require instead of the
-VPN.
+First you will need to submit \href{https://liverpool.service-now.com/sp?id=sc_cat_item\&sys_id=bd8d37f1376ba60051a3532e53990e3f}{a request to register for the VPN service via CSD}. CSD will need you to explain why you require VPN access and what you intend to do with it.
 
 \textbf{2. Download the VPN Client}
 
-Once your registration is confirmed you will need to download and
-install the GlobalProtect VPN Client if you are using Windows 10.
-
-You will need admin rights in order to download the GlobalProtect VPN
-Client. This is how to access admin rights on your MWS PC. Please access
-admin rights before attempting to download the VPN Client.
-
-The GlobalProtect VPN Client is also compatible with MacOS. Mobile and
-tablet devices cannot connect using this client. If you are using a
-Linux distribution, such as Ubuntu, you may be able to connect to the
-University network using VPNc.
+Once your registration is confirmed you will need to download and install a VPN Client.
 
 \textbf{3. Open the client and connect}
 
-Click here for instructions on how to use the GlobalProtect VPN Client
-to access the University network from your PC or Mac.
+Finally you will need to connect to the VPN using your VPN client. Below we provide instructions on how to accomplish this on Windows, Mac and Ubuntu.
 
-\section{How to use the GlobalProtect VPN Client to access the
-University
-network}\label{how-to-use-the-globalprotect-vpn-client-to-access-the-university-network}
+\hypertarget{windows-and-mac}{%
+\section{Windows and Mac}\label{windows-and-mac}}
 
 You must make sure you are registered to access the VPN service first.
-Once you are registered you can download and install the GlobalProtect
-VPN Client to connect to the University network.
+Once you are registered you can download and install the GlobalProtect VPN Client to connect to the University network.
+GlobalProtect is compatible with Windows 10 and Macs.
+Please access admin rights before attempting to download the VPN Client on your MWS PC.
+It is not possible to use GlobalProtect to connect to the University network on a mobile or tablet device.
 
-GlobalProtect is compatible with Windows 10 and Macs. It is not possible
-to use GlobalProtect to connect to the University network on a mobile or
-tablet device.
-
-To install the Client
-
-Access Admin Rights on you PC.
-
-Visit \url{https://vpn.liv.ac.uk} Enter your University username and
-password to login to the VPN portal.
-
-Click the appropriate link to download the required version of the VPN
-client - Windows 32 bit, Windows 64 bit, or Mac OS. (To check which
-version you require, see your system properties on your device)
-
-Once the file has downloaded, double-click to run the installation.
-Follow the steps through the installation wizard, accepting the default
-options.
-
-Once installed you will see the GlobalProtect ``globe'' icon appear in
-the system tray (bottom right, near the clock). It is a globe and it
-will have a red x on it, showing that it is not currently connected.
-
-Double-click on the GlobalProtectglobe icon in the system tray. In the
-window that opens, enter the following:
-
-Username: enter your University username Password: enter your University
-password Portal: vpn.liv.ac.uk
-
-Click Apply.
-
-The GlobalProtect VPN client will then automatically connect to the
-University network - the red cross should disappear form the icon in the
-system tray.
-
-You can close the window: the client will stay connected. To connect and
-disconnect the client
-
-Once the GlobalConnect VPN client has been installed, the icon will
-remain in your system tray
-
-To connect the VPN right click the GlobalProtect icon in the system tray
-and choose Connect. When you have finished and want to disconnect the
-VPN, right click on the icon and choose Disconnect.
-
-How to allow third party applications - like Global Protect - to install
-on a Mac
+To install the Client:
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Access Admin Rights on you PC.
+\item
+  Visit \url{https://vpn.liv.ac.uk}
+\item
+  Enter your University username and password to login to the VPN portal.
+\item
+  Click the appropriate link to download the required version of the VPN client - Windows 32 bit, Windows 64 bit, or Mac OS.
+  (To check which version you require, see your system properties on your device)
+\item
+  Once the file has downloaded, double-click to run the installation.
+\item
+  Follow the steps through the installation wizard, accepting the default options.
+\item
+  Once installed you will see the GlobalProtect ``globe'' icon appear in the system tray (bottom right, near the clock).
+  It is a globe and it will have a red x on it, showing that it is not currently connected.
+\item
+  Double-click on the GlobalProtectglobe icon in the system tray. In the window that opens, enter the following:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Username: enter your University username
+  \item
+    Password: enter your University password
+  \item
+    Portal: vpn.liv.ac.uk
+  \end{itemize}
+\item
+  Click Apply.
+\end{enumerate}
+
+The GlobalProtect VPN client will then automatically connect to the University network - the red cross should disappear form the icon in the system tray.
+
+You can close the window: the client will stay connected.
+
+\hypertarget{to-connect-and-disconnect-the-client}{%
+\subsection{To connect and disconnect the client}\label{to-connect-and-disconnect-the-client}}
+
+Once the GlobalConnect VPN client has been installed, the icon will remain in your system tray.
+
+To connect the VPN right click the GlobalProtect icon in the system tray and choose Connect.
+When you have finished and want to disconnect the VPN, right click on the icon and choose Disconnect.
+
+How to allow third party applications - like Global Protect - to install on a Mac
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
 \item
   Open System Preferences and click Security \& Privacy
 \item
@@ -338,63 +304,537 @@ on a Mac
   Enter your computer username and password, then select Unlock
 \end{enumerate}
 
-\chapter{Data Science Stack}\label{data-science-stack}
+\hypertarget{ubuntu}{%
+\section{Ubuntu}\label{ubuntu}}
 
-Once you have access from home to all your files and (remote) university
-computers, next step is easily being able to bootstrap a full data
-science stack that allows you to carry out scientific work. There are
-several ways of achieving this, but our preferred strategy is to rely on
-container technology, in particular on
-\href{https://www.docker.com/}{Docker}. This will allow you to rapidly
-install the platform and set of libraries you are familiar with in a way
-that can be easily reproduced and redeployed (e.g.~on a remote computer
-on campus).
+The University of Liverpool provides a \href{https://liverpool.service-now.com/sp/?id=kb_article\&sysparm_article=KB0010404\&sys_kb_id=52bfb8303717e200d6fa4a7a43990ef9}{guide}
+for setting up VPN on Linux, tested with Ubuntu 14.04, 16.04, 18.04 and Centos 7. The guide recommends the
+installation of the VPN Client VPNc:
+
+\begin{verbatim}
+sudo apt-get install network-manager-vpnc
+sudo apt-get install network-manager-vpnc-gnome
+\end{verbatim}
+
+Alternatively yum can be used to install the software:
+
+\begin{verbatim}
+sudo yum install NetworkManager-vpnc
+sudo yum install NetworkManager-vpnc-gnome
+\end{verbatim}
+
+To recap the remaining steps from the \href{https://liverpool.service-now.com/sp/?id=kb_article\&sysparm_article=KB0010404\&sys_kb_id=52bfb8303717e200d6fa4a7a43990ef9}{UoL guide}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  First you will need to download the UoL VPN configuration file:
+  \href{https://pcwww.liv.ac.uk/csd/vpn/University\%20of\%20Liverpool\%20VPN.PCF}{VPN.PCF}
+\item
+  In the top right corner of your desktop there is a network icon.
+  Click on this icon, then choose:
+\end{enumerate}
+
+\begin{quote}
+VPN Connections \textgreater{} Configure VPN
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Click ``Add'' and then ``Select Import'' in order to locate your *.pcf file.
+\item
+  Next enter your MWS username in the User Name field.
+\item
+  Click the IPv4 Settings tab.
+\item
+  If left blank fill in the Group password field using the group password specified within the *.pcf file.
+\item
+  Add DNS servers:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    138.253.110.103
+  \item
+    138.253.110.104
+  \end{itemize}
+\end{enumerate}
+
+and search domains (if a search domain field is available):
+
+\begin{itemize}
+\tightlist
+\item
+  liv.ac.uk
+\item
+  liverpool.ac.uk
+\item
+  livad.liv.ac.uk
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Click on Routes.
+\item
+  You will need one route with the following details:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Address: 138.253.0.0
+  \item
+    Netmask: 255.255.255.0
+  \item
+    gateway: 0.0.0.0
+  \item
+    metric: 0
+  \end{itemize}
+\item
+  Tick the ``Use this connection only for resources on its network'' box.
+\item
+  Click Save / Apply / Close depending on the distribution.
+\end{enumerate}
+
+\hypertarget{to-connect-the-client-and-disconnect-the-client}{%
+\subsection{To connect the client and disconnect the client:}\label{to-connect-the-client-and-disconnect-the-client}}
+
+To connect to the network, click on the icon in the top right corner of the desktop and choose
+
+\begin{quote}
+VPN Connections \textgreater{} University of Liverpool VPN Service
+\end{quote}
+
+You will be promted to authenticate using your MWS password. Upon connecting the network
+icon will display a locked symbol. You can now use your computera as if you were physically
+connected to the University of Liverpool network.
+
+To disconnect click on the network icon again and choose:
+
+\begin{quote}
+VPN Connections \textgreater{} Disconnect VPN
+\end{quote}
+
+\hypertarget{ssh}{%
+\chapter{SSH}\label{ssh}}
+
+\hypertarget{what-is-ssh}{%
+\section{What is SSH?}\label{what-is-ssh}}
+
+Secure Shell (SSH) is a cryptographic network protocol for accessing a computer over an unsecured network. It gives you secure access to a machine's command-line.
+Secure Shell provides strong password authentication and public key authentication, as well as encrypted data communications between two computers connecting over an open network, such as the internet. However, all computers within the University of Liverpool Network are not accessible from the open internet for security reasons.
+Therefore, to access a machine at the University you do not only need to be connected to the internet, but also to the Virtual Private Network (VPN) that \emph{virtually brings you to the University of Liverpool Network}.
+
+\hypertarget{connecting-to-a-remote-host}{%
+\section{Connecting to a remote host}\label{connecting-to-a-remote-host}}
+
+The use of SSH to connect to a remote host is performed through the following command:
+
+\begin{verbatim}
+ssh <username>@<server.ip.address>
+\end{verbatim}
+
+If you are connecting to a server for the first time, then you may receive the following warning:
+
+\begin{verbatim}
+The authenticity of host 'hostIPaddress' cannot be established.
+ DSA key fingerprint is 01:23:45:67:89:ab:cd:ef:ff:fe:dc:ba:98:76:54:32:10.
+ Are you sure you want to continue connecting (yes/no)?
+\end{verbatim}
+
+Windows users need to install an SSH client in order to access a server remotely through SSH. There are several clients available, MobaXterm is the option we advise to employ as it provides a number of useful functions for remote computing in a single application.
+The free edition can be downloaded \href{https://mobaxterm.mobatek.net/download.html}{here}. To establish a connection with your remote server you open mobaXterm and click on session and then SSH. The Remote Host is the machine you want to access which can be identified by an IP address. \href{https://mobaxterm.mobatek.net/demo.html}{Here} you can find a simple demo of the SSH client.
+
+If this is your first time connecting to the server, or if the server has recently been
+reconfigured with a new key, then the above message is perfectly normal. You can proceed by typing yes and enter.
+
+Once you have accessed the server the first thing to do is to change the temprorary password we assigned to your user.
+
+\begin{verbatim}
+user@host:~$ passwd
+\end{verbatim}
+
+\hypertarget{unix-commands}{%
+\section{Unix Commands}\label{unix-commands}}
+
+Servers often run unix operating systems such as GNU/Linux. Unix commands are essential to perform operations from the terminal.
+
+The following are the most frequently used commands:
+
+\hypertarget{list-files}{%
+\subsection{List Files:}\label{list-files}}
+
+\begin{verbatim}
+user@host:~$ ls -lh
+\end{verbatim}
+
+In the above example two flags have been added to the ls command:
+
+\begin{itemize}
+\tightlist
+\item
+  -l List with long format, e.g., show file read/write/execute permissions.
+\item
+  -h List files with readable file size, e.g.~MB, GB, etc.
+\end{itemize}
+
+\hypertarget{make-directory}{%
+\subsection{Make Directory:}\label{make-directory}}
+
+A new directory can be created using the mkdir command:
+
+\begin{verbatim}
+user@host:~$ mkdir <new_directory_name>
+\end{verbatim}
+
+\hypertarget{move}{%
+\subsection{Move:}\label{move}}
+
+The mv command command can be used to either rename or move files and folders:
+
+\begin{verbatim}
+user@host:~$ mv <current_filename> <new_filename>  # This is to change a file name
+user@host:~$ mv <filepath> <target_directory> # This is to move a file to a folder
+user@host:~$ mv -r <directory_path> <target_directory> # This is to move a folder with all its content to an other folder 
+\end{verbatim}
+
+We add the -r (recursive) flag to move a directory and all its contents (subdirectories and files).
+
+\hypertarget{remove}{%
+\subsection{Remove:}\label{remove}}
+
+Files and folders and can be deleted using the rm (remove) command:
+
+\begin{verbatim}
+user@host:~$ rm <filepath> # To delete a file
+user@host:~$ rm -r <directory> # To delete a folder and its content
+\end{verbatim}
+
+Again, we add the -r (recursive) flag to remove a directory and all its contents (subdirectories and files).
+
+\textbf{Warning: rm is to be used with caution. There is no trash folder
+from which the files can be recovered. Upon using this command the files are deleted.}
+
+\hypertarget{change-your-working-directory}{%
+\subsection{Change your Working Directory:}\label{change-your-working-directory}}
+
+To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:
+
+\begin{verbatim}
+user@host:~$ cd <target_directory>
+user@host:~$ cd ..
+\end{verbatim}
+
+\hypertarget{copy}{%
+\subsection{Copy:}\label{copy}}
+
+To copy files use cp.~Again the -r flag can be added to recursively copy all files and subdirectories within a directory:
+
+\begin{verbatim}
+user@host:~$ cp <filename> <filecopy>
+user@host:~$ cp −r <directory> <target>
+\end{verbatim}
+
+\hypertarget{command-line-editors}{%
+\section{Command Line Editors}\label{command-line-editors}}
+
+There exists a large number of \href{https://en.wikipedia.org/wiki/List_of_text_editors}{command line editors}
+that can be used to edit files directly within the terminal.
+To create a file from the terminal you can simply type the following command:
+
+\begin{verbatim}
+user@host:~$ > filename.txt
+\end{verbatim}
+
+Below we provide instructions for using the
+\href{https://www.nano-editor.org/}{nano editor}. To open a file in nano run the following command inside the
+terminal:
+
+\begin{verbatim}
+user@host:~$ nano <filename>
+\end{verbatim}
+
+Once the file opens you can move your cursor using the arrow keys, and edit content
+as in any text editor. You can save any changes that you have made to the file
+using \textbf{Ctrl + O}. To close the editor press \textbf{Ctrl + X}. Before the editor
+closes you will be asked if you want to save your changes. Type Y for Yes to
+save changes, and N for No if you want to close the editor without saving.
+
+For an overview of nano shortcut keys you can press \textbf{Ctrl + G}, which will output the following list.
+
+\hypertarget{practical}{%
+\section{Practical}\label{practical}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  Use SSH to access one of the lab servers (the IP address of the server you have been assigned will be provided).
+\item
+  \textbf{Change the current temporary password with a password of your choice.}
+\item
+  Create a directory with your project name.
+\item
+  List files to check that the directory is created.
+\item
+  Change your working directory with the project directory.
+\item
+  Create a file, edit and save using nano.
+\end{enumerate}
+
+\hypertarget{files}{%
+\chapter{Files}\label{files}}
+
+You need to make sure that:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  You have access to all of your files;
+\item
+  Your files are backed up so your setup is not entirely reliant on a single device;
+\item
+  Each device on which your files are copied or from which they are accessed
+  is encrypted.
+\end{enumerate}
+
+\hypertarget{backupsync}{%
+\section{Backup/sync}\label{backupsync}}
+
+The simplest and recommended way to do this at Liverpool is to keep all your
+files and data on your university account at OneDrive. This is part of the
+Office 365 Suite available from the university, you can find more info at:
+
+\begin{quote}
+\href{https://www.liverpool.ac.uk/csd/working-from-home/}{\texttt{https://www.liverpool.ac.uk/csd/working-from-home/}}
+\end{quote}
+
+There are Windows and Mac clients that work relatively well (equivalent to
+Dropbox client).
+
+Once you are set up, copy all your files onto your OneDrive account, which
+will create a copy of them in Microsoft's secure cloud. The exception is
+where you have data that has requirements to be managed in particular ways - e.g.
+only from a single machine etc; not in the cloud.
+
+Please, be sure to speak with your PhD supervisor if you access data that
+may pose some challenges when moving from local machines or within the university
+network (remember OneDrive is in the Cloud, not the university servers!).
+
+\hypertarget{encryption}{%
+\section{Encryption}\label{encryption}}
+
+Disk encryption helps protect data on your devices through converting
+them into an unreadable format. Deciphering the data without access to the
+required keys is challenging. Therefore, should your devices be lost or stolen,
+encrypting your devices therefore introduces an additional barrier for someone
+attempting to access potentially sensitive data. Please note that, as per
+University of Liverpool guidelines,
+\href{https://www.liverpool.ac.uk/csd/security/information-security/encryption/}{``the security of confidential information is the responsibility of the individual
+member of staff or student NOT the University, nor the line manager or Head of
+Department''}.
+Encryption methods are platform dependent. A list of relevant guides is provided below:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  \href{https://www.liverpool.ac.uk/csd/security/information-security/encryption/}{Windows}
+\item
+  \href{https://support.apple.com/en-gb/guide/disk-utility/dskutl35612/mac}{Mac}
+\item
+  \href{https://help.ubuntu.com/community/Full_Disk_Encryption_Howto_2019}{Ubuntu}
+\item
+  \href{https://support.apple.com/en-gb/guide/security/secf6276da8a/1/web/1}{iOS}
+\item
+  \href{https://www.howtogeek.com/141953/how-to-encrypt-your-android-phone-and-why-you-might-want-to/}{Android}
+\end{enumerate}
+
+\hypertarget{file-transfer}{%
+\section{File Transfer}\label{file-transfer}}
+
+Below we shall discuss two approaches that can be used to transfer files between
+two servers:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  \href{https://en.wikipedia.org/wiki/File_Transfer_Protocol}{File Transfer Protocol (FTP)};
+\item
+  \href{https://en.wikipedia.org/wiki/Secure_copy}{Secure Copy Protocol (scp)}.
+\end{enumerate}
+
+\hypertarget{file-transfer-protocol-ftp}{%
+\subsection{File Transfer Protocol (FTP)}\label{file-transfer-protocol-ftp}}
+
+If you need to move large and/or many files from a local machine to a remote
+server (e.g.~from your laptop to a Linux machine at the lab), you can do so
+using a drag and drop interface with an FTP client (e.g., \href{https://filezilla-project.org/}{filezilla}
+for Windows/Mac/Ubuntu or \href{https://winscp.net/eng/index.php}{WinSCP} for Windows). To access
+a remote server you will need to enter the following into respective fields within your FTP client:
+
+\begin{itemize}
+\tightlist
+\item
+  Host (Remote Server IP Address);
+\item
+  Username (Your username on the remote host);
+\item
+  Password (Remote host password).
+\end{itemize}
+
+\hypertarget{secure-copy-protocol-scp}{%
+\subsection{Secure Copy Protocol (scp)}\label{secure-copy-protocol-scp}}
+
+Alternatively Mac and Linux users can copy files between servers using the scp command.
+To copy a local file to a remote server:
+
+\begin{verbatim}
+scp <filepath> <username>@<server.ip.address>:<target_directory>
+\end{verbatim}
+
+This command can also be use to copy a file from the remote server to your local machine:
+
+\begin{verbatim}
+scp <username>@<server.ip.address>:<filepath> <local_target_directory>/
+\end{verbatim}
+
+As with copying file locally -r can be added to the above command to recursively copy
+all files within a directory. However, if a directory contains a large number of files
+then zip your directory before executing scp. The zip file can be unzipped using:
+
+\begin{verbatim}
+unzip <filename>.zip -d <target_directory>
+\end{verbatim}
+
+Tar files meanwhile can be extracted using:
+
+\begin{verbatim}
+tar -xvzf <filename>.tar.gz -C <target_directory>
+\end{verbatim}
+
+\hypertarget{file-download}{%
+\section{File Download}\label{file-download}}
+
+Often large datasets, etc can be downloaded from the web directly.
+The wget command can be used to download files from both http(s)
+
+\begin{verbatim}
+wget '<file_url>'
+\end{verbatim}
+
+and ftp servers:
+
+\begin{verbatim}
+wget -r 'ftp://<username>:<password>@<server.ip.address>/<directory>'
+\end{verbatim}
+
+Once the data has been downloaded we must verify that the integrity of the file.
+Typically the websites from which data can be downloaded provide a md5 checksum.
+This allows us to verify that a file has not been changed:
+
+\begin{verbatim}
+md5sum <filename>
+\end{verbatim}
+
+\hypertarget{practical-1}{%
+\section{Practical}\label{practical-1}}
+
+\hypertarget{file-download-1}{%
+\subsection{File Download}\label{file-download-1}}
+
+For the second task we shall download the CIFAR-10 dataset from
+\url{https://www.cs.toronto.edu/~kriz/cifar.html}
+using the wget command.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  First we will need to determine the url from which we can download the dataset.
+  Visit the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{CIFAR-10 website}, right
+  click on the ``CIFAR-10 python version'', and choose the ``copy link'' option,
+  which will copy the link to your clipboard.
+\item
+  Next, ssh into your remote server.
+\item
+  Type ``wget'' and paste the url into to the terminal by pressing (ctrl + shift + V).
+\item
+  Press enter to start the file download.
+\item
+  Upon downloading the CIFAR-10 dataset verify that the md5 checksum matches the one specified on the website.
+\end{enumerate}
+
+\hypertarget{file-transfer-optional}{%
+\subsection{File Transfer (Optional)}\label{file-transfer-optional}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  Create a file named ``Test.txt'' locally and enter some random text.
+  From your local machine copy ``Test.txt'' to your remote server using either
+  scp or a ftp client (e.g., using \href{https://winscp.net/eng/index.php}{WinSCP}
+  or \href{https://filezilla-project.org/}{filezilla}).
+\item
+  Upon transferring the file, ssh into the remote server and verify that the file is within the
+  specified target directory using the ls command.
+\item
+  (Optional) Open the file using a
+  \href{https://en.wikipedia.org/wiki/List_of_text_editors}{command line editing interface} from the terminal, e.g, nano or vim:
+\end{enumerate}
+
+\begin{verbatim}
+nano ./Test.txt
+\end{verbatim}
+
+\hypertarget{data-science-stack}{%
+\chapter{Data Science Stack}\label{data-science-stack}}
+
+Once you have access from home to all your files and (remote) university computers, next step is easily being able to bootstrap a full data science stack that allows you to carry out scientific work. There are several ways of achieving this, but our preferred strategy is to rely on container technology, in particular on \href{https://www.docker.com/}{Docker}. This will allow you to rapidly install the platform and set of libraries you are familiar with in a way that can be easily reproduced and redeployed (e.g.~on a remote computer on campus).
 
 Here are a series of pages that will help you get a stack ready to go:
 
 \begin{itemize}
 \tightlist
 \item
-  \href{setup_docker.md}{\texttt{setup\_docker.md}}: instructions to
-  install and get Docker up and running on different platforms
+  \href{06_docker.md}{\texttt{setup\_docker.md}}: instructions to install and get Docker
+  up and running on different platforms
 \item
-  \href{setup_jupyterlab.md}{\texttt{setup\_jupyterlab.md}}:
-  instructions to install and run a JupyterLab server both on local
-  (e.g.~laptop) and remote (e.g.~server) machines
+  \href{07_jupyterlab.md}{\texttt{setup\_jupyterlab.md}}: instructions to run a JupyterLab server within a Docker container both on local (e.g.~laptop) and remote (e.g.~server) machines
 \item
-  \href{setup_rstudio.md}{\texttt{setup\_rstudio.md}}: instructions to
-  install and run a JupyterLab server both on local (e.g.~laptop) and
-  remote (e.g.~server) machines
+  \href{08_RStudio.md}{\texttt{setup\_rstudio.md}}: instructions to run Rstudio server within a Docker container both on local (e.g.~laptop) and remote (e.g.~server) machines.
 \end{itemize}
 
-\chapter{Docker}\label{docker}
+\hypertarget{docker}{%
+\chapter{Docker}\label{docker}}
 
-This document describes how to install and use Docker on different
-platforms.
+This document describes how to install and use Docker on different platforms.
 
-\section{Installation}\label{installation}
+\hypertarget{installation}{%
+\section{Installation}\label{installation}}
 
-If you are on Mac, Linux or Windows 10 Pro/Student editions, installing
-Docker is relatively straightforward:
+If you are on Mac, Linux or Windows 10 Pro/Student editions, installing Docker
+is relatively straightforward:
 
 \begin{itemize}
 \tightlist
 \item
   \href{https://docs.docker.com/docker-for-mac/}{Mac}
 \item
-  \href{https://docs.docker.com/install/linux/docker-ce/ubuntu/}{Linux
-  official instructions}
+  \href{https://docs.docker.com/install/linux/docker-ce/ubuntu/}{Linux official instructions}
 \item
-  \href{https://docs.docker.com/docker-for-windows/}{Windows 10
-  Pro/Student}
+  \href{https://docs.docker.com/docker-for-windows/}{Windows 10 Pro/Student}
 \end{itemize}
 
-It is important to note that, on Mac and Windows, Docker runs under a
-virtual machine so it will not use up all of the resources of your
-machine (conversely, it'll equate to be working on a more limited
-machine). This can be changed. But if you need more firepower, the idea
-is that you develop on your laptop and scale to a server (e.g.~running
-out of the lab).
+It is important to note that, on Mac and Windows, Docker runs under a virtual
+machine so it will not use up all of the resources of your machine
+(conversely, it'll equate to be working on a more limited machine). This can
+be changed. But if you need more firepower, the idea is that you develop on
+your laptop and scale to a server (e.g.~running out of the lab).
 
 The steps to install Docker include:
 
@@ -406,52 +846,126 @@ The steps to install Docker include:
   \begin{itemize}
   \tightlist
   \item
-    \texttt{Windows10\ Pro/Enterprise}:
-    \href{https://docs.docker.com/docker-for-windows/install/}{Install
-    Docker Desktop for Windows}
+    \texttt{Windows10\ Pro/Enterprise}: \href{https://docs.docker.com/docker-for-windows/install/}{Install Docker Desktop for Windows}
   \item
-    \texttt{macOS}: \href{https://docs.docker.com/docker-for-mac/}{Get
-    started with Docker Desktop for Mac}
+    \texttt{macOS}: \href{https://docs.docker.com/docker-for-mac/}{Get started with Docker Desktop for Mac}
   \end{itemize}
 \item
-  Once Docker is successfully installed, make sure to enable access to
-  your main drive (e.g. \texttt{C:\textbackslash{}\textbackslash{}}):
+  Once Docker is successfully installed, make sure to enable access to your main drive (e.g.~\texttt{C:\textbackslash{}\textbackslash{}}):
 
   \begin{itemize}
   \tightlist
   \item
-    \texttt{Windows10\ Pro/Enterprise}: Open the preferences for Docker
-    and click the ``Shared Drives'' tab; click on the drive you want to
-    add and then ``Apply''
+    \texttt{Windows10\ Pro/Enterprise}: Open the preferences for Docker and click the
+    ``Shared Drives'' tab; click on the drive you want to add and then ``Apply''
   \item
     \texttt{macOS}: this feature is automatically enabled
   \end{itemize}
 \end{itemize}
 
-\section{Useful Docker Commands}\label{useful-docker-commands}
+\hypertarget{image-and-container}{%
+\section{Image and Container}\label{image-and-container}}
 
-See what containers are running (this also shows you the ID - this is
-useful to know then R-studio crashes\ldots{})
+Docker can be seen as a tool to generate a computer within your computer (the host). This creates a working environment that employs the host's resources but follows its own internal rules.
+
+\textbf{Image} and \textbf{Container} are two key concepts to understand Docker processes.
+
+\textbf{Images} are files containing all the instructions to build a complete and executable version of an application, relying on the host OS kernel.
+
+\textbf{Containers} are instantiations of images, meaning that they are instances of the images running in an isolated environment. The same image can be instantiated in multiple containers.
+
+\hypertarget{useful-docker-commands}{%
+\section{Useful Docker Commands}\label{useful-docker-commands}}
+
+List available images :
+
+\begin{verbatim}
+docker image ls
+\end{verbatim}
+
+Pull a new image:
+
+\begin{verbatim}
+docker pull image-tag
+\end{verbatim}
+
+See what containers are running (this also shows you the ID and which port is occupying):
 
 \begin{verbatim}
 docker ps
 \end{verbatim}
 
-Stop and remove a particular container - replace ID; with the specific
-ID from the above (listed under CONTAINER ID) - if everything has
-crashed
+The run command instantiates an image in an isolated container. The generic command is:
 
 \begin{verbatim}
-docker stop ID
-docker rm -f ID
+docker run [OPTIONS] IMAGE[:TAG] [COMMAND] [ARG...]
 \end{verbatim}
 
-\chapter{JupyterLab}\label{jupyterlab}
+Options that are generally added are:
 
-This document shows how to install and run a JupyterLab server locally
-and remotely.
+\begin{verbatim}
+--detach or -d -> Run container in background and print container ID
+\end{verbatim}
 
-\section{Local install}\label{local-install}
+If you do not add this option to the run command you can detach from a running docker session without exiting the shell, the escape sequence \emph{Ctrl + p} followed by \emph{Ctrl + q} can be used.
+
+To re-attach the terminal to the docker session enter:
+
+\begin{verbatim}
+docker attach <session_id>
+\end{verbatim}
+
+Other commonly used flags include:
+
+\begin{verbatim}
+--rm  -> Automatically remove the container when it exits
+\end{verbatim}
+
+\begin{verbatim}
+--env or -e  -> Set environment variables.
+\end{verbatim}
+
+Environment variables in linux act as placeholders for information stored within the system that passes data to programs launched in shells. A common environment variable is \emph{HOME} which is associated with the path of your home directory (\emph{/home/your-user}). By adding \emph{-e} to the run command you pass the environment variable to the container where a certain image is running. Cases when this option is necessary will be discussed.
+
+\begin{verbatim}
+--publish or -p -> Publish a container’s port(s) to the host (This is key when running server-based application through Docker. A network port is the communication enpoint in a client-server model, specifying which program a communication is intended for.)
+
+--volume or -v -> Bind mount a volume 
+\end{verbatim}
+
+All other options are listed \href{https://docs.docker.com/engine/reference/commandline/run/}{here}
+
+To stop the container you have been running you need to detach from the container using the escape sequence (unless you added -d to the run command) and send the following commands:
+
+\begin{verbatim}
+docker ps   to get the Container ID
+docker stop <container-ID>  
+\end{verbatim}
+
+If you have not added -rm option you also need to manually remove the container
+
+\begin{verbatim}
+docker rm -f <container-ID>
+\end{verbatim}
+
+An exemplary run command is the following:
+
+\begin{verbatim}
+docker run -d --rm -p 8080:8787 -v ${PWD}:/data rocker/geospatial
+\end{verbatim}
+
+After the -p option you add the ports mapping: :. In this example, docker runs an image with r studio server which uses the port 8787 by default, but the host (the server where you are running docker) has the port 8787 already in use by other services. Therefore, you need to map the port of the image (8787) with a free port of the host (in this example 8080).
+
+After the -v option you add the paths to mount a volume::. In this example, the working directory (the directory where you are running the command from) is mapped to a data directory in the container. \$\{PWD\} stands for \textbf{Print Working Directory}.
+
+\hypertarget{jupyterlab}{%
+\chapter{JupyterLab}\label{jupyterlab}}
+
+This document shows how to pull and run a JupyterLab server locally and
+remotely.
+
+\hypertarget{run-jupyter-lab-locally}{%
+\section{Run Jupyter Lab Locally}\label{run-jupyter-lab-locally}}
 
 This guide assumes you meet the following requirements in your personal
 machine (eg. laptop):
@@ -465,22 +979,18 @@ machine (eg. laptop):
   You are running either Windows 10 Pro, macOS, or Linux
 \end{enumerate}
 
-Assuming Docker is up and running (check
-\href{setup_docker.md}{\texttt{setup\_docker.md}} for that), you can
-install an ``image'', which is the install that will let you run
-containers, by typing on a command line (\texttt{Terminal.app} or
-\texttt{PowerShell} are both good options):
+Assuming Docker is up and running (check \href{setup_docker.md}{\texttt{setup\_docker.md}}
+for that), you can pull an ``image'', which will let you
+run containers, by typing on a command line (\texttt{Terminal.app} or \texttt{PowerShell}
+are both good options):
 
 \begin{verbatim}
 docker pull darribas/gds:4.0
 \end{verbatim}
 
-This will take a while to download but, once finished, you will be ready
-to go.
-
-Once the command above has finished installing your GDS stack, you are
-ready to go! To get a Jupyter session started, you can follow these
-steps:
+Upon executing the above command you will see output providing information regarding the download progress.
+Once the above command has finished installing your GDS stack, you are ready to go!
+To get a Jupyter session started, you can follow these steps:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -488,89 +998,80 @@ steps:
   Run on the same terminal as above the following command:
 
 \begin{verbatim}
-docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0
+docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0
 \end{verbatim}
 \end{enumerate}
 
-The command above spins up a container of the \texttt{gds} image,
-version 4.0 and ensures it is connected through two main bridges:
+The command above spins up a container of the \texttt{gds} image, version 4.0 and
+ensures it is connected through two main bridges:
 
 \begin{itemize}
 \tightlist
 \item
   Mapping your laptop's file system from where you have launched the
-  command (\texttt{\$\{PWD\}}) to a folder called \texttt{work} on the
-  home directory of the container. When you login to Jupyter (see
-  below), you will see a \texttt{work} folder and, if you click into it,
-  you should see the content of your laptops folder in there.
+  command (\texttt{\$\{PWD\}}) to a folder called \texttt{work} on the home directory of
+  the container. When you login to Jupyter (see below), you will see a
+  \texttt{work} folder and, if you click into it, you should see the content of
+  your laptops folder in there.
 \item
-  Mapping port \texttt{8888} from the container to your laptop, so you
-  can connect to it through a browser.
+  Mapping port \texttt{8888} from the container to your laptop, so you can
+  connect to it through a browser.
 \end{itemize}
 
-It is important to know this command starts a Jupyter server on your
-machine and keeps it running, so please do not quit the window until you
-are done using Jupyter, otherwise it will crash.
+It is important to know this command starts a Jupyter server on your machine and keeps it running, so please do not quit the window until you are
+done using Jupyter, otherwise it will crash.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{1}
-\tightlist
 \item
-  Open your favorite browser (preferably Firefox or Chrome) and point it
-  to \texttt{localhost:8888}
+  Open your favorite browser (preferably Firefox or Chrome) and point it to
+  \texttt{localhost:8888}
 \item
-  You will be asked for a password or a token. To find the correct one,
-  check the terminal where you started the \texttt{docker\ run\ ...}
-  command in 1) and look for the long token in the logs. Your prompt
-  should look something (albeit not exactly) like this:
-\end{enumerate}
-
-```shell docker run --rm -ti -p 8888:8888 -v \$\{PWD\}:/home/jovyan/work
-darribas/gds:4.0 Executing the command: jupyter notebook {[}I
-11:38:40.234 NotebookApp{]} Writing notebook server cookie secret to
-/home/jovyan/.local/share/jupyter/runtime/notebook\_cookie\_secret {[}I
-11:38:41.328 NotebookApp{]} Loading IPython parallel extension {[}I
-11:38:41.612 NotebookApp{]} JupyterLab extension loaded from
-/opt/conda/lib/python3.7/site-packages/jupyterlab {[}I 11:38:41.612
-NotebookApp{]} JupyterLab application directory is
-/opt/conda/share/jupyter/lab {[}I 11:38:43.091 NotebookApp{]} Serving
-notebooks from local directory: /home/jovyan {[}I 11:38:43.091
-NotebookApp{]} The Jupyter Notebook is running at: {[}I 11:38:43.091
-NotebookApp{]}
-\url{http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434}
-{[}I 11:38:43.091 NotebookApp{]} or
-\url{http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434}
-{[}I 11:38:43.091 NotebookApp{]} Use Control-C to stop this server and
-shut down all kernels (twice to skip confirmation). {[}C 11:38:43.114
-NotebookApp{]}
+  You will be asked for a password or a token. To find the correct one, check
+  the terminal where you started the \texttt{docker\ run\ ...} command in 1) and look
+  for the long token in the logs. Your prompt should look something (albeit
+  not exactly) like this:
 
 \begin{verbatim}
-    To access the notebook, open this file in a browser:
-        file:///home/jovyan/.local/share/jupyter/runtime/nbserver-6-open.html
-    Or copy and paste one of these URLs:
-        http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
-     or http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+ docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0
+ Executing the command: jupyter notebook
+ [I 11:38:40.234 NotebookApp] Writing notebook server cookie secret to /home/jovyan/.local/share/jupyter/runtime/notebook_cookie_secret
+ [I 11:38:41.328 NotebookApp] Loading IPython parallel extension
+ [I 11:38:41.612 NotebookApp] JupyterLab extension loaded from /opt/conda/lib/python3.7/site-packages/jupyterlab
+ [I 11:38:41.612 NotebookApp] JupyterLab application directory is /opt/conda/share/jupyter/lab
+ [I 11:38:43.091 NotebookApp] Serving notebooks from local directory: /home/jovyan
+ [I 11:38:43.091 NotebookApp] The Jupyter Notebook is running at:
+ [I 11:38:43.091 NotebookApp] http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+ [I 11:38:43.091 NotebookApp]  or http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+ [I 11:38:43.091 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+ [C 11:38:43.114 NotebookApp]
+
+     To access the notebook, open this file in a browser:
+         file:///home/jovyan/.local/share/jupyter/runtime/nbserver-6-open.html
+     Or copy and paste one of these URLs:
+         http://ee20e7549b49:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
+      or http://127.0.0.1:8888/?token=4dc814ee44c64383d5d32dfd439fe62bbc17d9803d9ae434
 \end{verbatim}
 
-```
+  The token you want to copy is the long series of letter and numbers right
+  after \texttt{?token=}, starting by \texttt{4dc814ee}.
+\item
+  The token should let you into your Jupyter Lab session. Congratulations!
+  You can then access the files in your computer through the \texttt{work} directory
+  on the left-side pane.
+\end{enumerate}
 
-The token you want to copy is the long series of letter and numbers
-right after \texttt{?token=}, starting by \texttt{4dc814ee}. 4. The
-token should let you into your Jupyter Lab session. Congratulations! You
-can then access the files in your computer through the \texttt{work}
-directory on the left-side pane.
+\hypertarget{run-jupyter-lab-remotely}{%
+\section{Run Jupyter Lab Remotely}\label{run-jupyter-lab-remotely}}
 
-\section{Remote install}\label{remote-install}
-
-It is also possible to start a Jupyter server as above but, instead of
-run it on your local machine, it can run on a remote machine and you
-connect to that through your browser over the internet. The process in
-this context is a bit more intricate because you need to ensure that the
-connection is secure, but overall it follows a similar pattern. The
-following steps below assume you can login to the remote server where
-you want to run Jupyter through \texttt{ssh} and the serve already has a
-Docker image installed, ready to be run.
+It is also possible to start a Jupyter server as above but, instead of run it
+on your local machine, it can run on a remote machine and you connect to that
+through your browser over the internet. The process in this context is a bit
+more intricate because you need to ensure that the connection is secure, but
+overall it follows a similar pattern. The following steps below assume you can
+login to the remote server where you want to run Jupyter through \texttt{ssh} and the
+serve already has a Docker image installed, ready to be run.
 
 \begin{itemize}
 \item
@@ -587,113 +1088,281 @@ ssh <username>@<server.ip.address>
   Launch the container:
 
 \begin{verbatim}
-docker run --rm -ti -p 8888:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.0 start.sh
+docker run --rm -ti --user root -e NB_UID=$UID -e NB_GID=100 -p <mapping_port>:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
 \end{verbatim}
 
-  Note we are appending \texttt{start.sh} so it drops us into the
-  command line of the container rather than launching the server
-  directly
+  Note we are appending \texttt{start.sh} so it drops us into
+  the command line of the container rather than launching the server directly
 \item
   Run \texttt{jupyter\ notebook\ -\/-generate-config}
 \item
-  Generate SSH keys with:
-  \texttt{openssl\ req\ -x509\ -nodes\ -days\ 365\ -newkey\ rsa:2048\ -keyout\ mykey.key\ -out\ mycert.pem}
+  Generate password as in the official \href{http://jupyter-notebook.readthedocs.io/en/stable/public_server.html\#preparing-a-hashed-password}{tutorial}
 \item
-  Generate password as in the official
-  \href{http://jupyter-notebook.readthedocs.io/en/stable/public_server.html\#preparing-a-hashed-password}{tutorial}
+  Since we will be using the created password we shall also enable SSL (secure sockets layer). SSL is a protocol for web browsers and servers that allows for the authentication, encryption and decryption of data sent over the Internet. Therefore, by enabling SSL our password won't be sent unencypted by our browser when we login to the server. We shall generate a self-signed SSL certificate with:
+
+\begin{verbatim}
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+\end{verbatim}
 \item
-  Update \texttt{/home/jovyan/.jupyter/jupyter\_notebook\_config.py}
+  Next we shall update the \texttt{/home/jovyan/.jupyter/jupyter\_notebook\_config.py} file:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# Set options for certfile, ip, password, and toggle off}
-\CommentTok{# browser auto-opening}
-\NormalTok{c.NotebookApp.certfile }\OperatorTok{=} \StringTok{u'/home/jovyan/mycert.pem'}
-\NormalTok{c.NotebookApp.keyfile }\OperatorTok{=} \StringTok{u'/home/jovyan/mykey.key'}
-\CommentTok{# Set ip to '*' to bind on all interfaces (ips) for the public server}
-\NormalTok{c.NotebookApp.ip }\OperatorTok{=} \StringTok{'*'}
-\NormalTok{c.NotebookApp.password }\OperatorTok{=} \StringTok{u'sha1:bcd259ccf...<your hashed password here>'}
-\NormalTok{c.NotebookApp.open_browser }\OperatorTok{=} \VariableTok{False}
+\CommentTok{\# Set options for certfile, ip, password, and toggle off}
+\CommentTok{\# browser auto{-}opening}
+\NormalTok{c.NotebookApp.certfile }\OperatorTok{=} \StringTok{u\textquotesingle{}/home/jovyan/mycert.pem\textquotesingle{}}
+\NormalTok{c.NotebookApp.keyfile }\OperatorTok{=} \StringTok{u\textquotesingle{}/home/jovyan/mykey.key\textquotesingle{}}
+\CommentTok{\# Set ip to \textquotesingle{}*\textquotesingle{} to bind on all interfaces (ips) for the public server}
+\NormalTok{c.NotebookApp.ip }\OperatorTok{=} \StringTok{\textquotesingle{}*\textquotesingle{}}
+\NormalTok{c.NotebookApp.password }\OperatorTok{=} \StringTok{u\textquotesingle{}sha1:bcd259ccf...\textless{}your hashed password here\textgreater{}\textquotesingle{}}
+\NormalTok{c.NotebookApp.open\_browser }\OperatorTok{=} \VariableTok{False}
 
-\CommentTok{# It is a good idea to set a known, fixed port for server access}
+\CommentTok{\# It is a good idea to set a known, fixed port for server access}
 \NormalTok{c.NotebookApp.port }\OperatorTok{=} \DecValTok{8888}
 \end{Highlighting}
 \end{Shaded}
 \item
   Launch secure Lab: \texttt{jupyter\ lab}
 \item
-  On your own machine (laptop/tablet), log in to
-  \texttt{\textless{}server.ip.address\textgreater{}:8888} with the
-  password you have set
+  On your own machine (laptop/tablet), log in to \texttt{https://\textless{}server.ip.address\textgreater{}:\textless{}mapping\_port\textgreater{}} with the password you have set. Since we are using SSL make sure you specify \textbf{\url{https://}} in your browser.
 \end{enumerate}
 
-\section{Useful Python Docker Images}\label{useful-python-docker-images}
+\hypertarget{self-signed-certificate-warnings}{%
+\subsection{Self-signed Certificate Warnings}\label{self-signed-certificate-warnings}}
+
+Upon accessing the notebook server your browser might warn you that your self-signed certificate is
+insecure or unrecognized. A fully compliant self-signed certificate is required to prevent these warnins.
+One approach towards solving this issue is to acquire a free SSL certificate via
+\href{https://jupyter-notebook.readthedocs.io/en/stable/public_server.html\#using-let-s-encrypt}{Let's Encrypt}.
+
+\hypertarget{using-sudo-within-a-container}{%
+\section{Using sudo within a container}\label{using-sudo-within-a-container}}
+
+For the above image password authentication has been disabled for the NB\_USER jovyan. However, you might want to install additional programs using a package management tool (e.g., apt). To do so you can grant the within-container NB\_USER passwordless sudo access by adding -e GRANT\_SUDO=yes and --user root when launching the image:
+
+\begin{verbatim}
+docker run --rm -ti -e GRANT_SUDO=yes --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  
+\end{verbatim}
+
+\hypertarget{useful-python-docker-images}{%
+\section{Useful Python Docker Images}\label{useful-python-docker-images}}
 
 \begin{itemize}
 \tightlist
 \item
-  \href{https://github.com/darribas/gds_env}{\texttt{gds\_env}}: a
-  containerised platform for Geographid Data Science in Jupyter (Python
-  \& R)
+  \href{https://github.com/darribas/gds_env}{\texttt{gds\_env}}: a containerised platform
+  for Geographid Data Science in Jupyter (Python \& R)
 \item
-  \href{https://github.com/jupyter/docker-stacks}{\texttt{jupyter-stacks}}:
-  official Jupyter stacks (the \texttt{gds\_env} is based on these)
+  \href{https://github.com/jupyter/docker-stacks}{\texttt{jupyter-stacks}}: official
+  Jupyter stacks (the \texttt{gds\_env} is based on these)
 \end{itemize}
 
-\chapter{RStudio server}\label{rstudio-server}
+\hypertarget{practical-2}{%
+\section{Practical}\label{practical-2}}
 
-This guide will help you set up a RStudio server running with Docker.
-The benefits of this approach is that it is more reliable and only
-involves one install, as opposed to several independent ones.
+Follow the steps in the Remote Install section to run jupyter lab on one of the remote servers.
 
-\section{Local install}\label{local-install-1}
+Note that you will need to use the command line editing software nano to edit update jupyter\_notebook\_config.py:
 
-If you are an R user; this is a great image to get you up and running
-with the tidyverse + various geospatial packages + Rstudio server:
+\begin{verbatim}
+nano /home/jovyan/.jupyter/jupyter_notebook_config.py
+\end{verbatim}
 
-\begin{quote}
-\href{https://hub.docker.com/r/rocker/geospatial}{\texttt{https://hub.docker.com/r/rocker/geospatial}}
-\end{quote}
+A guide to using nano can be found \href{https://www.howtogeek.com/howto/42980/the-beginners-guide-to-nano-the-linux-command-line-text-editor/}{here}.
 
-To install\ldots{}
+\hypertarget{docker-containers-for-r}{%
+\chapter{Docker Containers for R}\label{docker-containers-for-r}}
+
+A widely-used suite of docker images for R has been developed by the Rocker project \citep{RJ-2017-065}. 29 repositories of rocker's images are listed on the \href{https://hub.docker.com/u/rocker/}{docker hub} providing R environments customized to perform a variety of tasks. Most of them include R studio server, allowing to work remotely from the R studio server web interface accessible through any browser.
+
+Rocker images are versioned, meaning that if you want to employ a specific version of R rather than the latest you can specify an R version tag in the image name, i.e.~\emph{rocker/verse:3.4.0}, if no tag is requested you will automatically pull the latest version \citep{RJ-2017-065}.
+
+\hypertarget{run-docker-locally}{%
+\section{Run Docker Locally}\label{run-docker-locally}}
+
+To run one of the rocker images locally on your laptop you need to install docker as described in \href{06_docker.md}{\texttt{docker.md}} and pull the image of your choise from the docker hub.
+
+An useful image for running geospatial analysis, including the tidyverse + various geospatial packages, is \href{https://hub.docker.com/r/rocker/geospatial}{\emph{rocker/geospatial}}:
+
+You can pull the repository running the following command:
 
 \begin{verbatim}
 docker pull rocker/geospatial
 \end{verbatim}
 
-This will require a good internet connection and will take a while, but
-you only need to run it once.
-
-Once ready, you can start the instance as follows (Mac example):
+Once the image is on your local machine, you can run it with the following command:
 
 \begin{verbatim}
-docker run -d --name rstudio -v $HOME:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial
+docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p 8787:8787 -v ${PWD}:/home/your-user rocker/geospatial
 \end{verbatim}
 
-This maps your local home drive (\texttt{\$HOME}) to a given directory
-in the container (in this case - \texttt{/home/rstudio/alex}). Using
-this approach, you can store files on your laptop's drive, and access,
-edit or create new ones from the container (ie. using RStudio). The
-command above also sets up a password (\texttt{secret}) and username
-(\texttt{rstudio}) to use when you login to RStudio.
+All the docker run options used here have been described in \href{06_docker.md}{\texttt{docker.md}}. Here, it is assumed that the port 8787 is not occupied on your local machine. If you do not have an instance of R studio server running, that port should be free.
 
-On Windows, this is similar (change \texttt{alexa} to your account name
-- look at your directory structure):
+Once you have run the command you can access Rstudio server running on your local host through a browser at: \href{http://localhost:8787}{\texttt{http://localhost:8787}} and adding your credentials.
+
+\hypertarget{run-docker-remotely}{%
+\section{Run Docker Remotely}\label{run-docker-remotely}}
+
+Docker is installed on all our shared resources. Most machines already have images that can be used for gds. \emph{Rocker/geospatial} has been extended to have all libraries that GDSL members generally use. This extended image has been named \emph{rstudio\_gdsl}.
+
+Once you accessed the server you can list the existing images with the following command:
 
 \begin{verbatim}
-docker run -d --name rstudio -v  c:\users\alexa:/home/rstudio/alex -e PASSWORD=secret -p 8787:8787 rocker/geospatial
+docker image ls
 \end{verbatim}
 
-If this runs ok; you access Rstudio server through a browser at:
-\href{http://localhost:8787}{\texttt{http://localhost:8787}}
+You can pick the image that you need for your analysis, or pull a new image with the following command:
 
-\section{Remote install}\label{remote-install-1}
+\begin{verbatim}
+docker pull image-tag
+\end{verbatim}
 
-{[}Add here specifics to make this work across the wire in a secure
-way{]}
+Once you decided which image you want to use, you can start building the run command with the appropriate options:
 
-\section{Useful R Docker Images}\label{useful-r-docker-images}
+\begin{itemize}
+\tightlist
+\item
+  -d and -rm are advised, the first will automatically detach you from the container while the second will remove the container when you stop it. Do not forget to remove the container manually whether you have not added the -rm option.
+\item
+  -p is needed to map the host's port with the container's port. To do this, you first need to verify which port is free to use. Ports that are permanently occupied on the servers are detailed on the servers\_description file. In addition, you need to run \emph{docker ps} to list the containers are running (if any) and verify which ports are using.
+\item
+  -e to set the environment variables.
+\end{itemize}
 
-\bibliography{book.bib,packages.bib}
+The environment variables necessary to run an image with R studio server are the following:
+* USER -\textgreater{} you can add your user name
+* PASSWORD -\textgreater{} a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
+* USERID and GROUPID -\textgreater{} these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files.
+
+The final run command employing the extended image will look as follows:
+
+\begin{verbatim}
+docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p <free-port>:8787 -v ${PWD}:/home/your-user rstudio_gdsl
+\end{verbatim}
+
+With the run command you generate a container where an istance of the image is running.
+
+You can check your process with the \emph{docker ps} command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:
+
+\begin{verbatim}
+<host-ip>:<port>
+\end{verbatim}
+
+You can find the host IP address in the document describing the servers.
+
+\hypertarget{extend-an-image}{%
+\section{Extend an image}\label{extend-an-image}}
+
+Some images may not have all the libraries needed for your study. In that case you can extend the image with new libraries. Sometimes you can simply install a library from the R studio interface and it works with no errors. More frequently you will need to add some dependencies to make the installation work.
+
+To do that you need to access the container's shell with the following command:
+
+\begin{verbatim}
+docker exec -it <mycontainer> bash
+\end{verbatim}
+
+Once you have installed the packages and dependences you need, you can save it by creating a new image through the commit command:
+
+\begin{verbatim}
+docker commit -m "commit message" <container id> <new image name>
+\end{verbatim}
+
+\hypertarget{best-practices}{%
+\chapter{Best Practices}\label{best-practices}}
+
+\hypertarget{booking-a-server}{%
+\section{Booking a server}\label{booking-a-server}}
+
+Before booking a server look at the server information sheet to verify that the resource can meet your needs.
+
+Book the Server with our booking system detailing your name, description of tasks and, when possible, forseen resources used (i.e.~gpu, cpu threads,ram).
+
+It is better to have no more than one person per server to avoid overload in the machine. However, non expensive tasks can be performed simultaneously. Always check what tasks will be performed on the booking calendar and communicate with each other.
+
+\hypertarget{docker-considerations}{%
+\section{Docker Considerations}\label{docker-considerations}}
+
+\begin{itemize}
+\item
+  Always check what are the existing images before pulling a new one with:
+
+\begin{verbatim}
+docker image ls
+\end{verbatim}
+\item
+  To check what is running and which ports are occupied always run:
+
+\begin{verbatim}
+docker ps 
+\end{verbatim}
+\end{itemize}
+
+\hypertarget{system-monitoring}{%
+\section{System Monitoring}\label{system-monitoring}}
+
+It is highly recommended that you monitor the systems processes during before and while running your processes. This can be done via the interactive system-monitor process-viewer and process-manager \textbf{htop}, which can be started by typing htop into the terminal and pressing enter:
+
+\begin{verbatim}
+htop
+\end{verbatim}
+
+Things to keep an eye on:
+
+\begin{itemize}
+\tightlist
+\item
+  How many threads are currently being used?
+\item
+  How much memory is available?
+\end{itemize}
+
+If your process is taking longer than expected, then this may be caused by either too many processes running in parallel, or insufficient memory being available. The later can result in swap memory being used, which will significantly slow down your processes.
+
+\hypertarget{memory-leaks}{%
+\subsection{Memory Leaks}\label{memory-leaks}}
+
+There is also the potential for ``memory leaks'' within the code that you are using. Memory leaks can be caused when:
+
+\begin{itemize}
+\tightlist
+\item
+  large objects are not released when they are no longer required;
+\item
+  reference cycles within the code you are running.
+\end{itemize}
+
+Before running your code on shared resources, run smaller tests (when possible) on you local system while monitoring the memory usage over time. If the amount of memory remains more or less consistent, then you should be safe to run your application on a shared resource. Although note that memory leaks may be difficult to notice at first, and may only become apparent after running a program for hours/days. See the following guide for \href{https://medium.com/zendesk-engineering/hunting-for-memory-leaks-in-python-applications-6824d0518774}{discovering memory leaks in python}.
+
+\hypertarget{gpu-considerations}{%
+\section{GPU Considerations}\label{gpu-considerations}}
+
+\hypertarget{monitoring}{%
+\subsection{Monitoring}\label{monitoring}}
+
+Another resource that requires monitoring are GPUs. A GPU can be monitored using the NVIDIA System Management Interface (nvididia-smi):
+
+\begin{verbatim}
+watch -n 0.1 nvidia-smi
+\end{verbatim}
+
+This interface will allow you to monitor the memory usage, volatile GPU utility, temperature and fan speed.
+
+\hypertarget{memory-growth}{%
+\subsection{Memory Growth}\label{memory-growth}}
+
+If there is no memory available, then it is worth enquiring with the other individual using the GPU if they are using TensorFlow and have enabled memory growth. If memory growth has not been enabled, then TensorFlow will by default allocate the all available GPU memory to a task. See the following discussion for \href{https://stackoverflow.com/questions/34199233/how-to-prevent-tensorflow-from-allocating-the-totality-of-a-gpu-memory}{more information}. Memory growth can be enabled as follows within TensorFlow:
+
+\begin{verbatim}
+config = tf.ConfigProto()
+config.gpu_options.allow_growth=True
+sess = tf.Session(config=config)
+\end{verbatim}
+
+\hypertarget{temperature-monitoring}{%
+\subsection{Temperature Monitoring}\label{temperature-monitoring}}
+
+When servers are situated within a non-air conditioned room it is also worth keeping an eye on the GPUs temperature, in particular when the server houses multiple GPUs.
+
+  \bibliography{book.bib,packages.bib}
 
 \end{document}
