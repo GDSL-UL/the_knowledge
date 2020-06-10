@@ -57,6 +57,15 @@ A new directory can be created using the mkdir command:
 user@host:~$ mkdir <new_directory_name>
 ```
 
+### Change your Working Directory:
+
+To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:
+
+```shell
+user@host:~$ cd <target_directory>
+user@host:~$ cd ..
+```
+
 ### Move:
 
 The mv command command can be used to either rename or move files and folders:
@@ -64,10 +73,16 @@ The mv command command can be used to either rename or move files and folders:
 ```shell
 user@host:~$ mv <current_filename> <new_filename>  # This is to change a file name
 user@host:~$ mv <filepath> <target_directory> # This is to move a file to a folder
-user@host:~$ mv -r <directory_path> <target_directory> # This is to move a folder with all its content to an other folder 
 ```
 
-We add the -r (recursive) flag to move a directory and all its contents (subdirectories and files). 
+### Copy:
+
+To copy files use cp. The -r flag can be added to recursively copy all files and subdirectories within a directory:
+
+```shell
+user@host:~$ cp <filename> <filecopy>
+user@host:~$ cp −r <directory> <target>
+```
 
 ### Remove:
 
@@ -82,24 +97,6 @@ Again, we add the -r (recursive) flag to remove a directory and all its contents
 
 **Warning: rm is to be used with caution. There is no trash folder 
 from which the files can be recovered. Upon using this command the files are deleted.** 
-
-### Change your Working Directory:
-
-To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:
-
-```shell
-user@host:~$ cd <target_directory>
-user@host:~$ cd ..
-```
-
-### Copy:
-
-To copy files use cp. Again the -r flag can be added to recursively copy all files and subdirectories within a directory:
-
-```shell
-user@host:~$ cp <filename> <filecopy>
-user@host:~$ cp −r <directory> <target>
-```
 
 ## Command Line Editors
 
