@@ -489,6 +489,16 @@ A new directory can be created using the mkdir command:
 user@host:~$ mkdir <new_directory_name>
 \end{verbatim}
 
+\hypertarget{change-your-working-directory}{%
+\subsection{Change your Working Directory:}\label{change-your-working-directory}}
+
+To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:
+
+\begin{verbatim}
+user@host:~$ cd <target_directory>
+user@host:~$ cd ..
+\end{verbatim}
+
 \hypertarget{move}{%
 \subsection{Move:}\label{move}}
 
@@ -497,10 +507,17 @@ The mv command command can be used to either rename or move files and folders:
 \begin{verbatim}
 user@host:~$ mv <current_filename> <new_filename>  # This is to change a file name
 user@host:~$ mv <filepath> <target_directory> # This is to move a file to a folder
-user@host:~$ mv -r <directory_path> <target_directory> # This is to move a folder with all its content to an other folder 
 \end{verbatim}
 
-We add the -r (recursive) flag to move a directory and all its contents (subdirectories and files).
+\hypertarget{copy}{%
+\subsection{Copy:}\label{copy}}
+
+To copy files use cp.~The -r flag can be added to recursively copy all files and subdirectories within a directory:
+
+\begin{verbatim}
+user@host:~$ cp <filename> <filecopy>
+user@host:~$ cp −r <directory> <target>
+\end{verbatim}
 
 \hypertarget{remove}{%
 \subsection{Remove:}\label{remove}}
@@ -516,26 +533,6 @@ Again, we add the -r (recursive) flag to remove a directory and all its contents
 
 \textbf{Warning: rm is to be used with caution. There is no trash folder
 from which the files can be recovered. Upon using this command the files are deleted.}
-
-\hypertarget{change-your-working-directory}{%
-\subsection{Change your Working Directory:}\label{change-your-working-directory}}
-
-To change your working directory use the cd (change directory) command, specifying your target directory or .. to move back:
-
-\begin{verbatim}
-user@host:~$ cd <target_directory>
-user@host:~$ cd ..
-\end{verbatim}
-
-\hypertarget{copy}{%
-\subsection{Copy:}\label{copy}}
-
-To copy files use cp.~Again the -r flag can be added to recursively copy all files and subdirectories within a directory:
-
-\begin{verbatim}
-user@host:~$ cp <filename> <filecopy>
-user@host:~$ cp −r <directory> <target>
-\end{verbatim}
 
 \hypertarget{command-line-editors}{%
 \section{Command Line Editors}\label{command-line-editors}}
