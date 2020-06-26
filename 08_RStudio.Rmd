@@ -45,17 +45,18 @@ Once you decided which image you want to use, you can start building the run com
 * -p is needed to map the host's port with the container's port. To do this, you first need to verify which port is free to use. Ports that are permanently occupied on the servers are detailed on the servers_description file. In addition, you need to run *docker ps* to list the containers are running (if any) and verify which ports are using.
 * -e to set the environment variables.
 
-The final run command employing the extended image will look as follows:
-```shell
-docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p <free-port>:8787 -v ${PWD}:/home/your-user rstudio_gdsl
-```
-
 The environment variables necessary to run an image with R studio server are the following:
 * USER -> you can add your user name
 * PASSWORD -> a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
 * USERID and GROUPID -> these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files. 
 
-With the run command you generate a container where the image is running. 
+
+The final run command employing the extended image will look as follows:
+```shell
+docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p <free-port>:8787 -v ${PWD}:/home/your-user rstudio_gdsl
+```
+
+With the run command you generate a container where an istance of the image is running. 
 
 You can check your process with the *docker ps* command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:
 ```shell

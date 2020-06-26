@@ -273,13 +273,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>-p is needed to map the host’s port with the container’s port. To do this, you first need to verify which port is free to use. Ports that are permanently occupied on the servers are detailed on the servers_description file. In addition, you need to run <em>docker ps</em> to list the containers are running (if any) and verify which ports are using.</li>
 <li>-e to set the environment variables.</li>
 </ul>
-<p>The final run command employing the extended image will look as follows:</p>
-<pre class="shell"><code>docker run -e USER=&lt;your-user&gt; -e PASSWORD=&lt;your-password&gt; -e USERID=$UID -e GROUPID=$GID -d --rm -p &lt;free-port&gt;:8787 -v ${PWD}:/home/your-user rstudio_gdsl</code></pre>
 <p>The environment variables necessary to run an image with R studio server are the following:
 * USER -&gt; you can add your user name
 * PASSWORD -&gt; a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
 * USERID and GROUPID -&gt; these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files.</p>
-<p>With the run command you generate a container where the image is running.</p>
+<p>The final run command employing the extended image will look as follows:</p>
+<pre class="shell"><code>docker run -e USER=&lt;your-user&gt; -e PASSWORD=&lt;your-password&gt; -e USERID=$UID -e GROUPID=$GID -d --rm -p &lt;free-port&gt;:8787 -v ${PWD}:/home/your-user rstudio_gdsl</code></pre>
+<p>With the run command you generate a container where an istance of the image is running.</p>
 <p>You can check your process with the <em>docker ps</em> command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:</p>
 <pre class="shell"><code>&lt;host-ip&gt;:&lt;port&gt;</code></pre>
 <p>You can find the host IP address in the document describing the servers.</p>

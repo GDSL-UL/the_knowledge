@@ -120,7 +120,7 @@
 
 \title{The Knowledge}
 \author{Geographic Data Science Lab}
-\date{2020-06-09}
+\date{2020-06-10}
 
 \begin{document}
 \maketitle
@@ -192,6 +192,8 @@ Here a collection of tips that have been shared on the internet on how to avoid 
   \href{https://www.timeshighereducation.com/blog/tips-working-home-children\#\%20}{Tips on working from home with children}
 \item
   \href{https://theconversation.com/working-from-home-why-detachment-is-crucial-for-mental-health-135986}{Working from home? Why detachment is crucial for mental health}
+\item
+  \href{https://www.liverpool.ac.uk/researcher/work-life-balance/}{Work Life Balance}
 \end{itemize}
 
 \hypertarget{vpn}{%
@@ -1227,18 +1229,18 @@ Once you decided which image you want to use, you can start building the run com
   -e to set the environment variables.
 \end{itemize}
 
+The environment variables necessary to run an image with R studio server are the following:
+* USER -\textgreater{} you can add your user name
+* PASSWORD -\textgreater{} a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
+* USERID and GROUPID -\textgreater{} these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files.
+
 The final run command employing the extended image will look as follows:
 
 \begin{verbatim}
 docker run -e USER=<your-user> -e PASSWORD=<your-password> -e USERID=$UID -e GROUPID=$GID -d --rm -p <free-port>:8787 -v ${PWD}:/home/your-user rstudio_gdsl
 \end{verbatim}
 
-The environment variables necessary to run an image with R studio server are the following:
-* USER -\textgreater{} you can add your user name
-* PASSWORD -\textgreater{} a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
-* USERID and GROUPID -\textgreater{} these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files.
-
-With the run command you generate a container where the image is running.
+With the run command you generate a container where an istance of the image is running.
 
 You can check your process with the \emph{docker ps} command. As already mentioned above almost all rocker images include R studio server, therefore you can access the server-based application through its web interface. To do that, open your browser and go to the following address:
 

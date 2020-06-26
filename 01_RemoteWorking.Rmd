@@ -29,6 +29,7 @@ Here a collection of tips that have been shared on the internet on how to avoid 
 * [Covid-19: How to foster healthy home working](https://www.ucl.ac.uk/news/2020/apr/covid-19-how-foster-healthy-home-working)
 * [Tips on working from home with children](https://www.timeshighereducation.com/blog/tips-working-home-children#%20)
 * [Working from home? Why detachment is crucial for mental health](https://theconversation.com/working-from-home-why-detachment-is-crucial-for-mental-health-135986)
+* [Work Life Balance](https://www.liverpool.ac.uk/researcher/work-life-balance/)
 
 
 
