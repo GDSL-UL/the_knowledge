@@ -90,7 +90,7 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -120,7 +120,7 @@
 
 \title{The Knowledge}
 \author{Geographic Data Science Lab}
-\date{2020-06-10}
+\date{2020-09-08}
 
 \begin{document}
 \maketitle
@@ -737,8 +737,8 @@ This allows us to verify that a file has not been changed:
 md5sum <filename>
 \end{verbatim}
 
-\hypertarget{practical-1}{%
-\section{Practical}\label{practical-1}}
+\hypertarget{practical}{%
+\section{Practical}\label{practical}}
 
 \hypertarget{file-download-1}{%
 \subsection{File Download}\label{file-download-1}}
@@ -955,6 +955,62 @@ After the -p option you add the ports mapping: :. In this example, docker runs a
 
 After the -v option you add the paths to mount a volume::. In this example, the working directory (the directory where you are running the command from) is mapped to a data directory in the container. \$\{PWD\} stands for \textbf{Print Working Directory}.
 
+\hypertarget{docker-gpu-support}{%
+\section{Docker GPU Support}\label{docker-gpu-support}}
+
+For the latest versions of Docker (since 19.03) to access GPUs from a container you will need to have the \texttt{nvidia-container-toolkit} installed. In addition a \texttt{-\/-gpus} flag is required to indicate that you want your container to access a GPU. To enable your container to use all GPUs on a machine you can specify \texttt{-\/-gpus\ all}. For specific GPUs state the device ID \texttt{-\/-gpus\ \textquotesingle{}"device=1,2"\textquotesingle{}}.
+
+To test if the nvidia-container-toolkit is already setup you can run the following example:
+
+\begin{verbatim}
+docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
+\end{verbatim}
+
+The command will first pull the nvidia/cuda:10.0-base image (if it has not been pulled already), and should display the nvidia-smi (System Management Interface):
+
+\begin{verbatim}
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 108...  Off  | 00000000:01:00.0 Off |                  N/A |
+| 26%   20C    P8     7W / 250W |  10924MiB / 11178MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  GeForce GTX 108...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 22%   25C    P8     9W / 250W |    151MiB / 11178MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+|   2  GeForce GTX 108...  Off  | 00000000:82:00.0 Off |                  N/A |
+| 27%   31C    P8     9W / 250W |    151MiB / 11178MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0     25888      G   /usr/lib/xorg/Xorg                             6MiB |
+|    0     29622      C   ...fa/agent/tensorflow/bin/python2 10905MiB |
+|    1     29622      C   ...fa/agent/tensorflow/bin/python2   139MiB |
+|    2     29622      C   ...fa/agent/tensorflow/bin/python2   139MiB |
++-----------------------------------------------------------------------------+
+\end{verbatim}
+
+If the above does not work, then you may need to install the nvidia-container-toolkit. You may also need to update your nvidia-drivers for this step to work. On Ubuntu 16.04/18.04/20.04, Debian Jessie/Stretch/Buster the nvidia-container-toolkit can be installed using the following commands:
+
+\begin{verbatim}
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
+sudo systemctl restart docker
+\end{verbatim}
+
+If you do not have sudo rights you can ask your sys admin to carry out the above steps. Instructions for installing the nvidia-container-toolkit on other operating systems can be found \href{https://github.com/NVIDIA/nvidia-docker}{here}.
+
+Having enabled GPU support you can now take advantage of a number of docker images where GPUs can significantly reduce the amount of time required to run your experiments. For instance \href{https://www.tensorflow.org/install/docker}{TensorFlow} and \href{https://rapids.ai/start.html}{rapids}.
+
 \hypertarget{jupyterlab}{%
 \chapter{JupyterLab}\label{jupyterlab}}
 
@@ -1105,16 +1161,16 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycer
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Set options for certfile, ip, password, and toggle off}
-\CommentTok{\# browser auto{-}opening}
-\NormalTok{c.NotebookApp.certfile }\OperatorTok{=} \StringTok{u\textquotesingle{}/home/jovyan/mycert.pem\textquotesingle{}}
-\NormalTok{c.NotebookApp.keyfile }\OperatorTok{=} \StringTok{u\textquotesingle{}/home/jovyan/mykey.key\textquotesingle{}}
-\CommentTok{\# Set ip to \textquotesingle{}*\textquotesingle{} to bind on all interfaces (ips) for the public server}
-\NormalTok{c.NotebookApp.ip }\OperatorTok{=} \StringTok{\textquotesingle{}*\textquotesingle{}}
-\NormalTok{c.NotebookApp.password }\OperatorTok{=} \StringTok{u\textquotesingle{}sha1:bcd259ccf...\textless{}your hashed password here\textgreater{}\textquotesingle{}}
-\NormalTok{c.NotebookApp.open\_browser }\OperatorTok{=} \VariableTok{False}
+\CommentTok{# Set options for certfile, ip, password, and toggle off}
+\CommentTok{# browser auto-opening}
+\NormalTok{c.NotebookApp.certfile }\OperatorTok{=} \StringTok{u'/home/jovyan/mycert.pem'}
+\NormalTok{c.NotebookApp.keyfile }\OperatorTok{=} \StringTok{u'/home/jovyan/mykey.key'}
+\CommentTok{# Set ip to '*' to bind on all interfaces (ips) for the public server}
+\NormalTok{c.NotebookApp.ip }\OperatorTok{=} \StringTok{'*'}
+\NormalTok{c.NotebookApp.password }\OperatorTok{=} \StringTok{u'sha1:bcd259ccf...<your hashed password here>'}
+\NormalTok{c.NotebookApp.open_browser }\OperatorTok{=} \VariableTok{False}
 
-\CommentTok{\# It is a good idea to set a known, fixed port for server access}
+\CommentTok{# It is a good idea to set a known, fixed port for server access}
 \NormalTok{c.NotebookApp.port }\OperatorTok{=} \DecValTok{8888}
 \end{Highlighting}
 \end{Shaded}
@@ -1154,8 +1210,8 @@ docker run --rm -ti -e GRANT_SUDO=yes --user root -e NB_UID=$UID -e NB_GID=100 -
   Jupyter stacks (the \texttt{gds\_env} is based on these)
 \end{itemize}
 
-\hypertarget{practical-2}{%
-\section{Practical}\label{practical-2}}
+\hypertarget{practical}{%
+\section{Practical}\label{practical}}
 
 Follow the steps in the Remote Install section to run jupyter lab on one of the remote servers.
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 JupyterLab | The Knowledge</title>
   <meta name="description" content="What every GDSLer should know to work from anywhere" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 JupyterLab | The Knowledge" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Geographic Data Science Lab" />
 
 
-<meta name="date" content="2020-06-26" />
+<meta name="date" content="2020-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="docker.html"/>
 <link rel="next" href="docker-containers-for-r.html"/>
-<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,20 +50,22 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -84,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -130,35 +131,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">GDS Knowledge</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> The Knowledge</a></li>
-<li class="chapter" data-level="2" data-path="remote-working.html"><a href="remote-working.html"><i class="fa fa-check"></i><b>2</b> Remote Working</a>
-<ul>
+<li class="chapter" data-level="2" data-path="remote-working.html"><a href="remote-working.html"><i class="fa fa-check"></i><b>2</b> Remote Working</a><ul>
 <li class="chapter" data-level="2.1" data-path="remote-working.html"><a href="remote-working.html#what-is-remote-working"><i class="fa fa-check"></i><b>2.1</b> What is Remote Working?</a></li>
 <li class="chapter" data-level="2.2" data-path="remote-working.html"><a href="remote-working.html#advantages-and-disadvantages-of-remote-work"><i class="fa fa-check"></i><b>2.2</b> Advantages and Disadvantages of Remote Work</a></li>
 <li class="chapter" data-level="2.3" data-path="remote-working.html"><a href="remote-working.html#tips"><i class="fa fa-check"></i><b>2.3</b> Tips</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a>
-<ul>
+<li class="chapter" data-level="3" data-path="vpn.html"><a href="vpn.html"><i class="fa fa-check"></i><b>3</b> VPN</a><ul>
 <li class="chapter" data-level="3.1" data-path="vpn.html"><a href="vpn.html#what-is-a-vpn"><i class="fa fa-check"></i><b>3.1</b> <em>What is a VPN?</em></a></li>
 <li class="chapter" data-level="3.2" data-path="vpn.html"><a href="vpn.html#how-can-i-setup-the-vpn-for-liverpool"><i class="fa fa-check"></i><b>3.2</b> <em>How can I setup the VPN for Liverpool?</em></a></li>
-<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#windows-and-mac"><i class="fa fa-check"></i><b>3.3</b> Windows and Mac</a>
-<ul>
+<li class="chapter" data-level="3.3" data-path="vpn.html"><a href="vpn.html#windows-and-mac"><i class="fa fa-check"></i><b>3.3</b> Windows and Mac</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="vpn.html"><a href="vpn.html#to-connect-and-disconnect-the-client"><i class="fa fa-check"></i><b>3.3.1</b> To connect and disconnect the client</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="vpn.html"><a href="vpn.html#ubuntu"><i class="fa fa-check"></i><b>3.4</b> Ubuntu</a>
-<ul>
+<li class="chapter" data-level="3.4" data-path="vpn.html"><a href="vpn.html#ubuntu"><i class="fa fa-check"></i><b>3.4</b> Ubuntu</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="vpn.html"><a href="vpn.html#to-connect-the-client-and-disconnect-the-client"><i class="fa fa-check"></i><b>3.4.1</b> To connect the client and disconnect the client:</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="ssh.html"><a href="ssh.html"><i class="fa fa-check"></i><b>4</b> SSH</a>
-<ul>
+<li class="chapter" data-level="4" data-path="ssh.html"><a href="ssh.html"><i class="fa fa-check"></i><b>4</b> SSH</a><ul>
 <li class="chapter" data-level="4.1" data-path="ssh.html"><a href="ssh.html#what-is-ssh"><i class="fa fa-check"></i><b>4.1</b> What is SSH?</a></li>
 <li class="chapter" data-level="4.2" data-path="ssh.html"><a href="ssh.html#connecting-to-a-remote-host"><i class="fa fa-check"></i><b>4.2</b> Connecting to a remote host</a></li>
-<li class="chapter" data-level="4.3" data-path="ssh.html"><a href="ssh.html#unix-commands"><i class="fa fa-check"></i><b>4.3</b> Unix Commands</a>
-<ul>
+<li class="chapter" data-level="4.3" data-path="ssh.html"><a href="ssh.html#unix-commands"><i class="fa fa-check"></i><b>4.3</b> Unix Commands</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="ssh.html"><a href="ssh.html#list-files"><i class="fa fa-check"></i><b>4.3.1</b> List Files:</a></li>
 <li class="chapter" data-level="4.3.2" data-path="ssh.html"><a href="ssh.html#make-directory"><i class="fa fa-check"></i><b>4.3.2</b> Make Directory:</a></li>
 <li class="chapter" data-level="4.3.3" data-path="ssh.html"><a href="ssh.html#change-your-working-directory"><i class="fa fa-check"></i><b>4.3.3</b> Change your Working Directory:</a></li>
@@ -169,57 +164,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="ssh.html"><a href="ssh.html#command-line-editors"><i class="fa fa-check"></i><b>4.4</b> Command Line Editors</a></li>
 <li class="chapter" data-level="4.5" data-path="ssh.html"><a href="ssh.html#practical"><i class="fa fa-check"></i><b>4.5</b> Practical</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>5</b> Files</a>
-<ul>
+<li class="chapter" data-level="5" data-path="files.html"><a href="files.html"><i class="fa fa-check"></i><b>5</b> Files</a><ul>
 <li class="chapter" data-level="5.1" data-path="files.html"><a href="files.html#backupsync"><i class="fa fa-check"></i><b>5.1</b> Backup/sync</a></li>
 <li class="chapter" data-level="5.2" data-path="files.html"><a href="files.html#encryption"><i class="fa fa-check"></i><b>5.2</b> Encryption</a></li>
-<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer"><i class="fa fa-check"></i><b>5.3</b> File Transfer</a>
-<ul>
+<li class="chapter" data-level="5.3" data-path="files.html"><a href="files.html#file-transfer"><i class="fa fa-check"></i><b>5.3</b> File Transfer</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="files.html"><a href="files.html#file-transfer-protocol-ftp"><i class="fa fa-check"></i><b>5.3.1</b> File Transfer Protocol (FTP)</a></li>
 <li class="chapter" data-level="5.3.2" data-path="files.html"><a href="files.html#secure-copy-protocol-scp"><i class="fa fa-check"></i><b>5.3.2</b> Secure Copy Protocol (scp)</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="files.html"><a href="files.html#file-download"><i class="fa fa-check"></i><b>5.4</b> File Download</a></li>
-<li class="chapter" data-level="5.5" data-path="files.html"><a href="files.html#practical-1"><i class="fa fa-check"></i><b>5.5</b> Practical</a>
-<ul>
+<li class="chapter" data-level="5.5" data-path="ssh.html"><a href="ssh.html#practical"><i class="fa fa-check"></i><b>5.5</b> Practical</a><ul>
 <li class="chapter" data-level="5.5.1" data-path="files.html"><a href="files.html#file-download-1"><i class="fa fa-check"></i><b>5.5.1</b> File Download</a></li>
 <li class="chapter" data-level="5.5.2" data-path="files.html"><a href="files.html#file-transfer-optional"><i class="fa fa-check"></i><b>5.5.2</b> File Transfer (Optional)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="data-science-stack.html"><a href="data-science-stack.html"><i class="fa fa-check"></i><b>6</b> Data Science Stack</a></li>
-<li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a>
-<ul>
+<li class="chapter" data-level="7" data-path="docker.html"><a href="docker.html"><i class="fa fa-check"></i><b>7</b> Docker</a><ul>
 <li class="chapter" data-level="7.1" data-path="docker.html"><a href="docker.html#installation"><i class="fa fa-check"></i><b>7.1</b> Installation</a></li>
 <li class="chapter" data-level="7.2" data-path="docker.html"><a href="docker.html#image-and-container"><i class="fa fa-check"></i><b>7.2</b> Image and Container</a></li>
 <li class="chapter" data-level="7.3" data-path="docker.html"><a href="docker.html#useful-docker-commands"><i class="fa fa-check"></i><b>7.3</b> Useful Docker Commands</a></li>
 <li class="chapter" data-level="7.4" data-path="docker.html"><a href="docker.html#docker-gpu-support"><i class="fa fa-check"></i><b>7.4</b> Docker GPU Support</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a>
-<ul>
+<li class="chapter" data-level="8" data-path="jupyterlab.html"><a href="jupyterlab.html"><i class="fa fa-check"></i><b>8</b> JupyterLab</a><ul>
 <li class="chapter" data-level="8.1" data-path="jupyterlab.html"><a href="jupyterlab.html#run-jupyter-lab-locally"><i class="fa fa-check"></i><b>8.1</b> Run Jupyter Lab Locally</a></li>
-<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#run-jupyter-lab-remotely"><i class="fa fa-check"></i><b>8.2</b> Run Jupyter Lab Remotely</a>
-<ul>
+<li class="chapter" data-level="8.2" data-path="jupyterlab.html"><a href="jupyterlab.html#run-jupyter-lab-remotely"><i class="fa fa-check"></i><b>8.2</b> Run Jupyter Lab Remotely</a><ul>
 <li class="chapter" data-level="8.2.1" data-path="jupyterlab.html"><a href="jupyterlab.html#self-signed-certificate-warnings"><i class="fa fa-check"></i><b>8.2.1</b> Self-signed Certificate Warnings</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="jupyterlab.html"><a href="jupyterlab.html#using-sudo-within-a-container"><i class="fa fa-check"></i><b>8.3</b> Using sudo within a container</a></li>
 <li class="chapter" data-level="8.4" data-path="jupyterlab.html"><a href="jupyterlab.html#useful-python-docker-images"><i class="fa fa-check"></i><b>8.4</b> Useful Python Docker Images</a></li>
-<li class="chapter" data-level="8.5" data-path="jupyterlab.html"><a href="jupyterlab.html#practical-2"><i class="fa fa-check"></i><b>8.5</b> Practical</a></li>
+<li class="chapter" data-level="8.5" data-path="ssh.html"><a href="ssh.html#practical"><i class="fa fa-check"></i><b>8.5</b> Practical</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html"><i class="fa fa-check"></i><b>9</b> Docker Containers for R</a>
-<ul>
+<li class="chapter" data-level="9" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html"><i class="fa fa-check"></i><b>9</b> Docker Containers for R</a><ul>
 <li class="chapter" data-level="9.1" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-locally"><i class="fa fa-check"></i><b>9.1</b> Run Docker Locally</a></li>
 <li class="chapter" data-level="9.2" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#run-docker-remotely"><i class="fa fa-check"></i><b>9.2</b> Run Docker Remotely</a></li>
 <li class="chapter" data-level="9.3" data-path="docker-containers-for-r.html"><a href="docker-containers-for-r.html#extend-an-image"><i class="fa fa-check"></i><b>9.3</b> Extend an image</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="best-practices.html"><a href="best-practices.html"><i class="fa fa-check"></i><b>10</b> Best Practices</a>
-<ul>
+<li class="chapter" data-level="10" data-path="best-practices.html"><a href="best-practices.html"><i class="fa fa-check"></i><b>10</b> Best Practices</a><ul>
 <li class="chapter" data-level="10.1" data-path="best-practices.html"><a href="best-practices.html#booking-a-server"><i class="fa fa-check"></i><b>10.1</b> Booking a server</a></li>
 <li class="chapter" data-level="10.2" data-path="best-practices.html"><a href="best-practices.html#docker-considerations"><i class="fa fa-check"></i><b>10.2</b> Docker Considerations</a></li>
-<li class="chapter" data-level="10.3" data-path="best-practices.html"><a href="best-practices.html#system-monitoring"><i class="fa fa-check"></i><b>10.3</b> System Monitoring</a>
-<ul>
+<li class="chapter" data-level="10.3" data-path="best-practices.html"><a href="best-practices.html#system-monitoring"><i class="fa fa-check"></i><b>10.3</b> System Monitoring</a><ul>
 <li class="chapter" data-level="10.3.1" data-path="best-practices.html"><a href="best-practices.html#memory-leaks"><i class="fa fa-check"></i><b>10.3.1</b> Memory Leaks</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="best-practices.html"><a href="best-practices.html#gpu-considerations"><i class="fa fa-check"></i><b>10.4</b> GPU Considerations</a>
-<ul>
+<li class="chapter" data-level="10.4" data-path="best-practices.html"><a href="best-practices.html#gpu-considerations"><i class="fa fa-check"></i><b>10.4</b> GPU Considerations</a><ul>
 <li class="chapter" data-level="10.4.1" data-path="best-practices.html"><a href="best-practices.html#monitoring"><i class="fa fa-check"></i><b>10.4.1</b> Monitoring</a></li>
 <li class="chapter" data-level="10.4.2" data-path="best-practices.html"><a href="best-practices.html#memory-growth"><i class="fa fa-check"></i><b>10.4.2</b> Memory Growth</a></li>
 <li class="chapter" data-level="10.4.3" data-path="best-practices.html"><a href="best-practices.html#temperature-monitoring"><i class="fa fa-check"></i><b>10.4.3</b> Temperature Monitoring</a></li>
@@ -245,11 +230,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="jupyterlab" class="section level1" number="8">
+<div id="jupyterlab" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> JupyterLab</h1>
 <p>This document shows how to pull and run a JupyterLab server locally and
 remotely.</p>
-<div id="run-jupyter-lab-locally" class="section level2" number="8.1">
+<div id="run-jupyter-lab-locally" class="section level2">
 <h2><span class="header-section-number">8.1</span> Run Jupyter Lab Locally</h2>
 <p>This guide assumes you meet the following requirements in your personal
 machine (eg. laptop):</p>
@@ -314,7 +299,7 @@ You can then access the files in your computer through the <code>work</code> dir
 on the left-side pane.</p></li>
 </ol>
 </div>
-<div id="run-jupyter-lab-remotely" class="section level2" number="8.2">
+<div id="run-jupyter-lab-remotely" class="section level2">
 <h2><span class="header-section-number">8.2</span> Run Jupyter Lab Remotely</h2>
 <p>It is also possible to start a Jupyter server as above but, instead of run it
 on your local machine, it can run on a remote machine and you connect to that
@@ -351,7 +336,7 @@ the command line of the container rather than launching the server directly</p><
 <li><p>Launch secure Lab: <code>jupyter lab</code></p></li>
 <li><p>On your own machine (laptop/tablet), log in to <code>https://&lt;server.ip.address&gt;:&lt;mapping_port&gt;</code> with the password you have set. Since we are using SSL make sure you specify <strong><a href="https://" class="uri">https://</a></strong> in your browser.</p></li>
 </ol>
-<div id="self-signed-certificate-warnings" class="section level3" number="8.2.1">
+<div id="self-signed-certificate-warnings" class="section level3">
 <h3><span class="header-section-number">8.2.1</span> Self-signed Certificate Warnings</h3>
 <p>Upon accessing the notebook server your browser might warn you that your self-signed certificate is
 insecure or unrecognized. A fully compliant self-signed certificate is required to prevent these warnins.
@@ -359,12 +344,12 @@ One approach towards solving this issue is to acquire a free SSL certificate via
 <a href="https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#using-let-s-encrypt">Let’s Encrypt</a>.</p>
 </div>
 </div>
-<div id="using-sudo-within-a-container" class="section level2" number="8.3">
+<div id="using-sudo-within-a-container" class="section level2">
 <h2><span class="header-section-number">8.3</span> Using sudo within a container</h2>
 <p>For the above image password authentication has been disabled for the NB_USER jovyan. However, you might want to install additional programs using a package management tool (e.g., apt). To do so you can grant the within-container NB_USER passwordless sudo access by adding -e GRANT_SUDO=yes and –user root when launching the image:</p>
 <pre class="shell"><code>docker run --rm -ti -e GRANT_SUDO=yes --user root -e NB_UID=$UID -e NB_GID=100 -p 8889:8888 -v ${PWD}:/home/jovyan/work darribas/gds:4.1 start.sh  </code></pre>
 </div>
-<div id="useful-python-docker-images" class="section level2" number="8.4">
+<div id="useful-python-docker-images" class="section level2">
 <h2><span class="header-section-number">8.4</span> Useful Python Docker Images</h2>
 <ul>
 <li><a href="https://github.com/darribas/gds_env"><code>gds_env</code></a>: a containerised platform
@@ -373,7 +358,7 @@ for Geographid Data Science in Jupyter (Python &amp; R)</li>
 Jupyter stacks (the <code>gds_env</code> is based on these)</li>
 </ul>
 </div>
-<div id="practical-2" class="section level2" number="8.5">
+<div id="practical" class="section level2">
 <h2><span class="header-section-number">8.5</span> Practical</h2>
 <p>Follow the steps in the Remote Install section to run jupyter lab on one of the remote servers.</p>
 <p>Note that you will need to use the command line editing software nano to edit update jupyter_notebook_config.py:</p>
