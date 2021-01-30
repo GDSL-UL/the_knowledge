@@ -39,15 +39,15 @@ You can pick the image that you need for your analysis, or pull a new image with
 ```shell
 docker pull image-tag
 ```
-Once you decided which image you want to use, you can start building the run command with the appropriate options:
+Once you decided which image you want to use, you can start building the run command with the appropriate options:  
 
-* -d and -rm are advised, the first will automatically detach you from the container while the second will remove the container when you stop it. Do not forget to remove the container manually whether you have not added the -rm option.
-* -p is needed to map the host's port with the container's port. To do this, you first need to verify which port is free to use. Ports that are permanently occupied on the servers are detailed on the servers_description file. In addition, you need to run *docker ps* to list the containers are running (if any) and verify which ports are using.
+* -d and -rm are advised, the first will automatically detach you from the container while the second will remove the container when you stop it. Do not forget to remove the container manually whether you have not added the -rm option.  
+* -p is needed to map the host's port with the container's port. To do this, you first need to verify which port is free to use. Ports that are permanently occupied on the servers are detailed on the servers_description file. In addition, you need to run *docker ps* to list the containers are running (if any) and verify which ports are using.  
 * -e to set the environment variables.
 
-The environment variables necessary to run an image with R studio server are the following:
-* USER -> you can add your user name
-* PASSWORD -> a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.
+The environment variables necessary to run an image with R studio server are the following:  
+* USER -> you can add your user name. 
+* PASSWORD -> a secret password of your choice, along with the USER these env variables will be used to access the R studio server web interface.  
 * USERID and GROUPID -> these ids are needed to have the user of the host machine be the same of the docker container. When these do not match it will change the ownership of the volume you are mounting on the container, generating issues particularly when you create or save new files. 
 
 
